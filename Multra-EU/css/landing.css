@@ -270,3 +270,73 @@
   .l-insp-foot{flex-direction:column;align-items:stretch}
   .l-insp-foot .btn{width:100%}
 }
+
+/* ===== Vehicle-type meta (línea, vigencia) ===== */
+.l-vehicle-type__meta{display:flex;flex-wrap:wrap;gap:8px;padding-top:8px;border-top:1px dashed var(--b);margin-top:auto}
+.l-vehicle-type__meta span{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;color:var(--g);background:var(--bg);padding:3px 8px;border-radius:6px}
+.l-vehicle-type__meta i{color:var(--y2);font-size:.85rem}
+
+/* ===== Tarifas RTM — tabla profesional por antigüedad ===== */
+.l-tarifas{position:relative;overflow:hidden}
+.l-tarifas::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent 0 79px,#ffffff05 79px 80px);pointer-events:none}
+.l-tarifas .container{position:relative;z-index:1}
+.l-tarifas-wrap{background:#1a2236;border-radius:var(--radius-lg);overflow:hidden;border:1px solid #2a324a}
+.l-tarifas-table{width:100%;border-collapse:collapse;color:#fff;font-size:.92rem}
+.l-tarifas-table thead{background:#0e1320}
+.l-tarifas-table th{padding:18px 14px;text-align:center;font-weight:800;color:var(--y);font-size:.78rem;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid var(--y)}
+.l-tarifas-table th:first-child{text-align:left;padding-left:24px}
+.l-tarifas-table th i{display:block;font-size:1.4rem;color:#fff;margin-bottom:4px;font-weight:400}
+.l-tarifas-table tbody tr{border-bottom:1px solid #2a324a;transition:.15s}
+.l-tarifas-table tbody tr:hover{background:#2a324a}
+.l-tarifas-table tbody tr:last-child{border-bottom:0}
+.l-tarifas-edad{padding:16px 14px 16px 24px;font-weight:600;color:#fff}
+.l-tarifas-edad b{display:block;font-size:1rem;font-weight:900;color:#fff}
+.l-tarifas-edad small{display:block;font-size:.7rem;color:#a3acbf;font-weight:600;margin-top:2px}
+.l-tarifas-price{padding:16px 14px;text-align:center;font-weight:900;color:#fff;font-variant-numeric:tabular-nums;font-size:1.05rem;letter-spacing:.3px}
+.l-tarifas-price--featured{background:rgba(255,212,0,.08);color:var(--y);position:relative}
+.l-tarifas-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding:18px 24px;background:#0e1320;border-top:1px solid #2a324a}
+.l-tarifas-note{display:flex;align-items:flex-start;gap:8px;flex:1;color:#a3acbf;font-size:.82rem;line-height:1.5;max-width:520px}
+.l-tarifas-note i{color:var(--y);margin-top:2px;flex-shrink:0}
+.l-tarifas-cta{display:flex;gap:8px;flex-shrink:0}
+.l-tarifas-btn-light{background:transparent;color:#fff;border-color:#2a324a}
+.l-tarifas-btn-light:hover{background:#1a2236;border-color:var(--y)}
+
+/* ===== Recordatorio de vencimiento (lead capture) ===== */
+.l-recordatorio{background:linear-gradient(135deg,#fff5d6 0%,#fffae6 100%);position:relative;overflow:hidden}
+.l-recordatorio::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(-45deg,transparent 0 24px,rgba(167,124,0,.06) 24px 26px);pointer-events:none}
+.l-recordatorio .container{position:relative;z-index:1}
+.l-recordatorio__grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}
+.l-recordatorio__copy h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;margin:8px 0 14px;color:var(--k)}
+.l-recordatorio__copy p{color:var(--k);font-size:1rem;line-height:1.55;margin-bottom:18px}
+.l-recordatorio__bullets{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.l-recordatorio__bullets li{display:flex;align-items:center;gap:8px;color:var(--k);font-size:.92rem;font-weight:600}
+.l-recordatorio__bullets i{color:var(--ok);font-size:1.1rem}
+.l-recordatorio__form{background:#fff;border:1.5px solid var(--b);border-radius:var(--radius-lg);padding:28px;box-shadow:0 10px 30px rgba(14,19,32,.08)}
+.l-recordatorio__form-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px dashed var(--b)}
+.l-recordatorio__form-head i{width:42px;height:42px;border-radius:50%;background:var(--y);color:var(--k);display:grid;place-items:center;font-size:1.3rem}
+.l-recordatorio__form-head h4{margin:0;font-size:1.1rem;font-weight:900}
+.l-field{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
+.l-field > span{font-size:.78rem;font-weight:700;color:var(--k);letter-spacing:.3px}
+.l-field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.l-field-row .l-field{margin-bottom:12px}
+.l-check{display:flex;align-items:flex-start;gap:8px;margin:14px 0;font-size:.78rem;color:var(--g);line-height:1.45}
+.l-check input{margin-top:3px;accent-color:var(--y)}
+.l-recordatorio__btn{width:100%;margin-top:6px;padding:13px;font-size:.95rem}
+.l-recordatorio__legal{display:block;text-align:center;margin-top:12px;color:var(--g);font-size:.72rem}
+.l-recordatorio__legal a{color:var(--y2);font-weight:700;text-decoration:underline}
+
+/* ===== Responsive añadidos: tarifas + recordatorio ===== */
+@media(max-width:980px){
+  .l-tarifas-table{font-size:.82rem}
+  .l-tarifas-table th,.l-tarifas-table td{padding:12px 8px}
+  .l-tarifas-table th:first-child,.l-tarifas-edad{padding-left:14px}
+  .l-tarifas-foot{flex-direction:column;align-items:stretch}
+  .l-tarifas-cta{justify-content:stretch}
+  .l-tarifas-cta .btn{flex:1}
+  .l-recordatorio__grid{grid-template-columns:1fr;gap:30px}
+}
+@media(max-width:640px){
+  .l-tarifas-table{display:block;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+  .l-tarifas-wrap{overflow-x:auto}
+  .l-field-row{grid-template-columns:1fr}
+}
