@@ -348,6 +348,42 @@
   .l-why__grid,.l-official__grid{grid-template-columns:1fr}
 }
 
+/* =================================================================
+   VEHICLE SVG THEME TOKENS — recoloreables via CSS variables
+   Cambiar --v-body, --v-window o --v-rim re-tinta TODOS los SVGs.
+   Default: navy/slate con ventanas cyan y rines amarillos.
+   ================================================================= */
+.l-vehicle-svg,.l-hero__silhouette{
+  --v-body-1:#334155;
+  --v-body-2:#1e293b;
+  --v-body-3:#0f172a;
+  --v-window-1:#a8dadc;
+  --v-window-2:#5fa8b3;
+  --v-rim-1:#ffd400;
+  --v-rim-2:#a77c00;
+  --v-rim-3:#5c4400;
+  --v-shadow:#0f172a;
+}
+.l-vehicle-type--featured .l-vehicle-svg{
+  --v-body-1:#475569;
+  --v-body-2:#334155;
+  --v-body-3:#1e293b;
+}
+.l-vehicle-svg:hover,.l-hero__card:hover .l-hero__silhouette{transform:translateY(-3px) scale(1.02)}
+
+/* =================================================================
+   RECORDATORIO — fondo navy #0F172A (consistente con hero)
+   Reemplaza el teal #0f766e/#064e3b anterior
+   ================================================================= */
+.l-recordatorio{background:linear-gradient(135deg,#0F172A 0%,#1E293B 100%)}
+.l-recordatorio::before{background-image:repeating-linear-gradient(45deg,transparent 0 24px,rgba(255,212,0,.06) 24px 26px),repeating-linear-gradient(-45deg,transparent 0 24px,rgba(255,255,255,.03) 24px 26px)}
+.l-recordatorio::after{background:radial-gradient(circle,rgba(255,212,0,.2) 0%,transparent 70%)}
+.l-recordatorio__copy .l-eyebrow{color:#ffd400}
+.l-recordatorio__copy h2{color:#fff}
+.l-recordatorio__copy p{color:#cbd5e1}
+.l-recordatorio__bullets li{color:#fff}
+.l-recordatorio__bullets i{color:#ffd400}
+
 /* ===== Vehicle-type meta (línea, vigencia) ===== */
 .l-vehicle-type__meta{display:flex;flex-wrap:wrap;gap:8px;padding-top:8px;border-top:1px dashed var(--b);margin-top:auto}
 .l-vehicle-type__meta span{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;color:var(--g);background:var(--bg);padding:3px 8px;border-radius:6px}
@@ -389,13 +425,13 @@
 .l-tarifas-btn-light:hover{background:#1a2236;border-color:var(--y)}
 
 /* ===== Recordatorio de vencimiento (lead capture) ===== */
-.l-recordatorio{background:linear-gradient(135deg,#0f766e 0%,#064e3b 100%);color:#fff;position:relative;overflow:hidden}
-.l-recordatorio::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent 0 24px,rgba(255,212,0,.08) 24px 26px),repeating-linear-gradient(-45deg,transparent 0 24px,rgba(255,255,255,.04) 24px 26px);pointer-events:none}
-.l-recordatorio::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,212,0,.22) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none}
+.l-recordatorio{background:linear-gradient(135deg,#0F172A 0%,#1E293B 100%);color:#fff;position:relative;overflow:hidden}
+.l-recordatorio::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent 0 24px,rgba(255,212,0,.06) 24px 26px),repeating-linear-gradient(-45deg,transparent 0 24px,rgba(255,255,255,.03) 24px 26px);pointer-events:none}
+.l-recordatorio::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,212,0,.2) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none}
 .l-recordatorio .container{position:relative;z-index:1}
 .l-recordatorio__copy .l-eyebrow{color:#ffd400}
 .l-recordatorio__copy h2{color:#fff}
-.l-recordatorio__copy p{color:#d1faf0}
+.l-recordatorio__copy p{color:#cbd5e1}
 .l-recordatorio__bullets li{color:#fff}
 .l-recordatorio__bullets i{color:#ffd400}
 .l-recordatorio__grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center}

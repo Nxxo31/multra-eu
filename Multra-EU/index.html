@@ -53,15 +53,56 @@
       </div>
     </div>
     <div class="l-hero__card">
-      <svg class="l-hero__silhouette" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M20 55 L30 35 Q40 25 60 22 L120 22 Q145 22 160 35 L180 45 L185 50 Q188 52 188 55 L188 60 Q188 65 183 65 L172 65 Q175 60 170 58 L155 58 Q150 60 153 65 L47 65 Q50 60 45 58 L30 58 Q25 60 28 65 L17 65 Q12 65 12 60 Z" fill="currentColor"/>
-        <circle cx="50" cy="65" r="11" fill="#0e1320"/>
-        <circle cx="50" cy="65" r="6" fill="#ffd400"/>
-        <circle cx="160" cy="65" r="11" fill="#0e1320"/>
-        <circle cx="160" cy="65" r="6" fill="#ffd400"/>
-        <rect x="68" y="30" width="50" height="18" rx="3" fill="#1a2236"/>
-        <rect x="125" y="32" width="28" height="14" rx="2" fill="#1a2236"/>
-        <line x1="95" y1="30" x2="95" y2="48" stroke="#0e1320" stroke-width="1.5"/>
+      <svg class="l-hero__silhouette" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="hero-car-body" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1a2236"/>
+            <stop offset="55%" stop-color="#0e1320"/>
+            <stop offset="100%" stop-color="#050810"/>
+          </linearGradient>
+          <linearGradient id="hero-car-window" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#a8dadc"/>
+            <stop offset="100%" stop-color="#5fa8b3"/>
+          </linearGradient>
+          <radialGradient id="hero-car-rim" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffd400"/>
+            <stop offset="65%" stop-color="#a77c00"/>
+            <stop offset="100%" stop-color="#5c4400"/>
+          </radialGradient>
+          <linearGradient id="hero-car-ground" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0e1320" stop-opacity=".22"/>
+            <stop offset="100%" stop-color="#0e1320" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <ellipse cx="120" cy="92" rx="100" ry="5" fill="url(#hero-car-ground)"/>
+        <path d="M16 70 Q22 56 36 50 L56 38 Q72 30 100 30 L150 30 Q170 32 184 40 L210 56 Q222 64 226 70 L226 78 L220 78 Q222 74 218 70 L184 70 Q182 74 184 78 L56 78 Q58 74 56 70 L22 70 Q18 74 20 78 L14 78 Q12 78 12 76 Z" fill="url(#hero-car-body)"/>
+        <path d="M52 46 L66 30 Q76 24 92 24 L138 24 Q154 26 168 36 L186 46 Z" fill="url(#hero-car-window)"/>
+        <line x1="120" y1="26" x2="120" y2="46" stroke="#050810" stroke-width="1.5" opacity=".55"/>
+        <line x1="76" y1="30" x2="62" y2="46" stroke="#050810" stroke-width="1" opacity=".35"/>
+        <line x1="158" y1="36" x2="176" y2="46" stroke="#050810" stroke-width="1" opacity=".35"/>
+        <path d="M58 56 L52 60 Q48 64 48 68 L48 76 L66 76 Q68 70 70 64 L66 56 Z" fill="#1a2236" opacity=".5"/>
+        <rect x="50" y="62" width="6" height="6" rx="1" fill="#fff5d6"/>
+        <ellipse cx="50" cy="82" rx="14" ry="4" fill="#0e1320"/>
+        <ellipse cx="180" cy="82" rx="14" ry="4" fill="#0e1320"/>
+        <circle cx="50" cy="78" r="11" fill="#050810"/>
+        <circle cx="50" cy="78" r="8" fill="url(#hero-car-rim)"/>
+        <circle cx="50" cy="78" r="2.5" fill="#050810"/>
+        <g stroke="#050810" stroke-width="1.3" opacity=".85">
+          <line x1="50" y1="68" x2="50" y2="88"/>
+          <line x1="40" y1="78" x2="60" y2="78"/>
+          <line x1="43" y1="71" x2="57" y2="85"/>
+          <line x1="57" y1="71" x2="43" y2="85"/>
+        </g>
+        <circle cx="180" cy="78" r="11" fill="#050810"/>
+        <circle cx="180" cy="78" r="8" fill="url(#hero-car-rim)"/>
+        <circle cx="180" cy="78" r="2.5" fill="#050810"/>
+        <g stroke="#050810" stroke-width="1.3" opacity=".85">
+          <line x1="180" y1="68" x2="180" y2="88"/>
+          <line x1="170" y1="78" x2="190" y2="78"/>
+          <line x1="173" y1="71" x2="187" y2="85"/>
+          <line x1="187" y1="71" x2="173" y2="85"/>
+        </g>
+        <path d="M30 70 L42 70" stroke="#ffd400" stroke-width="1.5" opacity=".5"/>
       </svg>
       <div class="l-hero__card-plate">RTM · SOAT · TRÁMITES</div>
       <h2>MULTRA E.U.</h2>
@@ -83,39 +124,55 @@
     <div class="l-vehicle-types">
       <article class="l-vehicle-type">
         <div class="l-vehicle-type__visual">
-          <svg viewBox="0 0 240 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg l-vehicle-svg--top">
+          <svg viewBox="0 0 240 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
             <defs>
-              <linearGradient id="car-body-liv" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="liv-body" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="#334155"/>
-                <stop offset="100%" stop-color="#1e293b"/>
+                <stop offset="55%" stop-color="#1e293b"/>
+                <stop offset="100%" stop-color="#0f172a"/>
               </linearGradient>
-              <linearGradient id="car-top-liv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#7DD3E8"/>
-                <stop offset="100%" stop-color="#3b9eb4"/>
+              <linearGradient id="liv-window" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#a8dadc"/>
+                <stop offset="100%" stop-color="#5fa8b3"/>
               </linearGradient>
-              <linearGradient id="car-ground-liv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#0e1320" stop-opacity=".18"/>
-                <stop offset="100%" stop-color="#0e1320" stop-opacity="0"/>
+              <radialGradient id="liv-rim" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffd400"/>
+                <stop offset="65%" stop-color="#a77c00"/>
+                <stop offset="100%" stop-color="#5c4400"/>
+              </radialGradient>
+              <linearGradient id="liv-ground" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0f172a" stop-opacity=".2"/>
+                <stop offset="100%" stop-color="#0f172a" stop-opacity="0"/>
               </linearGradient>
             </defs>
-            <ellipse cx="120" cy="120" rx="105" ry="5" fill="url(#car-ground-liv)"/>
-            <rect x="30" y="42" width="180" height="46" rx="14" fill="url(#car-body-liv)"/>
-            <rect x="46" y="50" width="148" height="30" rx="10" fill="url(#car-top-liv)"/>
-            <rect x="118" y="50" width="4" height="30" fill="#1e293b" opacity=".4"/>
-            <rect x="78" y="50" width="2" height="30" fill="#1e293b" opacity=".25"/>
-            <rect x="160" y="50" width="2" height="30" fill="#1e293b" opacity=".25"/>
-            <rect x="180" y="56" width="20" height="18" rx="4" fill="#475569"/>
-            <rect x="40" y="56" width="20" height="18" rx="4" fill="#475569"/>
-            <rect x="56" y="58" width="4" height="14" rx="1" fill="#fff5d6"/>
-            <rect x="180" y="58" width="4" height="14" rx="1" fill="#b91c1c" opacity=".7"/>
-            <rect x="26" y="36" width="22" height="8" rx="2" fill="#0a0f1a"/>
-            <rect x="192" y="36" width="22" height="8" rx="2" fill="#0a0f1a"/>
-            <rect x="26" y="86" width="22" height="8" rx="2" fill="#0a0f1a"/>
-            <rect x="192" y="86" width="22" height="8" rx="2" fill="#0a0f1a"/>
-            <rect x="30" y="38" width="14" height="4" rx="1" fill="#ffd400"/>
-            <rect x="196" y="38" width="14" height="4" rx="1" fill="#a77c00"/>
-            <line x1="60" y1="42" x2="60" y2="88" stroke="#0a0f1a" stroke-width="0.5" opacity=".4"/>
-            <line x1="180" y1="42" x2="180" y2="88" stroke="#0a0f1a" stroke-width="0.5" opacity=".4"/>
+            <ellipse cx="120" cy="120" rx="105" ry="5" fill="url(#liv-ground)"/>
+            <path d="M14 92 Q22 78 38 70 L60 56 Q78 48 108 48 L150 48 Q172 50 188 60 L210 74 Q222 84 224 92 L224 100 L218 100 Q220 96 216 92 L182 92 Q180 96 182 100 L58 100 Q60 96 58 92 L22 92 Q18 96 20 100 L12 100 Q8 100 8 96 Z" fill="url(#liv-body)"/>
+            <path d="M52 64 L68 48 Q80 42 96 42 L138 42 Q156 44 168 54 L184 64 Z" fill="url(#liv-window)"/>
+            <line x1="120" y1="44" x2="120" y2="64" stroke="#0f172a" stroke-width="1.5" opacity=".55"/>
+            <line x1="76" y1="46" x2="60" y2="64" stroke="#0f172a" stroke-width="1" opacity=".35"/>
+            <line x1="156" y1="54" x2="176" y2="64" stroke="#0f172a" stroke-width="1" opacity=".35"/>
+            <rect x="48" y="80" width="6" height="6" rx="1" fill="#fff5d6"/>
+            <ellipse cx="60" cy="104" rx="14" ry="4" fill="#0f172a"/>
+            <ellipse cx="180" cy="104" rx="14" ry="4" fill="#0f172a"/>
+            <circle cx="60" cy="100" r="11" fill="#050810"/>
+            <circle cx="60" cy="100" r="8" fill="url(#liv-rim)"/>
+            <circle cx="60" cy="100" r="2.5" fill="#050810"/>
+            <g stroke="#050810" stroke-width="1.3" opacity=".85">
+              <line x1="60" y1="90" x2="60" y2="110"/>
+              <line x1="50" y1="100" x2="70" y2="100"/>
+              <line x1="53" y1="93" x2="67" y2="107"/>
+              <line x1="67" y1="93" x2="53" y2="107"/>
+            </g>
+            <circle cx="180" cy="100" r="11" fill="#050810"/>
+            <circle cx="180" cy="100" r="8" fill="url(#liv-rim)"/>
+            <circle cx="180" cy="100" r="2.5" fill="#050810"/>
+            <g stroke="#050810" stroke-width="1.3" opacity=".85>
+              <line x1="180" y1="90" x2="180" y2="110"/>
+              <line x1="170" y1="100" x2="190" y2="100"/>
+              <line x1="173" y1="93" x2="187" y2="107"/>
+              <line x1="187" y1="93" x2="173" y2="107"/>
+            </g>
+            <path d="M28 92 L42 92" stroke="#ffd400" stroke-width="1.5" opacity=".5"/>
           </svg>
         </div>
         <div class="l-vehicle-type__body">
@@ -137,42 +194,57 @@
 
       <article class="l-vehicle-type l-vehicle-type--featured">
         <div class="l-vehicle-type__visual">
-          <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg l-vehicle-svg--top">
+          <svg viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
             <defs>
               <linearGradient id="moto-body" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="#334155"/>
-                <stop offset="100%" stop-color="#1e293b"/>
+                <stop offset="55%" stop-color="#1e293b"/>
+                <stop offset="100%" stop-color="#0f172a"/>
               </linearGradient>
               <linearGradient id="moto-tank" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#7DD3E8"/>
-                <stop offset="100%" stop-color="#3b9eb4"/>
+                <stop offset="0%" stop-color="#a8dadc"/>
+                <stop offset="100%" stop-color="#5fa8b3"/>
               </linearGradient>
               <radialGradient id="moto-rim" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#475569"/>
-                <stop offset="100%" stop-color="#1e293b"/>
+                <stop offset="0%" stop-color="#ffd400"/>
+                <stop offset="65%" stop-color="#a77c00"/>
+                <stop offset="100%" stop-color="#5c4400"/>
               </radialGradient>
               <linearGradient id="moto-ground" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#0e1320" stop-opacity=".18"/>
-                <stop offset="100%" stop-color="#0e1320" stop-opacity="0"/>
+                <stop offset="0%" stop-color="#0f172a" stop-opacity=".2"/>
+                <stop offset="100%" stop-color="#0f172a" stop-opacity="0"/>
               </linearGradient>
             </defs>
-            <ellipse cx="100" cy="120" rx="80" ry="4" fill="url(#moto-ground)"/>
-            <ellipse cx="50" cy="65" rx="18" ry="18" fill="#0a0f1a"/>
-            <ellipse cx="50" cy="65" rx="14" ry="14" fill="url(#moto-rim)"/>
-            <circle cx="50" cy="65" r="3" fill="#0a0f1a"/>
-            <ellipse cx="150" cy="65" rx="18" ry="18" fill="#0a0f1a"/>
-            <ellipse cx="150" cy="65" rx="14" ry="14" fill="url(#moto-rim)"/>
-            <circle cx="150" cy="65" r="3" fill="#0a0f1a"/>
-            <path d="M50 47 L150 47 Q160 47 160 53 L160 77 Q160 83 150 83 L50 83 Q40 83 40 77 L40 53 Q40 47 50 47 Z" fill="url(#moto-body)"/>
-            <path d="M62 55 Q70 52 80 52 L120 52 Q130 52 138 55 L148 65 L52 65 Z" fill="url(#moto-tank)"/>
-            <path d="M62 60 Q70 57 80 57 L120 57 Q130 57 138 60 L142 65 L58 65 Z" fill="#a8dadc" opacity=".4"/>
-            <rect x="62" y="67" width="76" height="13" rx="2" fill="#0a0f1a"/>
-            <rect x="62" y="68" width="76" height="3" fill="#475569" opacity=".5"/>
-            <rect x="40" y="64" width="20" height="2" rx="1" fill="#ffd400"/>
-            <rect x="140" y="64" width="20" height="2" rx="1" fill="#b91c1c" opacity=".7"/>
-            <rect x="36" y="63" width="28" height="4" rx="2" fill="#475569"/>
-            <rect x="136" y="63" width="28" height="4" rx="2" fill="#475569"/>
-            <rect x="92" y="44" width="16" height="6" rx="2" fill="#475569"/>
+            <ellipse cx="110" cy="120" rx="90" ry="5" fill="url(#moto-ground)"/>
+            <circle cx="42" cy="92" r="18" fill="#050810"/>
+            <circle cx="42" cy="92" r="14" fill="url(#moto-rim)"/>
+            <circle cx="42" cy="92" r="3" fill="#050810"/>
+            <g stroke="#050810" stroke-width="1.3" opacity=".85">
+              <line x1="42" y1="80" x2="42" y2="104"/>
+              <line x1="30" y1="92" x2="54" y2="92"/>
+              <line x1="33" y1="83" x2="51" y2="101"/>
+              <line x1="51" y1="83" x2="33" y2="101"/>
+            </g>
+            <circle cx="178" cy="92" r="18" fill="#050810"/>
+            <circle cx="178" cy="92" r="14" fill="url(#moto-rim)"/>
+            <circle cx="178" cy="92" r="3" fill="#050810"/>
+            <g stroke="#050810" stroke-width="1.3" opacity=".85>
+              <line x1="178" y1="80" x2="178" y2="104"/>
+              <line x1="166" y1="92" x2="190" y2="92"/>
+              <line x1="169" y1="83" x2="187" y2="101"/>
+              <line x1="187" y1="83" x2="169" y2="101"/>
+            </g>
+            <path d="M58 70 Q66 50 80 42 L102 36 Q118 36 130 42 L168 56 Q176 64 178 78 L178 90 Q176 96 168 96 L52 96 Q44 96 44 90 L44 80 Q48 74 58 70 Z" fill="url(#moto-body)"/>
+            <path d="M76 56 Q88 48 102 48 L130 50 Q142 56 148 68 L150 76 L74 76 Z" fill="url(#moto-tank)"/>
+            <path d="M82 60 Q92 56 102 56 L128 58 Q138 62 142 70 L144 72 L80 72 Z" fill="#a8dadc" opacity=".35"/>
+            <rect x="100" y="64" width="34" height="14" rx="2" fill="#0f172a"/>
+            <rect x="100" y="66" width="34" height="3" fill="#475569" opacity=".6"/>
+            <path d="M168 56 L196 36 L210 38 L186 64" fill="url(#moto-body)" opacity=".85"/>
+            <rect x="196" y="32" width="16" height="6" rx="2" fill="#475569" opacity=".7"/>
+            <path d="M44 78 L26 78 L26 72 L38 70" stroke="#0f172a" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M178 78 L196 78 L196 72 L184 70" stroke="#0f172a" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="34" cy="76" r="2.5" fill="#ffd400"/>
+            <circle cx="186" cy="76" r="2" fill="#b91c1c" opacity=".7"/>
           </svg>
         </div>
         <div class="l-vehicle-type__body">
@@ -194,52 +266,84 @@
 
       <article class="l-vehicle-type">
         <div class="l-vehicle-type__visual">
-          <svg viewBox="0 0 260 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg l-vehicle-svg--top">
+          <svg viewBox="0 0 260 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
             <defs>
               <linearGradient id="bus-body" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="#334155"/>
-                <stop offset="100%" stop-color="#1e293b"/>
+                <stop offset="55%" stop-color="#1e293b"/>
+                <stop offset="100%" stop-color="#0f172a"/>
               </linearGradient>
-              <linearGradient id="bus-top" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#7DD3E8"/>
-                <stop offset="100%" stop-color="#3b9eb4"/>
+              <linearGradient id="bus-window" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#a8dadc"/>
+                <stop offset="100%" stop-color="#5fa8b3"/>
               </linearGradient>
+              <radialGradient id="bus-rim" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffd400"/>
+                <stop offset="65%" stop-color="#a77c00"/>
+                <stop offset="100%" stop-color="#5c4400"/>
+              </radialGradient>
               <linearGradient id="bus-ground" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#0e1320" stop-opacity=".18"/>
-                <stop offset="100%" stop-color="#0e1320" stop-opacity="0"/>
+                <stop offset="0%" stop-color="#0f172a" stop-opacity=".2"/>
+                <stop offset="100%" stop-color="#0f172a" stop-opacity="0"/>
               </linearGradient>
             </defs>
             <ellipse cx="130" cy="120" rx="120" ry="5" fill="url(#bus-ground)"/>
-            <rect x="10" y="40" width="240" height="50" rx="10" fill="url(#bus-body)"/>
-            <rect x="10" y="40" width="240" height="50" rx="10" fill="url(#bus-top)" opacity=".35"/>
-            <rect x="20" y="48" width="30" height="34" rx="3" fill="#475569"/>
-            <g fill="#3b9eb4" opacity=".85">
-              <rect x="56" y="48" width="22" height="34" rx="2"/>
-              <rect x="82" y="48" width="22" height="34" rx="2"/>
-              <rect x="108" y="48" width="22" height="34" rx="2"/>
-              <rect x="134" y="48" width="22" height="34" rx="2"/>
-              <rect x="160" y="48" width="22" height="34" rx="2"/>
-              <rect x="186" y="48" width="22" height="34" rx="2"/>
-              <rect x="212" y="48" width="22" height="34" rx="2"/>
+            <path d="M10 100 L10 50 Q12 44 18 42 L240 42 Q248 44 250 50 L250 100 Q246 104 240 104 L20 104 Q14 104 10 100 Z" fill="url(#bus-body)"/>
+            <path d="M16 50 L18 44 L40 38 L240 38 Q246 40 248 46 L248 50 Z" fill="#1a2236" opacity=".4"/>
+            <g fill="url(#bus-window)">
+              <rect x="50" y="48" width="22" height="22" rx="1.5"/>
+              <rect x="76" y="48" width="22" height="22" rx="1.5"/>
+              <rect x="102" y="48" width="22" height="22" rx="1.5"/>
+              <rect x="128" y="48" width="22" height="22" rx="1.5"/>
+              <rect x="154" y="48" width="22" height="22" rx="1.5"/>
+              <rect x="180" y="48" width="22" height="22" rx="1.5"/>
+              <rect x="206" y="48" width="22" height="22" rx="1.5"/>
             </g>
-            <line x1="78" y1="48" x2="78" y2="82" stroke="#1e293b" stroke-width="1" opacity=".5"/>
-            <line x1="104" y1="48" x2="104" y2="82" stroke="#1e293b" stroke-width="1" opacity=".5"/>
-            <line x1="130" y1="48" x2="130" y2="82" stroke="#1e293b" stroke-width="1" opacity=".5"/>
-            <line x1="156" y1="48" x2="156" y2="82" stroke="#1e293b" stroke-width="1" opacity=".5"/>
-            <line x1="182" y1="48" x2="182" y2="82" stroke="#1e293b" stroke-width="1" opacity=".5"/>
-            <line x1="208" y1="48" x2="208" y2="82" stroke="#1e293b" stroke-width="1" opacity=".5"/>
-            <rect x="6" y="34" width="22" height="8" rx="2" fill="#0a0f1a"/>
-            <rect x="232" y="34" width="22" height="8" rx="2" fill="#0a0f1a"/>
-            <rect x="6" y="88" width="22" height="8" rx="2" fill="#0a0f1a"/>
-            <rect x="232" y="88" width="22" height="8" rx="2" fill="#0a0f1a"/>
-            <rect x="116" y="34" width="22" height="8" rx="2" fill="#0a0f1a"/>
-            <rect x="116" y="88" width="22" height="8" rx="2" fill="#0a0f1a"/>
-            <rect x="10" y="36" width="14" height="4" rx="1" fill="#ffd400"/>
-            <rect x="236" y="36" width="14" height="4" rx="1" fill="#a77c00"/>
-            <rect x="10" y="90" width="14" height="4" rx="1" fill="#b91c1c" opacity=".7"/>
-            <rect x="236" y="90" width="14" height="4" rx="1" fill="#b91c1c" opacity=".7"/>
-            <line x1="60" y1="48" x2="60" y2="82" stroke="#1e293b" stroke-width="0.5" opacity=".3"/>
-            <line x1="200" y1="48" x2="200" y2="82" stroke="#1e293b" stroke-width="0.5" opacity=".3"/>
+            <line x1="72" y1="48" x2="72" y2="70" stroke="#0f172a" stroke-width="1" opacity=".5"/>
+            <line x1="98" y1="48" x2="98" y2="70" stroke="#0f172a" stroke-width="1" opacity=".5"/>
+            <line x1="124" y1="48" x2="124" y2="70" stroke="#0f172a" stroke-width="1" opacity=".5"/>
+            <line x1="150" y1="48" x2="150" y2="70" stroke="#0f172a" stroke-width="1" opacity=".5"/>
+            <line x1="176" y1="48" x2="176" y2="70" stroke="#0f172a" stroke-width="1" opacity=".5"/>
+            <line x1="202" y1="48" x2="202" y2="70" stroke="#0f172a" stroke-width="1" opacity=".5"/>
+            <line x1="228" y1="48" x2="228" y2="70" stroke="#0f172a" stroke-width="1" opacity=".5"/>
+            <rect x="14" y="50" width="32" height="22" rx="2" fill="#a8dadc" opacity=".75"/>
+            <line x1="30" y1="50" x2="30" y2="72" stroke="#0f172a" stroke-width="1" opacity=".5"/>
+            <path d="M16 78 L244 78" stroke="#ffd400" stroke-width="1.5" opacity=".5"/>
+            <path d="M16 92 L244 92" stroke="#0f172a" stroke-width="1" opacity=".4"/>
+            <rect x="14" y="80" width="6" height="10" rx="1" fill="#fff5d6"/>
+            <rect x="240" y="80" width="6" height="10" rx="1" fill="#b91c1c" opacity=".7"/>
+            <ellipse cx="50" cy="108" rx="16" ry="4" fill="#0f172a"/>
+            <ellipse cx="130" cy="108" rx="16" ry="4" fill="#0f172a"/>
+            <ellipse cx="210" cy="108" rx="16" ry="4" fill="#0f172a"/>
+            <circle cx="50" cy="104" r="12" fill="#050810"/>
+            <circle cx="50" cy="104" r="9" fill="url(#bus-rim)"/>
+            <circle cx="50" cy="104" r="3" fill="#050810"/>
+            <g stroke="#050810" stroke-width="1.3" opacity=".85">
+              <line x1="50" y1="94" x2="50" y2="114"/>
+              <line x1="40" y1="104" x2="60" y2="104"/>
+              <line x1="43" y1="97" x2="57" y2="111"/>
+              <line x1="57" y1="97" x2="43" y2="111"/>
+            </g>
+            <circle cx="130" cy="104" r="12" fill="#050810"/>
+            <circle cx="130" cy="104" r="9" fill="url(#bus-rim)"/>
+            <circle cx="130" cy="104" r="3" fill="#050810"/>
+            <g stroke="#050810" stroke-width="1.3" opacity=".85">
+              <line x1="130" y1="94" x2="130" y2="114"/>
+              <line x1="120" y1="104" x2="140" y2="104"/>
+              <line x1="123" y1="97" x2="137" y2="111"/>
+              <line x1="137" y1="97" x2="123" y2="111"/>
+            </g>
+            <circle cx="210" cy="104" r="12" fill="#050810"/>
+            <circle cx="210" cy="104" r="9" fill="url(#bus-rim)"/>
+            <circle cx="210" cy="104" r="3" fill="#050810"/>
+            <g stroke="#050810" stroke-width="1.3" opacity=".85">
+              <line x1="210" y1="94" x2="210" y2="114"/>
+              <line x1="200" y1="104" x2="220" y2="104"/>
+              <line x1="203" y1="97" x2="217" y2="111"/>
+              <line x1="217" y1="97" x2="203" y2="111"/>
+            </g>
+            <line x1="68" y1="86" x2="76" y2="86" stroke="#0f172a" stroke-width="1" opacity=".5"/>
+            <line x1="84" y1="86" x2="96" y2="86" stroke="#0f172a" stroke-width="1" opacity=".5"/>
           </svg>
         </div>
         <div class="l-vehicle-type__body">
