@@ -37,6 +37,7 @@
 </nav>
 
 <header class="l-hero" id="inicio">
+  <div class="l-hero__pattern"></div>
   <div class="l-hero__grid">
     <div>
       <span class="l-hero__badge"><i class="bi bi-patch-check-fill"></i> Habilitados MinTransporte</span>
@@ -47,13 +48,23 @@
         <a class="l-hero__btn-outline" href="#servicios"><i class="bi bi-grid"></i> Ver servicios</a>
       </div>
       <div class="l-hero__stats">
-        <div><b>15+</b><small>Años de experiencia</small></div>
-        <div><b>8K+</b><small>Vehículos atendidos</small></div>
-        <div><b>4.8★</b><small>Calificación</small></div>
+        <div><i class="bi bi-calendar-check"></i><b>15+</b><small>Años de experiencia</small></div>
+        <div><i class="bi bi-car-front"></i><b>8K+</b><small>Vehículos atendidos</small></div>
+        <div><i class="bi bi-star-fill"></i><b>4.8</b><small>Calificación</small></div>
       </div>
     </div>
     <div class="l-hero__card">
-      <i class="bi bi-car-front-fill l-hero__card-icon"></i>
+      <svg class="l-hero__silhouette" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20 55 L30 35 Q40 25 60 22 L120 22 Q145 22 160 35 L180 45 L185 50 Q188 52 188 55 L188 60 Q188 65 183 65 L172 65 Q175 60 170 58 L155 58 Q150 60 153 65 L47 65 Q50 60 45 58 L30 58 Q25 60 28 65 L17 65 Q12 65 12 60 Z" fill="currentColor"/>
+        <circle cx="50" cy="65" r="11" fill="#0e1320"/>
+        <circle cx="50" cy="65" r="6" fill="#ffd400"/>
+        <circle cx="160" cy="65" r="11" fill="#0e1320"/>
+        <circle cx="160" cy="65" r="6" fill="#ffd400"/>
+        <rect x="68" y="30" width="50" height="18" rx="3" fill="#1a2236"/>
+        <rect x="125" y="32" width="28" height="14" rx="2" fill="#1a2236"/>
+        <line x1="95" y1="30" x2="95" y2="48" stroke="#0e1320" stroke-width="1.5"/>
+      </svg>
+      <div class="l-hero__card-plate">RTM · SOAT · TRÁMITES</div>
       <h2>MULTRA E.U.</h2>
       <p>CDA + Gestoría + Seguros · Neiva, Huila</p>
       <div class="l-hero__tags">
@@ -63,6 +74,102 @@
   </div>
 </header>
 
+<section class="l-section l-vehicles" id="vehiculos">
+  <div class="container">
+    <div class="l-section__head l-section__head--center">
+      <span class="l-eyebrow">¿QUÉ VEHÍCULO TIENES?</span>
+      <h2>Atendemos todo tipo de vehículo</h2>
+      <p>Cada categoría tiene su tarifa regulada y su checklist técnico específico.</p>
+    </div>
+    <div class="l-vehicle-types">
+      <article class="l-vehicle-type">
+        <div class="l-vehicle-type__visual">
+          <svg viewBox="0 0 180 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M15 60 L25 38 Q35 28 55 26 L110 26 Q132 26 145 38 L162 50 L168 54 Q170 56 170 60 L170 66 Q170 70 166 70 L154 70 Q157 66 152 64 L138 64 Q133 66 136 70 L44 70 Q47 66 42 64 L28 64 Q23 66 26 70 L14 70 Q10 70 10 66 Z" fill="#0e1320"/>
+            <circle cx="45" cy="70" r="10" fill="#ffd400"/>
+            <circle cx="45" cy="70" r="5" fill="#0e1320"/>
+            <circle cx="145" cy="70" r="10" fill="#ffd400"/>
+            <circle cx="145" cy="70" r="5" fill="#0e1320"/>
+            <rect x="60" y="34" width="45" height="16" rx="3" fill="#a3acbf"/>
+            <rect x="110" y="36" width="28" height="14" rx="2" fill="#a3acbf"/>
+          </svg>
+        </div>
+        <div class="l-vehicle-type__body">
+          <span class="l-vehicle-type__tag l-vehicle-type__tag--liviano">Liviano</span>
+          <h3>Automóvil · Camioneta</h3>
+          <ul class="l-vehicle-type__services">
+            <li><i class="bi bi-check2-circle"></i> RTM Livianos</li>
+            <li><i class="bi bi-check2-circle"></i> SOAT Auto (3 rangos)</li>
+            <li><i class="bi bi-check2-circle"></i> Todo Riesgo Auto</li>
+            <li><i class="bi bi-check2-circle"></i> Conversión GNV</li>
+          </ul>
+          <div class="l-vehicle-type__price">Desde <b>$327.700</b> <small>RTM regulado 2026</small></div>
+        </div>
+      </article>
+
+      <article class="l-vehicle-type l-vehicle-type--featured">
+        <div class="l-vehicle-type__visual">
+          <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="32" cy="85" r="8" fill="#0e1320"/>
+            <circle cx="32" cy="85" r="4" fill="#ffd400"/>
+            <circle cx="92" cy="85" r="8" fill="#0e1320"/>
+            <circle cx="92" cy="85" r="4" fill="#ffd400"/>
+            <path d="M20 70 Q22 55 30 45 L48 35 Q60 32 70 35 L92 40 Q100 50 100 65 L100 78 L20 78 Z" fill="#0e1320"/>
+            <circle cx="38" cy="55" r="4" fill="#a3acbf"/>
+            <path d="M45 35 Q55 30 65 32" stroke="#a3acbf" stroke-width="1.5" fill="none"/>
+            <rect x="45" y="50" width="20" height="14" rx="2" fill="#1a2236"/>
+            <path d="M68 50 L92 50 L92 65 L72 65" fill="#1a2236"/>
+            <line x1="50" y1="50" x2="50" y2="65" stroke="#a3acbf" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="l-vehicle-type__body">
+          <span class="l-vehicle-type__tag l-vehicle-type__tag--moto">Motocicleta</span>
+          <h3>Moto · Motocarro</h3>
+          <ul class="l-vehicle-type__services">
+            <li><i class="bi bi-check2-circle"></i> RTM Motos</li>
+            <li><i class="bi bi-check2-circle"></i> SOAT Moto (2 rangos)</li>
+            <li><i class="bi bi-check2-circle"></i> Traspaso Moto</li>
+            <li><i class="bi bi-check2-circle"></i> Licencia Moto 1ª/renov.</li>
+          </ul>
+          <div class="l-vehicle-type__price">Desde <b>$227.800</b> <small>RTM regulado 2026</small></div>
+        </div>
+      </article>
+
+      <article class="l-vehicle-type">
+        <div class="l-vehicle-type__visual">
+          <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="10" y="40" width="180" height="35" rx="4" fill="#0e1320"/>
+            <rect x="15" y="25" width="120" height="18" rx="2" fill="#0e1320"/>
+            <rect x="20" y="28" width="20" height="12" rx="1" fill="#a3acbf"/>
+            <rect x="44" y="28" width="20" height="12" rx="1" fill="#a3acbf"/>
+            <rect x="68" y="28" width="20" height="12" rx="1" fill="#a3acbf"/>
+            <rect x="92" y="28" width="20" height="12" rx="1" fill="#a3acbf"/>
+            <rect x="116" y="28" width="15" height="12" rx="1" fill="#a3acbf"/>
+            <circle cx="45" cy="78" r="10" fill="#ffd400"/>
+            <circle cx="45" cy="78" r="5" fill="#0e1320"/>
+            <circle cx="100" cy="78" r="10" fill="#ffd400"/>
+            <circle cx="100" cy="78" r="5" fill="#0e1320"/>
+            <circle cx="155" cy="78" r="10" fill="#ffd400"/>
+            <circle cx="155" cy="78" r="5" fill="#0e1320"/>
+            <rect x="14" y="50" width="6" height="20" fill="#ffd400"/>
+          </svg>
+        </div>
+        <div class="l-vehicle-type__body">
+          <span class="l-vehicle-type__tag l-vehicle-type__tag--pesado">Pesado</span>
+          <h3>Camión · Bus · Carga</h3>
+          <ul class="l-vehicle-type__services">
+            <li><i class="bi bi-check2-circle"></i> RTM Pesados</li>
+            <li><i class="bi bi-check2-circle"></i> SOAT Pesado</li>
+            <li><i class="bi bi-check2-circle"></i> Todo Riesgo Pesado</li>
+            <li><i class="bi bi-check2-circle"></i> Peritaje vehicular</li>
+          </ul>
+          <div class="l-vehicle-type__price">Desde <b>$519.700</b> <small>RTM regulado 2026</small></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="l-section" id="servicios">
   <div class="container">
     <div class="l-section__head l-section__head--center">
@@ -71,6 +178,33 @@
       <p>Trámites, seguros y diagnóstico en un solo lugar.</p>
     </div>
     <div class="l-services" id="publicServices"></div>
+  </div>
+</section>
+
+<section class="l-section l-section--alt l-inspection" id="inspeccion">
+  <div class="container">
+    <div class="l-section__head l-section__head--center">
+      <span class="l-eyebrow">CHECKLIST TÉCNICO</span>
+      <h2>Tu inspección RTM en 10 puntos</h2>
+      <p>El mismo checklist digital que usa nuestro técnico. Aprobado = vigencia +1 año de la tecnomecánica.</p>
+    </div>
+    <div class="l-inspection-grid">
+      <div class="l-insp-item"><i class="bi bi-lightbulb"></i><span>1. Luces y señalización</span></div>
+      <div class="l-insp-item"><i class="bi bi-stoplights"></i><span>2. Sistema de frenos</span></div>
+      <div class="l-insp-item"><i class="bi bi-arrow-down-up"></i><span>3. Suspensión y dirección</span></div>
+      <div class="l-insp-item"><i class="bi bi-circle"></i><span>4. Llantas y ejes</span></div>
+      <div class="l-insp-item"><i class="bi bi-fuel-pump"></i><span>5. Emisiones y gases</span></div>
+      <div class="l-insp-item"><i class="bi bi-music-note-beamed"></i><span>6. Bocina y acústica</span></div>
+      <div class="l-insp-item"><i class="bi bi-shield-check"></i><span>7. Cinturones y airbags</span></div>
+      <div class="l-insp-item"><i class="bi bi-mirror"></i><span>8. Espejos y vidrios</span></div>
+      <div class="l-insp-item"><i class="bi bi-droplet"></i><span>9. Fluidos y filtros</span></div>
+      <div class="l-insp-item"><i class="bi bi-gear"></i><span>10. Motor y transmisión</span></div>
+    </div>
+    <div class="l-insp-foot">
+      <div class="l-insp-result l-insp-result--ok"><i class="bi bi-check-circle-fill"></i> 10/10 = APROBADO <small>(vigencia 1 año)</small></div>
+      <div class="l-insp-result l-insp-result--fail"><i class="bi bi-x-circle-fill"></i> 2+ NO = RECHAZADO <small>(corregir en 15 días)</small></div>
+      <a class="btn btn-dark" href="login.html"><i class="bi bi-clipboard-check"></i> Ver mi historial</a>
+    </div>
   </div>
 </section>
 
@@ -167,10 +301,108 @@
   </div>
 </section>
 
+<section class="l-section l-trust" id="confianza">
+  <div class="container">
+    <div class="l-section__head l-section__head--center">
+      <span class="l-eyebrow">RESPALDO Y HABILITACIONES</span>
+      <h2>Tu vehículo en manos reguladas</h2>
+      <p>Somos CDA acreditado por MinTransporte y gestionamos ante los organismos oficiales.</p>
+    </div>
+    <div class="l-trust-badges">
+      <div class="l-trust-badge">
+        <div class="l-trust-badge__seal">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="40" cy="40" r="36" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/>
+            <circle cx="40" cy="40" r="28" fill="currentColor" opacity=".15"/>
+            <text x="40" y="36" text-anchor="middle" font-family="Montserrat" font-weight="900" font-size="11" fill="currentColor">RUNT</text>
+            <text x="40" y="50" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="6" fill="currentColor">REGISTRO ÚNICO</text>
+          </svg>
+        </div>
+        <h4>RUNT</h4>
+        <p>Registro Único Nacional de Tránsito. Reportamos cada inspección en tiempo real.</p>
+      </div>
+      <div class="l-trust-badge">
+        <div class="l-trust-badge__seal">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="40" cy="40" r="36" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/>
+            <circle cx="40" cy="40" r="28" fill="currentColor" opacity=".15"/>
+            <text x="40" y="38" text-anchor="middle" font-family="Montserrat" font-weight="900" font-size="13" fill="currentColor">ONAC</text>
+            <text x="40" y="50" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="6" fill="currentColor">ACREDITADO</text>
+          </svg>
+        </div>
+        <h4>ONAC</h4>
+        <p>Organismo Nacional de Acreditación. Equipos calibrados y auditados anualmente.</p>
+      </div>
+      <div class="l-trust-badge">
+        <div class="l-trust-badge__seal">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="40" cy="40" r="36" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/>
+            <circle cx="40" cy="40" r="28" fill="currentColor" opacity=".15"/>
+            <text x="40" y="32" text-anchor="middle" font-family="Montserrat" font-weight="900" font-size="6" fill="currentColor">MIN</text>
+            <text x="40" y="44" text-anchor="middle" font-family="Montserrat" font-weight="900" font-size="9" fill="currentColor">TRANSPORTE</text>
+            <text x="40" y="56" text-anchor="middle" font-family="Montserrat" font-weight="700" font-size="6" fill="currentColor">COLOMBIA</text>
+          </svg>
+        </div>
+        <h4>MinTransporte</h4>
+        <p>Resolución de habilitación vigente. CDA autorizado para RTM a nivel nacional.</p>
+      </div>
+      <div class="l-trust-badge">
+        <div class="l-trust-badge__seal">
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="40" cy="40" r="36" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/>
+            <circle cx="40" cy="40" r="28" fill="currentColor" opacity=".15"/>
+            <path d="M28 40 L37 49 L54 30" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="40" y="64" text-anchor="middle" font-family="Montserrat" font-weight="900" font-size="6" fill="currentColor">SEGUROS</text>
+          </svg>
+        </div>
+        <h4>Aseguradoras aliadas</h4>
+        <p>Sura · Mapfre · Previsora · Axa · Liberty · HDI. Comparamos por ti.</p>
+      </div>
+    </div>
+    <div class="l-trust-stats">
+      <div><b>15+</b><small>años operando</small></div>
+      <div><b>8K+</b><small>vehículos atendidos</small></div>
+      <div><b>98%</b><small>aprobación RTM</small></div>
+      <div><b>4.8★</b><small>en Google Reviews</small></div>
+    </div>
+  </div>
+</section>
+
 <footer class="l-footer">
-  <div class="l-footer__inner">
-    <div><strong>MULTRA E.U.</strong> · CDA y Gestoría vehicular · NIT 900.XXX.XXX-X</div>
-    <small>Neiva, Huila · Colombia · © 2026</small>
+  <div class="l-footer__grid">
+    <div class="l-footer__col">
+      <div class="l-footer__brand">
+        <img src="assets/img/logo-multra.png" alt="Multra E.U.">
+        <div>
+          <strong>MULTRA E.U.</strong>
+          <small>CDA y Gestoría vehicular en Neiva, Huila</small>
+        </div>
+      </div>
+      <p class="l-footer__nit">NIT 900.XXX.XXX-X</p>
+    </div>
+    <div class="l-footer__col">
+      <h5>Servicios</h5>
+      <ul>
+        <li><a href="#servicios">Revisión Técnico-Mecánica</a></li>
+        <li><a href="#servicios">SOAT</a></li>
+        <li><a href="#servicios">Todo Riesgo</a></li>
+        <li><a href="#servicios">Traspasos</a></li>
+        <li><a href="#servicios">Licencias de conducción</a></li>
+      </ul>
+    </div>
+    <div class="l-footer__col">
+      <h5>Contacto</h5>
+      <ul class="l-footer__contact">
+        <li><i class="bi bi-geo-alt-fill"></i> C.C. Los Comuneros L-162, Neiva</li>
+        <li><i class="bi bi-telephone-fill"></i> (608) 8715900</li>
+        <li><i class="bi bi-whatsapp"></i> +57 300 123 4567</li>
+        <li><i class="bi bi-clock-fill"></i> Lun–Sáb: 7:00 AM – 6:00 PM</li>
+      </ul>
+    </div>
+  </div>
+  <div class="l-footer__bottom">
+    <small>Neiva, Huila · Colombia · © 2026 Multra E.U. · Todos los derechos reservados</small>
+    <small class="l-footer__flag">CO · HUILA · NEIVA</small>
   </div>
 </footer>
 

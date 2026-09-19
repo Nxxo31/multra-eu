@@ -153,3 +153,120 @@
   .l-cot__summary{position:static}
   .l-section{padding:50px 0}
 }
+
+/* =================================================================
+   MEJORAS VISUALES 2026-09-19 — texturizar el modelo de negocio
+   ================================================================= */
+
+/* ===== Hero: pattern de carretera + silhouette de auto ===== */
+.l-hero__pattern{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(180deg,transparent 0%,transparent 60%,#0e1320 100%),
+    repeating-linear-gradient(45deg,transparent 0 28px,#ffd40008 28px 30px),
+    repeating-linear-gradient(-45deg,transparent 0 28px,#ffffff05 28px 30px);
+  pointer-events:none;z-index:0
+}
+.l-hero__grid{position:relative;z-index:2}
+.l-hero__stats > div{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 14px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.03)}
+.l-hero__stats > div i{color:var(--y);font-size:1.3rem;margin-bottom:4px}
+.l-hero__stats > div b{font-size:1.5rem;color:var(--y)}
+.l-hero__card{background:linear-gradient(160deg,var(--y) 0%,#ffce00 100%);overflow:hidden;padding:0}
+.l-hero__silhouette{color:var(--k);width:100%;height:auto;display:block;padding:18px 20px 0}
+.l-hero__card-plate{background:var(--k);color:#fff;text-align:center;font-weight:900;font-size:.72rem;letter-spacing:2px;padding:6px 12px;margin:14px 20px 0;border-radius:4px}
+.l-hero__card h2,.l-hero__card p,.l-hero__card .l-hero__tags{padding:0 36px}
+.l-hero__card h2{padding-top:14px}
+.l-hero__card .l-hero__tags{padding-bottom:36px}
+
+/* ===== Sección Tipos de Vehículo ===== */
+.l-vehicle-types{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px}
+.l-vehicle-type{background:#fff;border:1.5px solid var(--b);border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;transition:.25s;position:relative}
+.l-vehicle-type:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(14,19,32,.12);border-color:var(--y)}
+.l-vehicle-type--featured{border-color:var(--y);box-shadow:0 10px 30px #ffd40044}
+.l-vehicle-type--featured::before{content:"Más común";position:absolute;top:14px;right:-30px;background:var(--y);color:var(--k);font-weight:900;font-size:.65rem;letter-spacing:1px;padding:4px 36px;transform:rotate(35deg);z-index:2;text-transform:uppercase}
+.l-vehicle-type__visual{background:linear-gradient(180deg,#f4f6fa 0%,#e9edf3 100%);padding:24px 20px 14px;display:grid;place-items:center;border-bottom:1px dashed var(--b);position:relative;overflow:hidden}
+.l-vehicle-type__visual::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%,#ffffff60 0,transparent 50%),radial-gradient(circle at 80% 70%,#00000008 0,transparent 50%);pointer-events:none}
+.l-vehicle-type__visual svg{width:100%;max-width:220px;height:auto;position:relative;z-index:1;filter:drop-shadow(0 6px 8px rgba(0,0,0,.08))}
+.l-vehicle-type__body{padding:22px 24px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.l-vehicle-type__tag{display:inline-block;padding:3px 10px;border-radius:6px;font-weight:900;font-size:.65rem;letter-spacing:1px;text-transform:uppercase;align-self:flex-start;margin-bottom:4px}
+.l-vehicle-type__tag--liviano{background:var(--info-bg);color:var(--info)}
+.l-vehicle-type__tag--moto{background:var(--ok-bg);color:var(--ok)}
+.l-vehicle-type__tag--pesado{background:var(--warn-bg);color:var(--warn)}
+.l-vehicle-type__body h3{font-size:1.2rem;font-weight:900;margin:0}
+.l-vehicle-type__services{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+.l-vehicle-type__services li{display:flex;align-items:center;gap:6px;color:var(--g);font-size:.85rem}
+.l-vehicle-type__services i{color:var(--ok);font-size:1rem;flex-shrink:0}
+.l-vehicle-type__price{padding-top:14px;border-top:1px dashed var(--b);margin-top:auto;font-size:.78rem;color:var(--g)}
+.l-vehicle-type__price b{display:block;color:var(--y2);font-size:1.3rem;font-weight:900;margin:2px 0}
+.l-vehicle-type__price small{display:block;color:var(--g);font-size:.7rem}
+
+/* ===== Inspección RTM — 10 puntos visuales ===== */
+.l-inspection{background:linear-gradient(180deg,var(--bg) 0%,#ffffff 100%);position:relative;overflow:hidden}
+.l-inspection::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent 0 39px,#0e132005 39px 40px);pointer-events:none;opacity:.5}
+.l-inspection .container{position:relative;z-index:1}
+.l-inspection-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:30px 0 30px}
+.l-insp-item{background:#fff;border:1.5px solid var(--b);border-radius:14px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;transition:.2s;cursor:default;position:relative;overflow:hidden}
+.l-insp-item::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--y);transform:scaleX(0);transform-origin:left;transition:.3s}
+.l-insp-item:hover{transform:translateY(-3px);border-color:var(--y2);box-shadow:0 8px 20px rgba(167,124,0,.15)}
+.l-insp-item:hover::before{transform:scaleX(1)}
+.l-insp-item i{font-size:1.8rem;color:var(--k);width:46px;height:46px;border-radius:50%;background:var(--y3);display:grid;place-items:center}
+.l-insp-item span{font-weight:700;font-size:.82rem;color:var(--k);line-height:1.3}
+.l-insp-foot{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding-top:20px;border-top:1px dashed var(--b)}
+.l-insp-result{display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:30px;font-weight:800;font-size:.88rem}
+.l-insp-result--ok{background:var(--ok-bg);color:var(--ok)}
+.l-insp-result--fail{background:var(--err-bg);color:var(--err)}
+.l-insp-result small{color:inherit;font-weight:600;font-size:.75rem;opacity:.85}
+
+/* ===== Habilitaciones y respaldo ===== */
+.l-trust-badges{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:30px}
+.l-trust-badge{background:#fff;border:1.5px solid var(--b);border-radius:var(--radius-lg);padding:24px 18px;text-align:center;transition:.2s;display:flex;flex-direction:column;align-items:center;gap:8px}
+.l-trust-badge:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(14,19,32,.1);border-color:var(--y)}
+.l-trust-badge__seal{width:80px;height:80px;color:var(--y2);transition:.2s}
+.l-trust-badge:hover .l-trust-badge__seal{color:var(--y);transform:rotate(-6deg)}
+.l-trust-badge__seal svg{width:100%;height:100%}
+.l-trust-badge h4{font-size:1.05rem;font-weight:900;margin:0}
+.l-trust-badge p{font-size:.8rem;color:var(--g);margin:0;line-height:1.45}
+.l-trust-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px;padding:24px;background:linear-gradient(135deg,#0e1320 0%,#1a2236 100%);border-radius:var(--radius-lg);color:#fff}
+.l-trust-stats > div{text-align:center;border-right:1px solid rgba(255,255,255,.1)}
+.l-trust-stats > div:last-child{border-right:0}
+.l-trust-stats b{display:block;color:var(--y);font-size:2rem;font-weight:900;line-height:1}
+.l-trust-stats small{display:block;color:#a3acbf;font-size:.78rem;margin-top:4px}
+
+/* ===== Footer con pattern + 3 columnas ===== */
+.l-footer{background:#0a0f1a;color:#a3acbf;font-size:.85rem;padding:48px 0 0;position:relative;overflow:hidden}
+.l-footer::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(135deg,transparent 0 12px,#ffd40006 12px 14px),radial-gradient(circle at 0% 0%,#ffd40008 0,transparent 30%);pointer-events:none}
+.l-footer > *{position:relative;z-index:1}
+.l-footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;max-width:1200px;margin:0 auto;padding:0 24px}
+.l-footer__brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.l-footer__brand img{width:54px;height:48px;object-fit:cover;border-radius:10px}
+.l-footer__brand strong{display:block;color:#fff;font-weight:900;font-size:1rem}
+.l-footer__brand small{display:block;color:#a3acbf;font-size:.72rem;margin-top:2px}
+.l-footer__nit{color:#98a2b3;font-size:.75rem;margin:0;letter-spacing:.5px}
+.l-footer__col h5{color:#fff;font-weight:900;font-size:.85rem;margin:0 0 14px;letter-spacing:.5px;text-transform:uppercase}
+.l-footer__col ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.l-footer__col ul a{color:#a3acbf;transition:.15s;font-size:.88rem}
+.l-footer__col ul a:hover{color:var(--y)}
+.l-footer__contact li{display:flex;align-items:flex-start;gap:8px;color:#a3acbf;font-size:.85rem;line-height:1.4}
+.l-footer__contact i{color:var(--y);margin-top:2px;flex-shrink:0}
+.l-footer__bottom{border-top:1px solid #2a324a;margin-top:32px;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin-left:auto;margin-right:auto;color:#667085;font-size:.75rem}
+.l-footer__flag{color:var(--y);font-weight:900;letter-spacing:1.5px}
+
+/* ===== Responsive — añadidos para nuevas secciones ===== */
+@media(max-width:980px){
+  .l-vehicle-types{grid-template-columns:1fr}
+  .l-inspection-grid{grid-template-columns:repeat(2,1fr)}
+  .l-trust-badges{grid-template-columns:repeat(2,1fr)}
+  .l-trust-stats{grid-template-columns:repeat(2,1fr);gap:16px}
+  .l-trust-stats > div{border-right:0;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:8px}
+  .l-trust-stats > div:nth-last-child(-n+2){border-bottom:0}
+  .l-footer__grid{grid-template-columns:1fr;gap:28px}
+  .l-footer__bottom{flex-direction:column;gap:6px;text-align:center}
+}
+@media(max-width:560px){
+  .l-inspection-grid{grid-template-columns:1fr}
+  .l-trust-badges,.l-trust-stats{grid-template-columns:1fr}
+  .l-trust-stats > div{border-bottom:1px solid rgba(255,255,255,.1)}
+  .l-trust-stats > div:last-child{border-bottom:0}
+  .l-insp-foot{flex-direction:column;align-items:stretch}
+  .l-insp-foot .btn{width:100%}
+}
