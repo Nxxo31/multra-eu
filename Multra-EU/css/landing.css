@@ -390,9 +390,10 @@
 .l-vehicle-type__meta i{color:var(--y2);font-size:.85rem}
 
 /* ===== Vehicle SVG enhanced (siluetas profesionales) ===== */
-.l-vehicle-svg{width:100%;max-width:240px;height:auto;transition:transform .35s ease}
+.l-vehicle-svg{width:100%;max-width:280px;height:auto;transition:transform .35s ease}
+.l-hero__silhouette{width:100%;max-width:280px;height:auto;transition:transform .35s ease}
 .l-vehicle-type:hover .l-vehicle-svg{transform:translateY(-4px) scale(1.03)}
-.l-vehicle-type__visual{min-height:130px}
+.l-vehicle-type__visual{min-height:160px}
 
 /* ===== Inspección RTM — foot simplificado ===== */
 .l-insp-foot{justify-content:center;padding-top:20px;border-top:1px dashed var(--b);margin-top:6px}
