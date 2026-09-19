@@ -83,34 +83,64 @@
     <div class="l-vehicle-types">
       <article class="l-vehicle-type">
         <div class="l-vehicle-type__visual">
-          <svg viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
+          <svg viewBox="0 0 240 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
             <defs>
               <linearGradient id="car-body-liv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#1a2236"/>
+                <stop offset="0%" stop-color="#2a324a"/>
+                <stop offset="55%" stop-color="#1a2236"/>
                 <stop offset="100%" stop-color="#0e1320"/>
               </linearGradient>
-              <linearGradient id="car-window-liv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#7DD3E8" stop-opacity=".7"/>
-                <stop offset="100%" stop-color="#44B8D8" stop-opacity=".9"/>
+              <linearGradient id="car-side-liv" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#0a0f1a"/>
+                <stop offset="100%" stop-color="#1a2236"/>
+              </linearGradient>
+              <linearGradient id="car-window-liv" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#a8dadc"/>
+                <stop offset="100%" stop-color="#5fa8b3"/>
               </linearGradient>
               <radialGradient id="car-rim-liv" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stop-color="#ffd400"/>
-                <stop offset="100%" stop-color="#a77c00"/>
+                <stop offset="70%" stop-color="#a77c00"/>
+                <stop offset="100%" stop-color="#5c4400"/>
               </radialGradient>
+              <linearGradient id="car-ground-liv" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0e1320" stop-opacity=".25"/>
+                <stop offset="100%" stop-color="#0e1320" stop-opacity="0"/>
+              </linearGradient>
             </defs>
-            <ellipse cx="110" cy="98" rx="85" ry="4" fill="#0e1320" opacity=".15"/>
-            <path d="M22 78 L32 58 Q42 48 60 44 L150 44 Q172 46 188 58 L200 70 L204 76 Q206 80 206 84 L206 86 Q206 88 204 88 L192 88 Q194 84 192 80 L172 80 Q170 84 172 88 L48 88 Q50 84 48 80 L28 80 Q26 84 28 88 L16 88 Q14 88 14 86 L14 84 Q14 80 16 78 Z" fill="url(#car-body-liv)"/>
-            <path d="M62 46 L72 32 Q78 28 88 28 L132 28 Q142 28 150 34 L162 46 Z" fill="url(#car-window-liv)"/>
-            <line x1="110" y1="30" x2="110" y2="46" stroke="#0e1320" stroke-width="1.5" opacity=".4"/>
-            <rect x="20" y="64" width="4" height="12" rx="1" fill="#ffd400"/>
-            <rect x="196" y="64" width="4" height="12" rx="1" fill="#a77c00" opacity=".6"/>
-            <circle cx="50" cy="88" r="13" fill="#0e1320"/>
-            <circle cx="50" cy="88" r="9" fill="url(#car-rim-liv)"/>
-            <circle cx="50" cy="88" r="3" fill="#0e1320"/>
-            <circle cx="170" cy="88" r="13" fill="#0e1320"/>
-            <circle cx="170" cy="88" r="9" fill="url(#car-rim-liv)"/>
-            <circle cx="170" cy="88" r="3" fill="#0e1320"/>
-            <line x1="22" y1="78" x2="38" y2="78" stroke="#ffd400" stroke-width="2" opacity=".7"/>
+            <ellipse cx="120" cy="118" rx="100" ry="6" fill="url(#car-ground-liv)"/>
+            <path d="M28 88 L46 64 Q56 54 78 50 L142 50 Q172 52 192 70 L210 82 L214 90 L214 96 L210 96 L200 96 Q202 90 198 86 L168 86 Q166 90 168 96 L70 96 Q72 90 70 86 L40 86 Q36 90 38 96 L28 96 Q22 96 22 92 Z" fill="url(#car-body-liv)"/>
+            <path d="M192 70 Q204 78 210 82 L214 90 L214 96 L210 96 Q204 92 198 86 Z" fill="url(#car-side-liv)" opacity=".8"/>
+            <path d="M58 66 L72 50 Q80 46 92 46 L140 46 Q156 48 168 56 L182 66 Z" fill="url(#car-window-liv)"/>
+            <line x1="124" y1="48" x2="124" y2="66" stroke="#0e1320" stroke-width="2" opacity=".5"/>
+            <line x1="78" y1="50" x2="68" y2="66" stroke="#0e1320" stroke-width="1.5" opacity=".4"/>
+            <path d="M58 66 L52 70 Q48 72 48 76 L48 86 L70 86 Q72 82 72 76 Q72 72 70 68 Z" fill="url(#car-body-liv)" opacity=".7"/>
+            <rect x="50" y="72" width="6" height="4" rx="1" fill="#ffd400"/>
+            <circle cx="40" cy="60" r="3" fill="#fff5d6" opacity=".7"/>
+            <path d="M28 88 L46 88 L46 96 L28 96 Z" fill="#0a0f1a" opacity=".5"/>
+            <line x1="100" y1="88" x2="148" y2="88" stroke="#ffd400" stroke-width="1" opacity=".4"/>
+            <line x1="40" y1="96" x2="200" y2="96" stroke="#0a0f1a" stroke-width="1" opacity=".5"/>
+            <ellipse cx="68" cy="100" rx="20" ry="6" fill="#0e1320"/>
+            <ellipse cx="172" cy="100" rx="20" ry="6" fill="#0e1320"/>
+            <circle cx="68" cy="96" r="15" fill="#0a0f1a"/>
+            <circle cx="68" cy="96" r="11" fill="url(#car-rim-liv)"/>
+            <circle cx="68" cy="96" r="3" fill="#0e1320"/>
+            <g stroke="#0e1320" stroke-width="1.5" opacity=".8">
+              <line x1="68" y1="85" x2="68" y2="107"/>
+              <line x1="57" y1="96" x2="79" y2="96"/>
+              <line x1="60" y1="88" x2="76" y2="104"/>
+              <line x1="76" y1="88" x2="60" y2="104"/>
+            </g>
+            <circle cx="172" cy="96" r="15" fill="#0a0f1a"/>
+            <circle cx="172" cy="96" r="11" fill="url(#car-rim-liv)"/>
+            <circle cx="172" cy="96" r="3" fill="#0e1320"/>
+            <g stroke="#0e1320" stroke-width="1.5" opacity=".8">
+              <line x1="172" y1="85" x2="172" y2="107"/>
+              <line x1="161" y1="96" x2="183" y2="96"/>
+              <line x1="164" y1="88" x2="180" y2="104"/>
+              <line x1="180" y1="88" x2="164" y2="104"/>
+            </g>
+            <rect x="200" y="76" width="6" height="10" rx="1" fill="#a77c00" opacity=".6"/>
           </svg>
         </div>
         <div class="l-vehicle-type__body">
@@ -132,33 +162,57 @@
 
       <article class="l-vehicle-type l-vehicle-type--featured">
         <div class="l-vehicle-type__visual">
-          <svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
+          <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
             <defs>
               <linearGradient id="moto-body" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#1a2236"/>
+                <stop offset="0%" stop-color="#2a324a"/>
                 <stop offset="100%" stop-color="#0e1320"/>
+              </linearGradient>
+              <linearGradient id="moto-tank" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3d4a66"/>
+                <stop offset="100%" stop-color="#1a2236"/>
               </linearGradient>
               <radialGradient id="moto-rim" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stop-color="#ffd400"/>
-                <stop offset="100%" stop-color="#a77c00"/>
+                <stop offset="70%" stop-color="#a77c00"/>
+                <stop offset="100%" stop-color="#5c4400"/>
               </radialGradient>
+              <linearGradient id="moto-ground" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0e1320" stop-opacity=".25"/>
+                <stop offset="100%" stop-color="#0e1320" stop-opacity="0"/>
+              </linearGradient>
             </defs>
-            <ellipse cx="80" cy="100" rx="60" ry="3" fill="#0e1320" opacity=".15"/>
-            <path d="M30 80 Q34 60 44 50 L62 38 Q72 34 82 36 L140 44 Q148 56 148 70 L148 84 Q148 86 146 86 L130 86 Q132 82 130 78 L46 78 Q44 82 46 86 L30 86 Q28 86 28 84 Z" fill="url(#moto-body)"/>
-            <path d="M62 38 Q72 30 84 32 L120 40 Q126 50 124 56 L60 56 Q56 48 62 38 Z" fill="#7DD3E8" opacity=".6"/>
-            <circle cx="44" cy="55" r="5" fill="#44B8D8" opacity=".8"/>
-            <rect x="100" y="58" width="22" height="12" rx="1.5" fill="#2a324a"/>
-            <line x1="110" y1="58" x2="110" y2="70" stroke="#7DD3E8" stroke-width="1" opacity=".6"/>
-            <circle cx="40" cy="86" r="14" fill="#0e1320"/>
-            <circle cx="40" cy="86" r="10" fill="url(#moto-rim)"/>
-            <circle cx="40" cy="86" r="3" fill="#0e1320"/>
-            <circle cx="40" cy="86" r="1.5" fill="#ffd400"/>
-            <circle cx="130" cy="86" r="14" fill="#0e1320"/>
-            <circle cx="130" cy="86" r="10" fill="url(#moto-rim)"/>
-            <circle cx="130" cy="86" r="3" fill="#0e1320"/>
-            <circle cx="130" cy="86" r="1.5" fill="#ffd400"/>
-            <path d="M30 86 L20 86 L20 82 L26 80" stroke="#0e1320" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M148 86 L156 86 L156 82 L150 80" stroke="#0e1320" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <ellipse cx="100" cy="118" rx="80" ry="5" fill="url(#moto-ground)"/>
+            <path d="M28 90 Q32 68 42 56 L60 42 Q72 38 82 40 L132 48 Q146 60 148 76 L148 90 Q148 94 144 94 L130 94 Q132 88 130 84 L52 84 Q50 88 52 94 L34 94 Q28 94 28 90 Z" fill="url(#moto-body)"/>
+            <path d="M68 50 Q78 42 92 44 L130 52 Q138 64 134 72 L62 72 Q58 60 68 50 Z" fill="url(#moto-tank)"/>
+            <path d="M68 50 Q78 44 92 46 L122 52 Q128 60 124 66 L66 66 Q62 58 68 50 Z" fill="#a8dadc" opacity=".6"/>
+            <circle cx="56" cy="64" r="6" fill="#5fa8b3" opacity=".8"/>
+            <path d="M30 88 L18 88 L18 82 L26 78" stroke="#0e1320" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M154 88 L168 88 L168 82 L160 78" stroke="#0e1320" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M132 50 L148 38 Q152 36 156 38 L160 44" stroke="#0e1320" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <rect x="120" y="68" width="20" height="10" rx="2" fill="#1a2236"/>
+            <line x1="128" y1="68" x2="128" y2="78" stroke="#5fa8b3" stroke-width="1" opacity=".6"/>
+            <ellipse cx="50" cy="98" rx="18" ry="5" fill="#0e1320"/>
+            <ellipse cx="148" cy="98" rx="18" ry="5" fill="#0e1320"/>
+            <circle cx="50" cy="94" r="16" fill="#0a0f1a"/>
+            <circle cx="50" cy="94" r="12" fill="url(#moto-rim)"/>
+            <circle cx="50" cy="94" r="3" fill="#0e1320"/>
+            <g stroke="#0e1320" stroke-width="1.5" opacity=".8">
+              <line x1="50" y1="82" x2="50" y2="106"/>
+              <line x1="38" y1="94" x2="62" y2="94"/>
+              <line x1="41" y1="85" x2="59" y2="103"/>
+              <line x1="59" y1="85" x2="41" y2="103"/>
+            </g>
+            <circle cx="148" cy="94" r="16" fill="#0a0f1a"/>
+            <circle cx="148" cy="94" r="12" fill="url(#moto-rim)"/>
+            <circle cx="148" cy="94" r="3" fill="#0e1320"/>
+            <g stroke="#0e1320" stroke-width="1.5" opacity=".8">
+              <line x1="148" y1="82" x2="148" y2="106"/>
+              <line x1="136" y1="94" x2="160" y2="94"/>
+              <line x1="139" y1="85" x2="157" y2="103"/>
+              <line x1="157" y1="85" x2="139" y2="103"/>
+            </g>
+            <circle cx="148" cy="60" r="2" fill="#ffd400"/>
           </svg>
         </div>
         <div class="l-vehicle-type__body">
@@ -180,46 +234,81 @@
 
       <article class="l-vehicle-type">
         <div class="l-vehicle-type__visual">
-          <svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
+          <svg viewBox="0 0 260 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
             <defs>
               <linearGradient id="bus-body" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#1a2236"/>
+                <stop offset="0%" stop-color="#2a324a"/>
+                <stop offset="55%" stop-color="#1a2236"/>
                 <stop offset="100%" stop-color="#0e1320"/>
+              </linearGradient>
+              <linearGradient id="bus-cab" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3d4a66"/>
+                <stop offset="100%" stop-color="#1a2236"/>
               </linearGradient>
               <radialGradient id="bus-rim" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stop-color="#ffd400"/>
-                <stop offset="100%" stop-color="#a77c00"/>
+                <stop offset="70%" stop-color="#a77c00"/>
+                <stop offset="100%" stop-color="#5c4400"/>
               </radialGradient>
+              <linearGradient id="bus-ground" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0e1320" stop-opacity=".25"/>
+                <stop offset="100%" stop-color="#0e1320" stop-opacity="0"/>
+              </linearGradient>
             </defs>
-            <ellipse cx="120" cy="100" rx="100" ry="4" fill="#0e1320" opacity=".15"/>
-            <rect x="14" y="48" width="212" height="42" rx="6" fill="url(#bus-body)"/>
-            <rect x="14" y="48" width="212" height="6" fill="#ffd400" opacity=".25"/>
-            <rect x="20" y="32" width="170" height="20" rx="3" fill="url(#bus-body)"/>
-            <g fill="#7DD3E8" opacity=".7">
-              <rect x="24" y="36" width="22" height="12" rx="1.5"/>
-              <rect x="50" y="36" width="22" height="12" rx="1.5"/>
-              <rect x="76" y="36" width="22" height="12" rx="1.5"/>
-              <rect x="102" y="36" width="22" height="12" rx="1.5"/>
-              <rect x="128" y="36" width="22" height="12" rx="1.5"/>
-              <rect x="154" y="36" width="22" height="12" rx="1.5"/>
+            <ellipse cx="130" cy="118" rx="115" ry="6" fill="url(#bus-ground)"/>
+            <path d="M8 100 L14 60 L22 56 L48 50 L196 50 Q210 52 220 58 L240 78 Q246 84 248 92 L248 102 L8 102 Z" fill="url(#bus-body)"/>
+            <path d="M220 58 Q234 70 240 78 L246 84 L248 92 L248 102 L222 102 Q226 96 222 90 Q220 84 224 78 L220 58 Z" fill="url(#bus-cab)" opacity=".7"/>
+            <path d="M14 60 L48 50 L196 50 Q210 52 220 58 L240 78 L240 78 L8 78 Z" fill="#a8dadc" opacity=".25"/>
+            <g fill="#5fa8b3" opacity=".7">
+              <rect x="22" y="58" width="20" height="12" rx="1.5"/>
+              <rect x="46" y="56" width="22" height="14" rx="1.5"/>
+              <rect x="72" y="54" width="22" height="16" rx="1.5"/>
+              <rect x="98" y="54" width="22" height="16" rx="1.5"/>
+              <rect x="124" y="54" width="22" height="16" rx="1.5"/>
+              <rect x="150" y="54" width="22" height="16" rx="1.5"/>
+              <rect x="176" y="54" width="22" height="16" rx="1.5"/>
+              <rect x="202" y="58" width="20" height="14" rx="1.5"/>
             </g>
-            <line x1="46" y1="36" x2="46" y2="48" stroke="#0e1320" stroke-width="1" opacity=".4"/>
-            <line x1="72" y1="36" x2="72" y2="48" stroke="#0e1320" stroke-width="1" opacity=".4"/>
-            <line x1="98" y1="36" x2="98" y2="48" stroke="#0e1320" stroke-width="1" opacity=".4"/>
-            <line x1="124" y1="36" x2="124" y2="48" stroke="#0e1320" stroke-width="1" opacity=".4"/>
-            <line x1="150" y1="36" x2="150" y2="48" stroke="#0e1320" stroke-width="1" opacity=".4"/>
-            <rect x="200" y="36" width="20" height="14" rx="2" fill="#44B8D8" opacity=".8"/>
-            <rect x="16" y="62" width="6" height="20" rx="1" fill="#ffd400"/>
-            <rect x="220" y="62" width="6" height="20" rx="1" fill="#ffd400" opacity=".5"/>
-            <circle cx="50" cy="90" r="13" fill="#0e1320"/>
-            <circle cx="50" cy="90" r="9" fill="url(#bus-rim)"/>
-            <circle cx="50" cy="90" r="3" fill="#0e1320"/>
-            <circle cx="110" cy="90" r="13" fill="#0e1320"/>
-            <circle cx="110" cy="90" r="9" fill="url(#bus-rim)"/>
-            <circle cx="110" cy="90" r="3" fill="#0e1320"/>
-            <circle cx="190" cy="90" r="13" fill="#0e1320"/>
-            <circle cx="190" cy="90" r="9" fill="url(#bus-rim)"/>
-            <circle cx="190" cy="90" r="3" fill="#0e1320"/>
+            <line x1="68" y1="54" x2="68" y2="70" stroke="#0e1320" stroke-width="1" opacity=".5"/>
+            <line x1="94" y1="54" x2="94" y2="70" stroke="#0e1320" stroke-width="1" opacity=".5"/>
+            <line x1="120" y1="54" x2="120" y2="70" stroke="#0e1320" stroke-width="1" opacity=".5"/>
+            <line x1="146" y1="54" x2="146" y2="70" stroke="#0e1320" stroke-width="1" opacity=".5"/>
+            <line x1="172" y1="54" x2="172" y2="70" stroke="#0e1320" stroke-width="1" opacity=".5"/>
+            <line x1="198" y1="54" x2="198" y2="70" stroke="#0e1320" stroke-width="1" opacity=".5"/>
+            <rect x="8" y="84" width="6" height="14" rx="1" fill="#ffd400"/>
+            <rect x="246" y="80" width="4" height="10" rx="1" fill="#a77c00" opacity=".6"/>
+            <path d="M20 84 L240 84" stroke="#ffd400" stroke-width="1.5" opacity=".5"/>
+            <path d="M20 96 L240 96" stroke="#0a0f1a" stroke-width="1" opacity=".6"/>
+            <ellipse cx="40" cy="102" rx="22" ry="5" fill="#0e1320"/>
+            <ellipse cx="120" cy="102" rx="22" ry="5" fill="#0e1320"/>
+            <ellipse cx="210" cy="102" rx="22" ry="5" fill="#0e1320"/>
+            <circle cx="40" cy="98" r="16" fill="#0a0f1a"/>
+            <circle cx="40" cy="98" r="12" fill="url(#bus-rim)"/>
+            <circle cx="40" cy="98" r="3" fill="#0e1320"/>
+            <g stroke="#0e1320" stroke-width="1.5" opacity=".8">
+              <line x1="40" y1="86" x2="40" y2="110"/>
+              <line x1="28" y1="98" x2="52" y2="98"/>
+              <line x1="31" y1="89" x2="49" y2="107"/>
+              <line x1="49" y1="89" x2="31" y2="107"/>
+            </g>
+            <circle cx="120" cy="98" r="16" fill="#0a0f1a"/>
+            <circle cx="120" cy="98" r="12" fill="url(#bus-rim)"/>
+            <circle cx="120" cy="98" r="3" fill="#0e1320"/>
+            <g stroke="#0e1320" stroke-width="1.5" opacity=".8">
+              <line x1="120" y1="86" x2="120" y2="110"/>
+              <line x1="108" y1="98" x2="132" y2="98"/>
+              <line x1="111" y1="89" x2="129" y2="107"/>
+              <line x1="129" y1="89" x2="111" y2="107"/>
+            </g>
+            <circle cx="210" cy="98" r="16" fill="#0a0f1a"/>
+            <circle cx="210" cy="98" r="12" fill="url(#bus-rim)"/>
+            <circle cx="210" cy="98" r="3" fill="#0e1320"/>
+            <g stroke="#0e1320" stroke-width="1.5" opacity=".8">
+              <line x1="210" y1="86" x2="210" y2="110"/>
+              <line x1="198" y1="98" x2="222" y2="98"/>
+              <line x1="201" y1="89" x2="219" y2="107"/>
+              <line x1="219" y1="89" x2="201" y2="107"/>
+            </g>
           </svg>
         </div>
         <div class="l-vehicle-type__body">
@@ -412,19 +501,64 @@
     <div class="l-section__head l-section__head--center">
       <span class="l-eyebrow">COTIZADOR EN LÍNEA</span>
       <h2>Arma tu paquete</h2>
-      <p>Selecciona los servicios que necesitas. El precio se calcula al instante con IVA incluido.</p>
+      <p>Elige un paquete prearmado o suma servicios individuales. Precio con IVA al instante.</p>
     </div>
     <div class="l-cot">
-      <div class="l-services" id="publicServices2"></div>
-      <div class="l-cot__summary">
-        <h4><i class="bi bi-cart-check"></i> Tu cotización</h4>
-        <div id="publicCart"><div class="l-empty"><i class="bi bi-bag"></i>Selecciona servicios para cotizar</div></div>
-        <div class="l-cot__actions">
-          <a class="btn btn-primary" href="https://wa.me/573001234567?text=Hola%20Multra" target="_blank"><i class="bi bi-whatsapp"></i> WhatsApp</a>
-          <button class="btn btn-ghost" onclick="publicQuote()"><i class="bi bi-arrow-clockwise"></i> Recalcular</button>
+      <aside class="l-cot__packages">
+        <div class="l-cot__packages-head">
+          <i class="bi bi-stars"></i>
+          <h3>Paquetes populares</h3>
         </div>
-        <div class="l-info-box"><i class="bi bi-info-circle"></i> Cotización referencial. El valor final puede variar según antigüedad, clase y ciudad del vehículo.</div>
+        <div class="l-cot__packages-list" id="cotPackages"></div>
+      </aside>
+
+      <div class="l-cot__catalog">
+        <div class="l-cot__tabs" id="cotTabs" role="tablist">
+          <button class="l-cot__tab is-active" data-cat="all" role="tab"><i class="bi bi-grid-fill"></i> Todos</button>
+          <button class="l-cot__tab" data-cat="tecnomecanica" role="tab"><i class="bi bi-tools"></i> RTM</button>
+          <button class="l-cot__tab" data-cat="seguro" role="tab"><i class="bi bi-shield-check"></i> Seguros</button>
+          <button class="l-cot__tab" data-cat="tramite" role="tab"><i class="bi bi-file-earmark-text"></i> Trámites</button>
+          <button class="l-cot__tab" data-cat="peritaje" role="tab"><i class="bi bi-search"></i> Otros</button>
+        </div>
+        <div class="l-cot__grid" id="cotGrid"></div>
       </div>
+
+      <aside class="l-cot__summary">
+        <div class="l-cot__summary-head">
+          <div>
+            <h3><i class="bi bi-cart-check-fill"></i> Tu cotización</h3>
+            <span class="l-cot__count" id="cotCount">0 servicios</span>
+          </div>
+          <button class="l-cot__clear" id="cotClear" type="button" title="Vaciar carrito" hidden>
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+        <div id="publicCart">
+          <div class="l-cot__empty">
+            <i class="bi bi-bag"></i>
+            <strong>Tu cotización está vacía</strong>
+            <small>Suma servicios del catálogo o elige un paquete para empezar.</small>
+          </div>
+        </div>
+        <div class="l-cot__totals" id="cotTotals" hidden>
+          <div class="l-cot__line"><span>Subtotal</span><span id="cotSubtotal">$0</span></div>
+          <div class="l-cot__line l-cot__line--discount" id="cotDiscountRow" hidden>
+            <span><i class="bi bi-tag-fill"></i> Descuento paquete</span>
+            <span id="cotDiscount">-$0</span>
+          </div>
+          <div class="l-cot__line"><span>IVA 19%</span><span id="cotIva">$0</span></div>
+          <div class="l-cot__line l-cot__line--total"><span>TOTAL</span><span id="cotTotal">$0</span></div>
+        </div>
+        <div class="l-cot__actions">
+          <a class="btn btn-primary" id="cotWhatsapp" href="https://wa.me/573001234567?text=Hola%20Multra%20quiero%20cotizar" target="_blank" disabled>
+            <i class="bi bi-whatsapp"></i> Enviar por WhatsApp
+          </a>
+        </div>
+        <div class="l-info-box">
+          <i class="bi bi-info-circle"></i>
+          Cotización referencial con IVA 19%. El valor final puede variar según antigüedad, clase y ciudad del vehículo.
+        </div>
+      </aside>
     </div>
   </div>
 </section>
