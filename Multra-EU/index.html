@@ -83,14 +83,34 @@
     <div class="l-vehicle-types">
       <article class="l-vehicle-type">
         <div class="l-vehicle-type__visual">
-          <svg viewBox="0 0 180 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M15 60 L25 38 Q35 28 55 26 L110 26 Q132 26 145 38 L162 50 L168 54 Q170 56 170 60 L170 66 Q170 70 166 70 L154 70 Q157 66 152 64 L138 64 Q133 66 136 70 L44 70 Q47 66 42 64 L28 64 Q23 66 26 70 L14 70 Q10 70 10 66 Z" fill="#0e1320"/>
-            <circle cx="45" cy="70" r="10" fill="#ffd400"/>
-            <circle cx="45" cy="70" r="5" fill="#0e1320"/>
-            <circle cx="145" cy="70" r="10" fill="#ffd400"/>
-            <circle cx="145" cy="70" r="5" fill="#0e1320"/>
-            <rect x="60" y="34" width="45" height="16" rx="3" fill="#a3acbf"/>
-            <rect x="110" y="36" width="28" height="14" rx="2" fill="#a3acbf"/>
+          <svg viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
+            <defs>
+              <linearGradient id="car-body-liv" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1a2236"/>
+                <stop offset="100%" stop-color="#0e1320"/>
+              </linearGradient>
+              <linearGradient id="car-window-liv" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#7DD3E8" stop-opacity=".7"/>
+                <stop offset="100%" stop-color="#44B8D8" stop-opacity=".9"/>
+              </linearGradient>
+              <radialGradient id="car-rim-liv" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffd400"/>
+                <stop offset="100%" stop-color="#a77c00"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="110" cy="98" rx="85" ry="4" fill="#0e1320" opacity=".15"/>
+            <path d="M22 78 L32 58 Q42 48 60 44 L150 44 Q172 46 188 58 L200 70 L204 76 Q206 80 206 84 L206 86 Q206 88 204 88 L192 88 Q194 84 192 80 L172 80 Q170 84 172 88 L48 88 Q50 84 48 80 L28 80 Q26 84 28 88 L16 88 Q14 88 14 86 L14 84 Q14 80 16 78 Z" fill="url(#car-body-liv)"/>
+            <path d="M62 46 L72 32 Q78 28 88 28 L132 28 Q142 28 150 34 L162 46 Z" fill="url(#car-window-liv)"/>
+            <line x1="110" y1="30" x2="110" y2="46" stroke="#0e1320" stroke-width="1.5" opacity=".4"/>
+            <rect x="20" y="64" width="4" height="12" rx="1" fill="#ffd400"/>
+            <rect x="196" y="64" width="4" height="12" rx="1" fill="#a77c00" opacity=".6"/>
+            <circle cx="50" cy="88" r="13" fill="#0e1320"/>
+            <circle cx="50" cy="88" r="9" fill="url(#car-rim-liv)"/>
+            <circle cx="50" cy="88" r="3" fill="#0e1320"/>
+            <circle cx="170" cy="88" r="13" fill="#0e1320"/>
+            <circle cx="170" cy="88" r="9" fill="url(#car-rim-liv)"/>
+            <circle cx="170" cy="88" r="3" fill="#0e1320"/>
+            <line x1="22" y1="78" x2="38" y2="78" stroke="#ffd400" stroke-width="2" opacity=".7"/>
           </svg>
         </div>
         <div class="l-vehicle-type__body">
@@ -112,17 +132,33 @@
 
       <article class="l-vehicle-type l-vehicle-type--featured">
         <div class="l-vehicle-type__visual">
-          <svg viewBox="0 0 120 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="32" cy="85" r="8" fill="#0e1320"/>
-            <circle cx="32" cy="85" r="4" fill="#ffd400"/>
-            <circle cx="92" cy="85" r="8" fill="#0e1320"/>
-            <circle cx="92" cy="85" r="4" fill="#ffd400"/>
-            <path d="M20 70 Q22 55 30 45 L48 35 Q60 32 70 35 L92 40 Q100 50 100 65 L100 78 L20 78 Z" fill="#0e1320"/>
-            <circle cx="38" cy="55" r="4" fill="#a3acbf"/>
-            <path d="M45 35 Q55 30 65 32" stroke="#a3acbf" stroke-width="1.5" fill="none"/>
-            <rect x="45" y="50" width="20" height="14" rx="2" fill="#1a2236"/>
-            <path d="M68 50 L92 50 L92 65 L72 65" fill="#1a2236"/>
-            <line x1="50" y1="50" x2="50" y2="65" stroke="#a3acbf" stroke-width="1"/>
+          <svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
+            <defs>
+              <linearGradient id="moto-body" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1a2236"/>
+                <stop offset="100%" stop-color="#0e1320"/>
+              </linearGradient>
+              <radialGradient id="moto-rim" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffd400"/>
+                <stop offset="100%" stop-color="#a77c00"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="80" cy="100" rx="60" ry="3" fill="#0e1320" opacity=".15"/>
+            <path d="M30 80 Q34 60 44 50 L62 38 Q72 34 82 36 L140 44 Q148 56 148 70 L148 84 Q148 86 146 86 L130 86 Q132 82 130 78 L46 78 Q44 82 46 86 L30 86 Q28 86 28 84 Z" fill="url(#moto-body)"/>
+            <path d="M62 38 Q72 30 84 32 L120 40 Q126 50 124 56 L60 56 Q56 48 62 38 Z" fill="#7DD3E8" opacity=".6"/>
+            <circle cx="44" cy="55" r="5" fill="#44B8D8" opacity=".8"/>
+            <rect x="100" y="58" width="22" height="12" rx="1.5" fill="#2a324a"/>
+            <line x1="110" y1="58" x2="110" y2="70" stroke="#7DD3E8" stroke-width="1" opacity=".6"/>
+            <circle cx="40" cy="86" r="14" fill="#0e1320"/>
+            <circle cx="40" cy="86" r="10" fill="url(#moto-rim)"/>
+            <circle cx="40" cy="86" r="3" fill="#0e1320"/>
+            <circle cx="40" cy="86" r="1.5" fill="#ffd400"/>
+            <circle cx="130" cy="86" r="14" fill="#0e1320"/>
+            <circle cx="130" cy="86" r="10" fill="url(#moto-rim)"/>
+            <circle cx="130" cy="86" r="3" fill="#0e1320"/>
+            <circle cx="130" cy="86" r="1.5" fill="#ffd400"/>
+            <path d="M30 86 L20 86 L20 82 L26 80" stroke="#0e1320" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M148 86 L156 86 L156 82 L150 80" stroke="#0e1320" stroke-width="2" fill="none" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="l-vehicle-type__body">
@@ -144,21 +180,46 @@
 
       <article class="l-vehicle-type">
         <div class="l-vehicle-type__visual">
-          <svg viewBox="0 0 200 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="10" y="40" width="180" height="35" rx="4" fill="#0e1320"/>
-            <rect x="15" y="25" width="120" height="18" rx="2" fill="#0e1320"/>
-            <rect x="20" y="28" width="20" height="12" rx="1" fill="#a3acbf"/>
-            <rect x="44" y="28" width="20" height="12" rx="1" fill="#a3acbf"/>
-            <rect x="68" y="28" width="20" height="12" rx="1" fill="#a3acbf"/>
-            <rect x="92" y="28" width="20" height="12" rx="1" fill="#a3acbf"/>
-            <rect x="116" y="28" width="15" height="12" rx="1" fill="#a3acbf"/>
-            <circle cx="45" cy="78" r="10" fill="#ffd400"/>
-            <circle cx="45" cy="78" r="5" fill="#0e1320"/>
-            <circle cx="100" cy="78" r="10" fill="#ffd400"/>
-            <circle cx="100" cy="78" r="5" fill="#0e1320"/>
-            <circle cx="155" cy="78" r="10" fill="#ffd400"/>
-            <circle cx="155" cy="78" r="5" fill="#0e1320"/>
-            <rect x="14" y="50" width="6" height="20" fill="#ffd400"/>
+          <svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
+            <defs>
+              <linearGradient id="bus-body" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1a2236"/>
+                <stop offset="100%" stop-color="#0e1320"/>
+              </linearGradient>
+              <radialGradient id="bus-rim" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffd400"/>
+                <stop offset="100%" stop-color="#a77c00"/>
+              </radialGradient>
+            </defs>
+            <ellipse cx="120" cy="100" rx="100" ry="4" fill="#0e1320" opacity=".15"/>
+            <rect x="14" y="48" width="212" height="42" rx="6" fill="url(#bus-body)"/>
+            <rect x="14" y="48" width="212" height="6" fill="#ffd400" opacity=".25"/>
+            <rect x="20" y="32" width="170" height="20" rx="3" fill="url(#bus-body)"/>
+            <g fill="#7DD3E8" opacity=".7">
+              <rect x="24" y="36" width="22" height="12" rx="1.5"/>
+              <rect x="50" y="36" width="22" height="12" rx="1.5"/>
+              <rect x="76" y="36" width="22" height="12" rx="1.5"/>
+              <rect x="102" y="36" width="22" height="12" rx="1.5"/>
+              <rect x="128" y="36" width="22" height="12" rx="1.5"/>
+              <rect x="154" y="36" width="22" height="12" rx="1.5"/>
+            </g>
+            <line x1="46" y1="36" x2="46" y2="48" stroke="#0e1320" stroke-width="1" opacity=".4"/>
+            <line x1="72" y1="36" x2="72" y2="48" stroke="#0e1320" stroke-width="1" opacity=".4"/>
+            <line x1="98" y1="36" x2="98" y2="48" stroke="#0e1320" stroke-width="1" opacity=".4"/>
+            <line x1="124" y1="36" x2="124" y2="48" stroke="#0e1320" stroke-width="1" opacity=".4"/>
+            <line x1="150" y1="36" x2="150" y2="48" stroke="#0e1320" stroke-width="1" opacity=".4"/>
+            <rect x="200" y="36" width="20" height="14" rx="2" fill="#44B8D8" opacity=".8"/>
+            <rect x="16" y="62" width="6" height="20" rx="1" fill="#ffd400"/>
+            <rect x="220" y="62" width="6" height="20" rx="1" fill="#ffd400" opacity=".5"/>
+            <circle cx="50" cy="90" r="13" fill="#0e1320"/>
+            <circle cx="50" cy="90" r="9" fill="url(#bus-rim)"/>
+            <circle cx="50" cy="90" r="3" fill="#0e1320"/>
+            <circle cx="110" cy="90" r="13" fill="#0e1320"/>
+            <circle cx="110" cy="90" r="9" fill="url(#bus-rim)"/>
+            <circle cx="110" cy="90" r="3" fill="#0e1320"/>
+            <circle cx="190" cy="90" r="13" fill="#0e1320"/>
+            <circle cx="190" cy="90" r="9" fill="url(#bus-rim)"/>
+            <circle cx="190" cy="90" r="3" fill="#0e1320"/>
           </svg>
         </div>
         <div class="l-vehicle-type__body">
@@ -322,8 +383,7 @@
       <div class="l-insp-item"><i class="bi bi-gear"></i><span>10. Motor y transmisión</span></div>
     </div>
     <div class="l-insp-foot">
-      <div class="l-insp-result l-insp-result--ok"><i class="bi bi-check-circle-fill"></i> 10/10 = APROBADO <small>(vigencia 1 año)</small></div>
-      <div class="l-insp-result l-insp-result--fail"><i class="bi bi-x-circle-fill"></i> 2+ NO = RECHAZADO <small>(corregir en 15 días)</small></div>
+      <span class="l-insp-note"><i class="bi bi-info-circle"></i> Resultado en tiempo real al finalizar la inspección.</span>
     </div>
   </div>
 </section>
