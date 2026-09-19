@@ -83,64 +83,39 @@
     <div class="l-vehicle-types">
       <article class="l-vehicle-type">
         <div class="l-vehicle-type__visual">
-          <svg viewBox="0 0 240 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
+          <svg viewBox="0 0 240 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg l-vehicle-svg--top">
             <defs>
               <linearGradient id="car-body-liv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#2a324a"/>
-                <stop offset="55%" stop-color="#1a2236"/>
-                <stop offset="100%" stop-color="#0e1320"/>
+                <stop offset="0%" stop-color="#334155"/>
+                <stop offset="100%" stop-color="#1e293b"/>
               </linearGradient>
-              <linearGradient id="car-side-liv" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#0a0f1a"/>
-                <stop offset="100%" stop-color="#1a2236"/>
+              <linearGradient id="car-top-liv" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#7DD3E8"/>
+                <stop offset="100%" stop-color="#3b9eb4"/>
               </linearGradient>
-              <linearGradient id="car-window-liv" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#a8dadc"/>
-                <stop offset="100%" stop-color="#5fa8b3"/>
-              </linearGradient>
-              <radialGradient id="car-rim-liv" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#ffd400"/>
-                <stop offset="70%" stop-color="#a77c00"/>
-                <stop offset="100%" stop-color="#5c4400"/>
-              </radialGradient>
               <linearGradient id="car-ground-liv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#0e1320" stop-opacity=".25"/>
+                <stop offset="0%" stop-color="#0e1320" stop-opacity=".18"/>
                 <stop offset="100%" stop-color="#0e1320" stop-opacity="0"/>
               </linearGradient>
             </defs>
-            <ellipse cx="120" cy="118" rx="100" ry="6" fill="url(#car-ground-liv)"/>
-            <path d="M28 88 L46 64 Q56 54 78 50 L142 50 Q172 52 192 70 L210 82 L214 90 L214 96 L210 96 L200 96 Q202 90 198 86 L168 86 Q166 90 168 96 L70 96 Q72 90 70 86 L40 86 Q36 90 38 96 L28 96 Q22 96 22 92 Z" fill="url(#car-body-liv)"/>
-            <path d="M192 70 Q204 78 210 82 L214 90 L214 96 L210 96 Q204 92 198 86 Z" fill="url(#car-side-liv)" opacity=".8"/>
-            <path d="M58 66 L72 50 Q80 46 92 46 L140 46 Q156 48 168 56 L182 66 Z" fill="url(#car-window-liv)"/>
-            <line x1="124" y1="48" x2="124" y2="66" stroke="#0e1320" stroke-width="2" opacity=".5"/>
-            <line x1="78" y1="50" x2="68" y2="66" stroke="#0e1320" stroke-width="1.5" opacity=".4"/>
-            <path d="M58 66 L52 70 Q48 72 48 76 L48 86 L70 86 Q72 82 72 76 Q72 72 70 68 Z" fill="url(#car-body-liv)" opacity=".7"/>
-            <rect x="50" y="72" width="6" height="4" rx="1" fill="#ffd400"/>
-            <circle cx="40" cy="60" r="3" fill="#fff5d6" opacity=".7"/>
-            <path d="M28 88 L46 88 L46 96 L28 96 Z" fill="#0a0f1a" opacity=".5"/>
-            <line x1="100" y1="88" x2="148" y2="88" stroke="#ffd400" stroke-width="1" opacity=".4"/>
-            <line x1="40" y1="96" x2="200" y2="96" stroke="#0a0f1a" stroke-width="1" opacity=".5"/>
-            <ellipse cx="68" cy="100" rx="20" ry="6" fill="#0e1320"/>
-            <ellipse cx="172" cy="100" rx="20" ry="6" fill="#0e1320"/>
-            <circle cx="68" cy="96" r="15" fill="#0a0f1a"/>
-            <circle cx="68" cy="96" r="11" fill="url(#car-rim-liv)"/>
-            <circle cx="68" cy="96" r="3" fill="#0e1320"/>
-            <g stroke="#0e1320" stroke-width="1.5" opacity=".8">
-              <line x1="68" y1="85" x2="68" y2="107"/>
-              <line x1="57" y1="96" x2="79" y2="96"/>
-              <line x1="60" y1="88" x2="76" y2="104"/>
-              <line x1="76" y1="88" x2="60" y2="104"/>
-            </g>
-            <circle cx="172" cy="96" r="15" fill="#0a0f1a"/>
-            <circle cx="172" cy="96" r="11" fill="url(#car-rim-liv)"/>
-            <circle cx="172" cy="96" r="3" fill="#0e1320"/>
-            <g stroke="#0e1320" stroke-width="1.5" opacity=".8">
-              <line x1="172" y1="85" x2="172" y2="107"/>
-              <line x1="161" y1="96" x2="183" y2="96"/>
-              <line x1="164" y1="88" x2="180" y2="104"/>
-              <line x1="180" y1="88" x2="164" y2="104"/>
-            </g>
-            <rect x="200" y="76" width="6" height="10" rx="1" fill="#a77c00" opacity=".6"/>
+            <ellipse cx="120" cy="120" rx="105" ry="5" fill="url(#car-ground-liv)"/>
+            <rect x="30" y="42" width="180" height="46" rx="14" fill="url(#car-body-liv)"/>
+            <rect x="46" y="50" width="148" height="30" rx="10" fill="url(#car-top-liv)"/>
+            <rect x="118" y="50" width="4" height="30" fill="#1e293b" opacity=".4"/>
+            <rect x="78" y="50" width="2" height="30" fill="#1e293b" opacity=".25"/>
+            <rect x="160" y="50" width="2" height="30" fill="#1e293b" opacity=".25"/>
+            <rect x="180" y="56" width="20" height="18" rx="4" fill="#475569"/>
+            <rect x="40" y="56" width="20" height="18" rx="4" fill="#475569"/>
+            <rect x="56" y="58" width="4" height="14" rx="1" fill="#fff5d6"/>
+            <rect x="180" y="58" width="4" height="14" rx="1" fill="#b91c1c" opacity=".7"/>
+            <rect x="26" y="36" width="22" height="8" rx="2" fill="#0a0f1a"/>
+            <rect x="192" y="36" width="22" height="8" rx="2" fill="#0a0f1a"/>
+            <rect x="26" y="86" width="22" height="8" rx="2" fill="#0a0f1a"/>
+            <rect x="192" y="86" width="22" height="8" rx="2" fill="#0a0f1a"/>
+            <rect x="30" y="38" width="14" height="4" rx="1" fill="#ffd400"/>
+            <rect x="196" y="38" width="14" height="4" rx="1" fill="#a77c00"/>
+            <line x1="60" y1="42" x2="60" y2="88" stroke="#0a0f1a" stroke-width="0.5" opacity=".4"/>
+            <line x1="180" y1="42" x2="180" y2="88" stroke="#0a0f1a" stroke-width="0.5" opacity=".4"/>
           </svg>
         </div>
         <div class="l-vehicle-type__body">
@@ -162,57 +137,42 @@
 
       <article class="l-vehicle-type l-vehicle-type--featured">
         <div class="l-vehicle-type__visual">
-          <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
+          <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg l-vehicle-svg--top">
             <defs>
               <linearGradient id="moto-body" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#2a324a"/>
-                <stop offset="100%" stop-color="#0e1320"/>
+                <stop offset="0%" stop-color="#334155"/>
+                <stop offset="100%" stop-color="#1e293b"/>
               </linearGradient>
               <linearGradient id="moto-tank" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#3d4a66"/>
-                <stop offset="100%" stop-color="#1a2236"/>
+                <stop offset="0%" stop-color="#7DD3E8"/>
+                <stop offset="100%" stop-color="#3b9eb4"/>
               </linearGradient>
               <radialGradient id="moto-rim" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#ffd400"/>
-                <stop offset="70%" stop-color="#a77c00"/>
-                <stop offset="100%" stop-color="#5c4400"/>
+                <stop offset="0%" stop-color="#475569"/>
+                <stop offset="100%" stop-color="#1e293b"/>
               </radialGradient>
               <linearGradient id="moto-ground" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#0e1320" stop-opacity=".25"/>
+                <stop offset="0%" stop-color="#0e1320" stop-opacity=".18"/>
                 <stop offset="100%" stop-color="#0e1320" stop-opacity="0"/>
               </linearGradient>
             </defs>
-            <ellipse cx="100" cy="118" rx="80" ry="5" fill="url(#moto-ground)"/>
-            <path d="M28 90 Q32 68 42 56 L60 42 Q72 38 82 40 L132 48 Q146 60 148 76 L148 90 Q148 94 144 94 L130 94 Q132 88 130 84 L52 84 Q50 88 52 94 L34 94 Q28 94 28 90 Z" fill="url(#moto-body)"/>
-            <path d="M68 50 Q78 42 92 44 L130 52 Q138 64 134 72 L62 72 Q58 60 68 50 Z" fill="url(#moto-tank)"/>
-            <path d="M68 50 Q78 44 92 46 L122 52 Q128 60 124 66 L66 66 Q62 58 68 50 Z" fill="#a8dadc" opacity=".6"/>
-            <circle cx="56" cy="64" r="6" fill="#5fa8b3" opacity=".8"/>
-            <path d="M30 88 L18 88 L18 82 L26 78" stroke="#0e1320" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <path d="M154 88 L168 88 L168 82 L160 78" stroke="#0e1320" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <path d="M132 50 L148 38 Q152 36 156 38 L160 44" stroke="#0e1320" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <rect x="120" y="68" width="20" height="10" rx="2" fill="#1a2236"/>
-            <line x1="128" y1="68" x2="128" y2="78" stroke="#5fa8b3" stroke-width="1" opacity=".6"/>
-            <ellipse cx="50" cy="98" rx="18" ry="5" fill="#0e1320"/>
-            <ellipse cx="148" cy="98" rx="18" ry="5" fill="#0e1320"/>
-            <circle cx="50" cy="94" r="16" fill="#0a0f1a"/>
-            <circle cx="50" cy="94" r="12" fill="url(#moto-rim)"/>
-            <circle cx="50" cy="94" r="3" fill="#0e1320"/>
-            <g stroke="#0e1320" stroke-width="1.5" opacity=".8">
-              <line x1="50" y1="82" x2="50" y2="106"/>
-              <line x1="38" y1="94" x2="62" y2="94"/>
-              <line x1="41" y1="85" x2="59" y2="103"/>
-              <line x1="59" y1="85" x2="41" y2="103"/>
-            </g>
-            <circle cx="148" cy="94" r="16" fill="#0a0f1a"/>
-            <circle cx="148" cy="94" r="12" fill="url(#moto-rim)"/>
-            <circle cx="148" cy="94" r="3" fill="#0e1320"/>
-            <g stroke="#0e1320" stroke-width="1.5" opacity=".8">
-              <line x1="148" y1="82" x2="148" y2="106"/>
-              <line x1="136" y1="94" x2="160" y2="94"/>
-              <line x1="139" y1="85" x2="157" y2="103"/>
-              <line x1="157" y1="85" x2="139" y2="103"/>
-            </g>
-            <circle cx="148" cy="60" r="2" fill="#ffd400"/>
+            <ellipse cx="100" cy="120" rx="80" ry="4" fill="url(#moto-ground)"/>
+            <ellipse cx="50" cy="65" rx="18" ry="18" fill="#0a0f1a"/>
+            <ellipse cx="50" cy="65" rx="14" ry="14" fill="url(#moto-rim)"/>
+            <circle cx="50" cy="65" r="3" fill="#0a0f1a"/>
+            <ellipse cx="150" cy="65" rx="18" ry="18" fill="#0a0f1a"/>
+            <ellipse cx="150" cy="65" rx="14" ry="14" fill="url(#moto-rim)"/>
+            <circle cx="150" cy="65" r="3" fill="#0a0f1a"/>
+            <path d="M50 47 L150 47 Q160 47 160 53 L160 77 Q160 83 150 83 L50 83 Q40 83 40 77 L40 53 Q40 47 50 47 Z" fill="url(#moto-body)"/>
+            <path d="M62 55 Q70 52 80 52 L120 52 Q130 52 138 55 L148 65 L52 65 Z" fill="url(#moto-tank)"/>
+            <path d="M62 60 Q70 57 80 57 L120 57 Q130 57 138 60 L142 65 L58 65 Z" fill="#a8dadc" opacity=".4"/>
+            <rect x="62" y="67" width="76" height="13" rx="2" fill="#0a0f1a"/>
+            <rect x="62" y="68" width="76" height="3" fill="#475569" opacity=".5"/>
+            <rect x="40" y="64" width="20" height="2" rx="1" fill="#ffd400"/>
+            <rect x="140" y="64" width="20" height="2" rx="1" fill="#b91c1c" opacity=".7"/>
+            <rect x="36" y="63" width="28" height="4" rx="2" fill="#475569"/>
+            <rect x="136" y="63" width="28" height="4" rx="2" fill="#475569"/>
+            <rect x="92" y="44" width="16" height="6" rx="2" fill="#475569"/>
           </svg>
         </div>
         <div class="l-vehicle-type__body">
@@ -234,81 +194,52 @@
 
       <article class="l-vehicle-type">
         <div class="l-vehicle-type__visual">
-          <svg viewBox="0 0 260 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg">
+          <svg viewBox="0 0 260 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="l-vehicle-svg l-vehicle-svg--top">
             <defs>
               <linearGradient id="bus-body" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#2a324a"/>
-                <stop offset="55%" stop-color="#1a2236"/>
-                <stop offset="100%" stop-color="#0e1320"/>
+                <stop offset="0%" stop-color="#334155"/>
+                <stop offset="100%" stop-color="#1e293b"/>
               </linearGradient>
-              <linearGradient id="bus-cab" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#3d4a66"/>
-                <stop offset="100%" stop-color="#1a2236"/>
+              <linearGradient id="bus-top" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#7DD3E8"/>
+                <stop offset="100%" stop-color="#3b9eb4"/>
               </linearGradient>
-              <radialGradient id="bus-rim" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#ffd400"/>
-                <stop offset="70%" stop-color="#a77c00"/>
-                <stop offset="100%" stop-color="#5c4400"/>
-              </radialGradient>
               <linearGradient id="bus-ground" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#0e1320" stop-opacity=".25"/>
+                <stop offset="0%" stop-color="#0e1320" stop-opacity=".18"/>
                 <stop offset="100%" stop-color="#0e1320" stop-opacity="0"/>
               </linearGradient>
             </defs>
-            <ellipse cx="130" cy="118" rx="115" ry="6" fill="url(#bus-ground)"/>
-            <path d="M8 100 L14 60 L22 56 L48 50 L196 50 Q210 52 220 58 L240 78 Q246 84 248 92 L248 102 L8 102 Z" fill="url(#bus-body)"/>
-            <path d="M220 58 Q234 70 240 78 L246 84 L248 92 L248 102 L222 102 Q226 96 222 90 Q220 84 224 78 L220 58 Z" fill="url(#bus-cab)" opacity=".7"/>
-            <path d="M14 60 L48 50 L196 50 Q210 52 220 58 L240 78 L240 78 L8 78 Z" fill="#a8dadc" opacity=".25"/>
-            <g fill="#5fa8b3" opacity=".7">
-              <rect x="22" y="58" width="20" height="12" rx="1.5"/>
-              <rect x="46" y="56" width="22" height="14" rx="1.5"/>
-              <rect x="72" y="54" width="22" height="16" rx="1.5"/>
-              <rect x="98" y="54" width="22" height="16" rx="1.5"/>
-              <rect x="124" y="54" width="22" height="16" rx="1.5"/>
-              <rect x="150" y="54" width="22" height="16" rx="1.5"/>
-              <rect x="176" y="54" width="22" height="16" rx="1.5"/>
-              <rect x="202" y="58" width="20" height="14" rx="1.5"/>
+            <ellipse cx="130" cy="120" rx="120" ry="5" fill="url(#bus-ground)"/>
+            <rect x="10" y="40" width="240" height="50" rx="10" fill="url(#bus-body)"/>
+            <rect x="10" y="40" width="240" height="50" rx="10" fill="url(#bus-top)" opacity=".35"/>
+            <rect x="20" y="48" width="30" height="34" rx="3" fill="#475569"/>
+            <g fill="#3b9eb4" opacity=".85">
+              <rect x="56" y="48" width="22" height="34" rx="2"/>
+              <rect x="82" y="48" width="22" height="34" rx="2"/>
+              <rect x="108" y="48" width="22" height="34" rx="2"/>
+              <rect x="134" y="48" width="22" height="34" rx="2"/>
+              <rect x="160" y="48" width="22" height="34" rx="2"/>
+              <rect x="186" y="48" width="22" height="34" rx="2"/>
+              <rect x="212" y="48" width="22" height="34" rx="2"/>
             </g>
-            <line x1="68" y1="54" x2="68" y2="70" stroke="#0e1320" stroke-width="1" opacity=".5"/>
-            <line x1="94" y1="54" x2="94" y2="70" stroke="#0e1320" stroke-width="1" opacity=".5"/>
-            <line x1="120" y1="54" x2="120" y2="70" stroke="#0e1320" stroke-width="1" opacity=".5"/>
-            <line x1="146" y1="54" x2="146" y2="70" stroke="#0e1320" stroke-width="1" opacity=".5"/>
-            <line x1="172" y1="54" x2="172" y2="70" stroke="#0e1320" stroke-width="1" opacity=".5"/>
-            <line x1="198" y1="54" x2="198" y2="70" stroke="#0e1320" stroke-width="1" opacity=".5"/>
-            <rect x="8" y="84" width="6" height="14" rx="1" fill="#ffd400"/>
-            <rect x="246" y="80" width="4" height="10" rx="1" fill="#a77c00" opacity=".6"/>
-            <path d="M20 84 L240 84" stroke="#ffd400" stroke-width="1.5" opacity=".5"/>
-            <path d="M20 96 L240 96" stroke="#0a0f1a" stroke-width="1" opacity=".6"/>
-            <ellipse cx="40" cy="102" rx="22" ry="5" fill="#0e1320"/>
-            <ellipse cx="120" cy="102" rx="22" ry="5" fill="#0e1320"/>
-            <ellipse cx="210" cy="102" rx="22" ry="5" fill="#0e1320"/>
-            <circle cx="40" cy="98" r="16" fill="#0a0f1a"/>
-            <circle cx="40" cy="98" r="12" fill="url(#bus-rim)"/>
-            <circle cx="40" cy="98" r="3" fill="#0e1320"/>
-            <g stroke="#0e1320" stroke-width="1.5" opacity=".8">
-              <line x1="40" y1="86" x2="40" y2="110"/>
-              <line x1="28" y1="98" x2="52" y2="98"/>
-              <line x1="31" y1="89" x2="49" y2="107"/>
-              <line x1="49" y1="89" x2="31" y2="107"/>
-            </g>
-            <circle cx="120" cy="98" r="16" fill="#0a0f1a"/>
-            <circle cx="120" cy="98" r="12" fill="url(#bus-rim)"/>
-            <circle cx="120" cy="98" r="3" fill="#0e1320"/>
-            <g stroke="#0e1320" stroke-width="1.5" opacity=".8">
-              <line x1="120" y1="86" x2="120" y2="110"/>
-              <line x1="108" y1="98" x2="132" y2="98"/>
-              <line x1="111" y1="89" x2="129" y2="107"/>
-              <line x1="129" y1="89" x2="111" y2="107"/>
-            </g>
-            <circle cx="210" cy="98" r="16" fill="#0a0f1a"/>
-            <circle cx="210" cy="98" r="12" fill="url(#bus-rim)"/>
-            <circle cx="210" cy="98" r="3" fill="#0e1320"/>
-            <g stroke="#0e1320" stroke-width="1.5" opacity=".8">
-              <line x1="210" y1="86" x2="210" y2="110"/>
-              <line x1="198" y1="98" x2="222" y2="98"/>
-              <line x1="201" y1="89" x2="219" y2="107"/>
-              <line x1="219" y1="89" x2="201" y2="107"/>
-            </g>
+            <line x1="78" y1="48" x2="78" y2="82" stroke="#1e293b" stroke-width="1" opacity=".5"/>
+            <line x1="104" y1="48" x2="104" y2="82" stroke="#1e293b" stroke-width="1" opacity=".5"/>
+            <line x1="130" y1="48" x2="130" y2="82" stroke="#1e293b" stroke-width="1" opacity=".5"/>
+            <line x1="156" y1="48" x2="156" y2="82" stroke="#1e293b" stroke-width="1" opacity=".5"/>
+            <line x1="182" y1="48" x2="182" y2="82" stroke="#1e293b" stroke-width="1" opacity=".5"/>
+            <line x1="208" y1="48" x2="208" y2="82" stroke="#1e293b" stroke-width="1" opacity=".5"/>
+            <rect x="6" y="34" width="22" height="8" rx="2" fill="#0a0f1a"/>
+            <rect x="232" y="34" width="22" height="8" rx="2" fill="#0a0f1a"/>
+            <rect x="6" y="88" width="22" height="8" rx="2" fill="#0a0f1a"/>
+            <rect x="232" y="88" width="22" height="8" rx="2" fill="#0a0f1a"/>
+            <rect x="116" y="34" width="22" height="8" rx="2" fill="#0a0f1a"/>
+            <rect x="116" y="88" width="22" height="8" rx="2" fill="#0a0f1a"/>
+            <rect x="10" y="36" width="14" height="4" rx="1" fill="#ffd400"/>
+            <rect x="236" y="36" width="14" height="4" rx="1" fill="#a77c00"/>
+            <rect x="10" y="90" width="14" height="4" rx="1" fill="#b91c1c" opacity=".7"/>
+            <rect x="236" y="90" width="14" height="4" rx="1" fill="#b91c1c" opacity=".7"/>
+            <line x1="60" y1="48" x2="60" y2="82" stroke="#1e293b" stroke-width="0.5" opacity=".3"/>
+            <line x1="200" y1="48" x2="200" y2="82" stroke="#1e293b" stroke-width="0.5" opacity=".3"/>
           </svg>
         </div>
         <div class="l-vehicle-type__body">
