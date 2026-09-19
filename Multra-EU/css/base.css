@@ -1,0 +1,81 @@
+/* Multra E.U. — Base compartido: variables, reset, tipografía, formateo */
+:root{
+  --y:#ffd400;          /* amarillo principal */
+  --y2:#a77c00;         /* amarillo oscuro / hover */
+  --y3:#fffae6;         /* amarillo claro fondo */
+  --k:#0e1320;          /* navy/negro principal */
+  --k2:#1a2236;         /* navy medio */
+  --k3:#2a324a;         /* navy claro */
+  --bg:#f4f6fa;         /* fondo claro panel */
+  --card:#ffffff;
+  --b:#e4e7ec;          /* borde claro */
+  --b2:#d0d5dd;         /* borde medio */
+  --g:#667085;          /* gris texto */
+  --g2:#98a2b3;         /* gris claro */
+  --ok:#027a48;
+  --ok-bg:#d1fadf;
+  --warn:#a77c00;
+  --warn-bg:#fff5d6;
+  --err:#b42318;
+  --err-bg:#fde7e7;
+  --info:#175cd3;
+  --info-bg:#dceeff;
+  --shadow-sm:0 1px 2px #0e13200a;
+  --shadow:0 1px 2px #0e13200a,0 4px 12px #0e132014;
+  --shadow-lg:0 10px 30px #0e13201a;
+  --radius-sm:8px;
+  --radius:12px;
+  --radius-lg:18px;
+  --radius-xl:24px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:Montserrat,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--k);-webkit-font-smoothing:antialiased;line-height:1.5}
+body{font-size:15px}
+a{color:inherit;text-decoration:none;cursor:pointer}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select,textarea,button{font-family:inherit;font-size:inherit;color:inherit}
+h1,h2,h3,h4,h5,h6{margin:0;font-weight:800;line-height:1.2;color:var(--k)}
+p{margin:0 0 8px}
+ul,ol{margin:0;padding:0;list-style:none}
+.muted{color:var(--g)}
+.small{font-size:.78rem}
+.fw9{font-weight:900}
+.tac{text-align:center}
+.tar{text-align:right}
+.d-flex{display:flex;align-items:center;gap:8px}
+.d-grid{display:grid}
+.mt-1{margin-top:8px}.mt-2{margin-top:16px}.mt-3{margin-top:24px}
+.mb-1{margin-bottom:8px}.mb-2{margin-bottom:16px}.mb-3{margin-bottom:24px}
+
+/* Botones universales */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;padding:11px 18px;border-radius:10px;border:0;cursor:pointer;transition:.15s;font-size:.9rem;line-height:1;text-align:center;white-space:nowrap}
+.btn-primary{background:var(--y);color:var(--k)}
+.btn-primary:hover{background:#ffce00}
+.btn-ghost{background:transparent;color:var(--k);border:1.5px solid var(--b)}
+.btn-ghost:hover{background:var(--bg);border-color:var(--b2)}
+.btn-dark{background:var(--k);color:#fff}
+.btn-dark:hover{background:var(--k2)}
+.btn-sm{padding:7px 12px;font-size:.78rem}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+
+/* Formularios universales */
+.input,.select,.textarea{width:100%;border:1.5px solid var(--b);border-radius:10px;padding:11px 13px;font:inherit;outline:0;background:#fff;transition:.15s;color:var(--k)}
+.input:focus,.select:focus,.textarea:focus{border-color:var(--y2);box-shadow:0 0 0 4px #ffd40022}
+.textarea{min-height:80px;resize:vertical;font-family:inherit}
+
+/* Containers */
+.container{max-width:1200px;margin:0 auto;padding:0 24px;width:100%}
+
+/* Badges */
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:.65rem;font-weight:800;padding:3px 8px;border-radius:6px;letter-spacing:.3px;line-height:1.4}
+.badge-ok{background:var(--ok-bg);color:var(--ok)}
+.badge-warn{background:var(--warn-bg);color:var(--warn)}
+.badge-err{background:var(--err-bg);color:var(--err)}
+.badge-info{background:var(--info-bg);color:var(--info)}
+.badge-k{background:var(--k);color:#fff}
+
+/* Responsive base */
+@media(max-width:900px){
+  .container{padding:0 16px}
+}

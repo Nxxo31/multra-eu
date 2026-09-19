@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Multra E.U. | CDA y gestoría vehicular en Neiva, Huila</title>
+<meta name="description" content="Centro de diagnóstico y gestoría vehicular en Neiva. Revisión técnico-mecánica, SOAT, todo riesgo, traspasos, licencias y más.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/landing.css">
+</head>
+<body class="l-body">
+
+<nav class="l-nav">
+  <div class="l-nav__inner">
+    <a class="l-nav__brand" href="#inicio">
+      <img src="assets/img/logo-multra.png" alt="Logo Multra E.U.">
+      <div class="l-nav__brand-text">
+        <div class="l-nav__name">MULTRA E.U.</div>
+        <small class="l-nav__sub">CDA · NEIVA · HUILA</small>
+      </div>
+    </a>
+    <button class="l-nav__toggle" id="navToggle" aria-label="Menú"><i class="bi bi-list"></i></button>
+    <ul class="l-nav__links" id="navLinks">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#cotizar">Cotizar</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="login.html"><i class="bi bi-person-circle"></i> Acceso</a></li>
+      <li><a class="btn btn-primary" href="#cotizar">Cotiza ahora</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="l-hero" id="inicio">
+  <div class="l-hero__grid">
+    <div>
+      <span class="l-hero__badge"><i class="bi bi-patch-check-fill"></i> Habilitados MinTransporte</span>
+      <h1>Tu vehículo en regla, <span>sin filas ni dolores de cabeza.</span></h1>
+      <p class="l-hero__sub">En Multra E.U. hacemos tu revisión técnico-mecánica, gestionamos tu SOAT y todo riesgo, y te acompañamos en traspasos, licencias y todo trámite vehicular en Neiva, Huila.</p>
+      <div class="l-hero__ctas">
+        <a class="btn btn-primary" href="#cotizar"><i class="bi bi-calculator"></i> Cotizar en línea</a>
+        <a class="l-hero__btn-outline" href="#servicios"><i class="bi bi-grid"></i> Ver servicios</a>
+      </div>
+      <div class="l-hero__stats">
+        <div><b>15+</b><small>Años de experiencia</small></div>
+        <div><b>8K+</b><small>Vehículos atendidos</small></div>
+        <div><b>4.8★</b><small>Calificación</small></div>
+      </div>
+    </div>
+    <div class="l-hero__card">
+      <i class="bi bi-car-front-fill l-hero__card-icon"></i>
+      <h2>MULTRA E.U.</h2>
+      <p>CDA + Gestoría + Seguros · Neiva, Huila</p>
+      <div class="l-hero__tags">
+        <span>RUNT</span><span>ONAC</span><span>Sura</span><span>Mapfre</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="l-section" id="servicios">
+  <div class="container">
+    <div class="l-section__head l-section__head--center">
+      <span class="l-eyebrow">NUESTROS SERVICIOS</span>
+      <h2>Todo lo que tu vehículo necesita</h2>
+      <p>Trámites, seguros y diagnóstico en un solo lugar.</p>
+    </div>
+    <div class="l-services" id="publicServices"></div>
+  </div>
+</section>
+
+<section class="l-section l-section--dark" id="proceso">
+  <div class="container">
+    <div class="l-proceso">
+      <div>
+        <span class="l-eyebrow">CÓMO TRABAJAMOS</span>
+        <h2>De la cita al documento,<br>en 4 pasos.</h2>
+        <p>Todo el proceso es transparente: sabrás qué pasa con tu vehículo y tus papeles en cada momento.</p>
+        <a class="btn btn-primary mt-2" href="login.html"><i class="bi bi-speedometer2"></i> Acceder al panel</a>
+      </div>
+      <div>
+        <div class="l-step"><h5>1. Cotiza o agenda en línea</h5><p>Selecciona el servicio, recibe precio al instante y elige tu horario.</p></div>
+        <div class="l-step"><h5>2. Trae tu vehículo o tus documentos</h5><p>Para técnico-mecánica te esperamos en sede; para trámites, recogemos tu papelería.</p></div>
+        <div class="l-step"><h5>3. Inspección / gestión</h5><p>Nuestro equipo técnico o gestor realiza el proceso con checklist digital.</p></div>
+        <div class="l-step"><h5>4. Entrega y seguimiento</h5><p>Recibe certificado, póliza o documento. Te avisamos cada cambio de estado.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="l-section l-section--alt" id="cotizar">
+  <div class="container">
+    <div class="l-section__head l-section__head--center">
+      <span class="l-eyebrow">COTIZADOR EN LÍNEA</span>
+      <h2>Arma tu paquete</h2>
+      <p>Selecciona los servicios que necesitas. El precio se calcula al instante con IVA incluido.</p>
+    </div>
+    <div class="l-cot">
+      <div class="l-services" id="publicServices2"></div>
+      <div class="l-cot__summary">
+        <h4><i class="bi bi-cart-check"></i> Tu cotización</h4>
+        <div id="publicCart"><div class="l-empty"><i class="bi bi-bag"></i>Selecciona servicios para cotizar</div></div>
+        <div class="l-cot__actions">
+          <a class="btn btn-primary" href="https://wa.me/573001234567?text=Hola%20Multra" target="_blank"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+          <button class="btn btn-ghost" onclick="publicQuote()"><i class="bi bi-arrow-clockwise"></i> Recalcular</button>
+        </div>
+        <div class="l-info-box"><i class="bi bi-info-circle"></i> Cotización referencial. El valor final puede variar según antigüedad, clase y ciudad del vehículo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="l-section" id="ubicacion">
+  <div class="container">
+    <div class="l-ubi">
+      <div>
+        <span class="l-eyebrow">UBICACIÓN</span>
+        <h2>Encuéntranos en el C.C. Los Comuneros</h2>
+        <p>Atendemos de lunes a sábado. Parqueadero gratuito para clientes.</p>
+        <ul class="l-contact">
+          <li><i class="bi bi-geo-alt-fill"></i> C.c. Los Comuneros L-162, Neiva, Huila</li>
+          <li><i class="bi bi-telephone-fill"></i> (608) 8715900</li>
+          <li><i class="bi bi-whatsapp"></i> +57 300 123 4567</li>
+          <li><i class="bi bi-clock-fill"></i> Lun–Sáb: 7:00 AM – 6:00 PM</li>
+        </ul>
+        <div class="l-ubi-ctas">
+          <a class="btn btn-primary" target="_blank" rel="noopener" href="https://maps.app.goo.gl/iFTAgcT6BFtzWne19"><i class="bi bi-map"></i> Abrir Maps</a>
+          <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.youtube.com/embed/ah4nw_7TtHM"><i class="bi bi-play-circle"></i> Cómo llegar</a>
+        </div>
+      </div>
+      <div class="l-map">
+        <iframe src="https://www.google.com/maps?q=Centro+Comercial+Los+Comuneros+Neiva&output=embed" allowfullscreen loading="lazy" title="Ubicación Multra E.U."></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="l-section l-section--dark" id="faq">
+  <div class="container">
+    <div class="l-section__head l-section__head--center">
+      <span class="l-eyebrow">PREGUNTAS FRECUENTES</span>
+      <h2>Resolvemos tus dudas</h2>
+    </div>
+    <div class="l-faq">
+      <details class="l-faq__item" open>
+        <summary><i class="bi bi-question-circle"></i>¿Qué documentos necesito para la técnico-mecánica?</summary>
+        <p>Cédula del propietario, licencia de tránsito (tarjeta de propiedad) y SOAT vigente. Para motos aplica el mismo set.</p>
+      </details>
+      <details class="l-faq__item">
+        <summary><i class="bi bi-question-circle"></i>¿Cuánto tarda un traspaso?</summary>
+        <p>Entre 3 y 5 días hábiles si los documentos están al día. Te entregamos radicado y seguimiento en el panel.</p>
+      </details>
+      <details class="l-faq__item">
+        <summary><i class="bi bi-question-circle"></i>¿Puedo pagar con tarjeta o PSE?</summary>
+        <p>Sí. Aceptamos efectivo, tarjeta de crédito/débito, PSE y transferencia. Para SOAT y seguros también financiamos.</p>
+      </details>
+      <details class="l-faq__item">
+        <summary><i class="bi bi-question-circle"></i>¿Qué pasa si repruebo la revisión?</summary>
+        <p>Tienes 15 días calendario para corregir y volver sin costo adicional (una vez). Te entregamos el FUR con los puntos a subsanar.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer class="l-footer">
+  <div class="l-footer__inner">
+    <div><strong>MULTRA E.U.</strong> · CDA y Gestoría vehicular · NIT 900.XXX.XXX-X</div>
+    <small>Neiva, Huila · Colombia · © 2026</small>
+  </div>
+</footer>
+
+<a class="l-float l-float-wa" href="https://wa.me/573001234567" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+<button class="l-float l-float-bot" id="botBtn" aria-label="Abrir asistente"><img src="assets/img/robot-multra.png" alt="Asistente Multra"></button>
+<div class="l-chat" id="chat">
+  <div class="l-chat__head">Asistente Multra <button class="l-chat__close" id="chatClose" aria-label="Cerrar"><i class="bi bi-x-lg"></i></button></div>
+  <div class="l-chat__body" id="chatBody">
+    <div class="l-msg l-msg--bot">¡Hola! Soy el asistente de Multra. Pregúntame sobre técnico-mecánica, SOAT, traspasos o ubicación.</div>
+  </div>
+  <div class="l-chat__input">
+    <input id="chatText" placeholder="Escribe tu consulta...">
+    <button id="chatSend" aria-label="Enviar"><i class="bi bi-send"></i></button>
+  </div>
+</div>
+
+<script src="js/core.js"></script>
+<script src="js/landing.js"></script>
+</body>
+</html>

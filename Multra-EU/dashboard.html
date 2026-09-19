@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel | Multra E.U.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/panel.css">
+</head>
+<body>
+
+<div class="p-app">
+  <aside class="p-side" id="side">
+    <div class="p-side__brand">
+      <img src="assets/img/logo-multra.png" alt="Multra E.U.">
+      <div class="p-side__brand-text">
+        <strong>MULTRA E.U.</strong>
+        <small>CDA · ADMIN</small>
+      </div>
+    </div>
+    <nav class="p-nav" id="nav">
+      <span class="p-nav__section">Principal</span>
+      <button class="p-nav__item p-nav__item--active" data-view="dashboard"><i class="bi bi-speedometer2"></i> Dashboard <span class="p-nav__pill" id="pill-alertas" style="display:none">0</span></button>
+
+      <span class="p-nav__section">Operación</span>
+      <button class="p-nav__item" data-view="vehiculos"><i class="bi bi-car-front"></i> Vehículos</button>
+      <button class="p-nav__item" data-view="citas"><i class="bi bi-calendar-event"></i> Citas / Agenda</button>
+      <button class="p-nav__item" data-view="inspeccion"><i class="bi bi-clipboard2-check"></i> Inspección RTM</button>
+
+      <span class="p-nav__section">Comercial</span>
+      <button class="p-nav__item" data-view="seguros"><i class="bi bi-shield-check"></i> Seguros / Pólizas</button>
+      <button class="p-nav__item" data-view="cotizador"><i class="bi bi-calculator"></i> Cotizador</button>
+      <button class="p-nav__item" data-view="pagos"><i class="bi bi-cash-coin"></i> Pagos</button>
+      <button class="p-nav__item" data-view="tramites"><i class="bi bi-file-text"></i> Trámites</button>
+
+      <span class="p-nav__section">Datos</span>
+      <button class="p-nav__item" data-view="clientes"><i class="bi bi-people"></i> Clientes</button>
+    </nav>
+    <div class="p-side__bottom">
+      <a class="p-nav__item" href="index.html"><i class="bi bi-house"></i> Página principal</a>
+      <button class="p-nav__item" id="logout"><i class="bi bi-box-arrow-left"></i> Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <main class="p-main">
+    <header class="p-topbar">
+      <div class="p-topbar__crumbs">
+        <button class="p-menu-btn" id="menuBtn" aria-label="Menú"><i class="bi bi-list"></i></button>
+        <b id="crumb">Dashboard</b>
+      </div>
+      <div class="p-topbar__user">
+        <span class="muted small" id="userLabel">—</span>
+        <div class="p-avatar" id="avatar">A</div>
+      </div>
+    </header>
+    <section class="p-content" id="view">
+      <div class="p-empty"><i class="bi bi-hourglass-split"></i><p>Cargando panel…</p></div>
+    </section>
+  </main>
+</div>
+
+<script src="js/core.js"></script>
+<script src="js/panel.js"></script>
+</body>
+</html>

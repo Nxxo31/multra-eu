@@ -1,0 +1,50 @@
+# ============================================================
+# Multra E.U. — .gitignore raíz
+# Cubre todo el monorepo (frontend Multra-EU/ + backend server/)
+# ============================================================
+
+# Dependencias
+node_modules/
+
+# Base de datos (SQLite local — nunca commitear)
+/data/
+*.db
+*.db-wal
+*.db-shm
+
+# Secrets y config local
+.env
+.env.local
+.env.*.local
+
+# Logs y temporales
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.tmp/
+.temp/
+
+# Cobertura y builds
+coverage/
+dist/
+build/
+*.tsbuildinfo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs (comentado: si quieres compartir config del equipo, descomenta lo que aplique)
+# .vscode/
+# .idea/
+*.swp
+*.swo
+*~
+
+# Archivos del sistema Windows
+$RECYCLE.BIN/
+*.lnk

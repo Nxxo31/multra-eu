@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Acceso | Multra E.U.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/login.css">
+</head>
+<body class="lg-body">
+
+<a class="lg-back" href="index.html"><i class="bi bi-arrow-left"></i> Volver al sitio</a>
+
+<main class="lg-wrap">
+  <section class="lg-brand">
+    <div class="lg-brand__inner">
+      <img src="assets/img/logo-multra.png" alt="Multra E.U.">
+      <h1>Acceso <span>administrativo</span></h1>
+      <p>Gestiona clientes, vehículos, pólizas, citas y trámites del CDA Multra E.U.</p>
+      <ul class="lg-brand__list">
+        <li><i class="bi bi-check2-circle"></i>Inventario de vehículos y documentos</li>
+        <li><i class="bi bi-check2-circle"></i>Alertas de vencimiento SOAT y técnico-mecánica</li>
+        <li><i class="bi bi-check2-circle"></i>Agenda de citas por técnico</li>
+        <li><i class="bi bi-check2-circle"></i>Cotizador con IVA y descuentos</li>
+      </ul>
+    </div>
+  </section>
+  <section class="lg-panel">
+    <div class="lg-card">
+      <h2>Bienvenido</h2>
+      <p class="lg-card__sub">Ingresa tus credenciales para acceder al panel.</p>
+      <div id="err" class="lg-err"></div>
+      <form id="login" autocomplete="off">
+        <div class="lg-form-group">
+          <label class="lg-label" for="user">Usuario</label>
+          <div class="lg-input">
+            <i class="bi bi-person"></i>
+            <input id="user" required autocomplete="username" placeholder="Tu usuario">
+          </div>
+        </div>
+        <div class="lg-form-group">
+          <label class="lg-label" for="pass">Contraseña</label>
+          <div class="lg-input">
+            <i class="bi bi-lock"></i>
+            <input id="pass" type="password" required minlength="6" autocomplete="current-password" placeholder="••••••••">
+            <button type="button" id="eye" aria-label="Mostrar contraseña"><i class="bi bi-eye"></i></button>
+          </div>
+        </div>
+        <button class="lg-submit" id="btn" type="submit"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión</button>
+      </form>
+
+    </div>
+  </section>
+</main>
+
+<script src="js/core.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+document.getElementById('eye').onclick = () => { const p = $('pass'); p.type = p.type === 'password' ? 'text' : 'password'; };
+
+document.getElementById('login').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const err = $('err'), btn = $('btn');
+  err.style.display = 'none';
+  btn.disabled = true; btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Validando...';
+  try {
+    const r = await fetch('/api/auth/login', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: $('user').value.trim(), password: $('pass').value })
+    });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || 'Error de autenticación');
+    Multra.setSession(data.token, data.user);
+    location.href = 'dashboard.html';
+  } catch (e) {
+    err.textContent = e.message;
+    err.style.display = 'block';
+    btn.disabled = false; btn.innerHTML = '<i class="bi bi-box-arrow-in-right"></i> Iniciar sesión';
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+/* Multra E.U. — Pantalla de login (login.html). Prefijo .lg- */
+.lg-body{background:var(--bg);min-height:100vh;display:flex;flex-direction:column}
+.lg-back{position:fixed;top:20px;left:20px;color:#fff;text-decoration:none;font-weight:800;z-index:10;display:flex;align-items:center;gap:6px;font-size:.9rem;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+.lg-back:hover{color:var(--y)}
+.lg-wrap{min-height:100vh;display:grid;grid-template-columns:46% 54%;flex:1}
+.lg-brand{background:linear-gradient(135deg,#0e1320 0%,#1a2236 100%);color:#fff;padding:5vw 4vw;display:flex;align-items:center;justify-content:center}
+.lg-brand__inner{max-width:440px}
+.lg-brand img{width:96px;border-radius:14px;margin-bottom:24px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.lg-brand h1{font-size:clamp(2rem,3.5vw,3.2rem);line-height:1.05;font-weight:900;margin:0 0 16px;color:#fff}
+.lg-brand h1 span{color:var(--y)}
+.lg-brand p{color:#a3acbf;margin:0 0 30px;font-size:1.02rem}
+.lg-brand__list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.lg-brand__list li{display:flex;align-items:center;gap:10px;color:#c5cdd9;font-size:.92rem}
+.lg-brand__list i{color:var(--y);font-size:1.1rem}
+.lg-panel{display:grid;place-items:center;padding:40px 30px;background:#fff}
+.lg-card{width:min(420px,100%)}
+.lg-card h2{font-size:1.9rem;margin:0 0 6px}
+.lg-card__sub{color:var(--g);margin:0 0 28px}
+.lg-form-group{margin-bottom:18px}
+.lg-label{display:block;font-size:.78rem;font-weight:800;margin-bottom:6px;color:var(--k);letter-spacing:.2px}
+.lg-input{display:flex;align-items:center;border:1.5px solid var(--b);border-radius:12px;padding:0 14px;background:#fff;transition:.15s}
+.lg-input:focus-within{border-color:var(--y2);box-shadow:0 0 0 4px #ffd40022}
+.lg-input i{color:var(--g);font-size:1rem}
+.lg-input input{width:100%;border:0;outline:0;padding:14px 10px;font:inherit;background:transparent}
+.lg-input button{border:0;background:transparent;cursor:pointer;color:var(--g);padding:0 4px}
+.lg-submit{width:100%;border:0;border-radius:12px;background:var(--y);padding:14px;font-weight:900;cursor:pointer;font-size:1rem;color:var(--k);display:flex;align-items:center;justify-content:center;gap:8px;transition:.15s}
+.lg-submit:hover{background:#ffce00}
+.lg-submit:disabled{opacity:.6;cursor:not-allowed}
+.lg-err{display:none;margin-bottom:18px;padding:10px 14px;border-radius:10px;background:var(--err-bg);color:var(--err);font-size:.85rem}
+.lg-hint{margin-top:24px;padding:14px;background:var(--warn-bg);border-radius:10px;font-size:.82rem;color:var(--k);border:1px solid #f0d970}
+.lg-hint code{background:#fff;padding:2px 8px;border-radius:4px;font-size:.85rem;font-weight:800}
+@media(max-width:900px){
+  .lg-wrap{grid-template-columns:1fr}
+  .lg-brand{display:none}
+}
