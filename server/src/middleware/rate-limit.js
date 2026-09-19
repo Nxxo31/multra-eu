@@ -29,3 +29,11 @@ export const publicCotizarLimiter = rateLimit({
   legacyHeaders: false,
   handler: buildHandler(),
 });
+
+export const publicRecordatorioLimiter = rateLimit({
+  windowMs: env.RATE_LIMIT_WINDOW_MS,
+  max: 5,
+  standardHeaders: 'draft-7',
+  legacyHeaders: false,
+  handler: buildHandler(),
+});

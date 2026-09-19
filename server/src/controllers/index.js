@@ -188,3 +188,5 @@ export class StatsController {
     res.json(await this.statsService.getDashboard());
   };
 }
+
+export { RecordatorioController } from './recordatorio.controller.js';

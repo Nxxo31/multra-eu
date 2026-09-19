@@ -127,3 +127,10 @@ export const CotizarSchema = z.object({
   items: z.array(CotizarItemSchema).min(1).max(50),
   descuentoPct: z.coerce.number().min(0).max(100).optional().default(0),
 });
+
+export const RecordatorioCreateSchema = z.object({
+  placa: z.string().trim().min(5).max(8).regex(/^[A-Z0-9-]+$/i, 'Placa solo letras, números y guiones'),
+  nombre: z.string().trim().min(2).max(120),
+  cedula: z.string().trim().min(5).max(20).regex(/^[0-9]+$/, 'Cédula solo dígitos'),
+  celular: z.string().trim().min(7).max(15).regex(/^[0-9+]+$/, 'Celular solo dígitos y +'),
+});

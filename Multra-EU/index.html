@@ -318,34 +318,35 @@
           <li><i class="bi bi-check-circle-fill"></i> Datos protegidos (Ley 1581 de 2012)</li>
         </ul>
       </div>
-      <form class="l-recordatorio__form" onsubmit="event.preventDefault(); alert('¡Listo! Te contactaremos para confirmar.'); this.reset();">
+      <form class="l-recordatorio__form" id="recordatorioForm" novalidate>
         <div class="l-recordatorio__form-head">
           <i class="bi bi-bell-fill"></i>
           <h4>Crear recordatorio</h4>
         </div>
         <label class="l-field">
           <span>Placa del vehículo</span>
-          <input class="input" type="text" placeholder="ABC123" maxlength="7" required>
+          <input class="input" type="text" name="placa" placeholder="ABC123" maxlength="8" required>
         </label>
         <label class="l-field">
           <span>Nombre completo</span>
-          <input class="input" type="text" placeholder="Carlos Rodríguez" required>
+          <input class="input" type="text" name="nombre" placeholder="Carlos Rodríguez" required>
         </label>
         <div class="l-field-row">
           <label class="l-field">
             <span>Cédula</span>
-            <input class="input" type="text" placeholder="1075123456" required>
+            <input class="input" type="text" name="cedula" placeholder="1075123456" required>
           </label>
           <label class="l-field">
             <span>Celular</span>
-            <input class="input" type="tel" placeholder="3001234567" required>
+            <input class="input" type="tel" name="celular" placeholder="3001234567" required>
           </label>
         </div>
         <label class="l-check">
-          <input type="checkbox" required>
+          <input type="checkbox" name="consent" required>
           <span>Autorizo el tratamiento de mis datos y acepto la política de privacidad.</span>
         </label>
         <button class="btn btn-primary l-recordatorio__btn" type="submit"><i class="bi bi-send"></i> Crear recordatorio</button>
+        <div class="l-recordatorio__msg" id="recordatorioMsg" hidden></div>
         <small class="l-recordatorio__legal">Consulta nuestra <a href="#">política de tratamiento de datos personales</a>.</small>
       </form>
     </div>
@@ -600,5 +601,56 @@
 
 <script src="js/core.js"></script>
 <script src="js/landing.js"></script>
+<script>
+(function(){
+  var form = document.getElementById('recordatorioForm');
+  var msg = document.getElementById('recordatorioMsg');
+  var btn = form && form.querySelector('button[type="submit"]');
+  if (!form) return;
+  form.addEventListener('submit', async function(ev){
+    ev.preventDefault();
+    msg.hidden = true;
+    var data = {
+      placa: form.placa.value.trim().toUpperCase(),
+      nombre: form.nombre.value.trim(),
+      cedula: form.cedula.value.trim(),
+      celular: form.celular.value.trim()
+    };
+    if (!data.placa || !data.nombre || !data.cedula || !data.celular || !form.consent.checked) {
+      msg.hidden = false;
+      msg.className = 'l-recordatorio__msg l-recordatorio__msg--err';
+      msg.textContent = 'Completa todos los campos y acepta la política.';
+      return;
+    }
+    btn.disabled = true;
+    btn.innerHTML = '<i class="bi bi-hourglass-split"></i> Enviando...';
+    try {
+      var r = await fetch('/api/recordatorios', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      var body = await r.json().catch(function(){ return {}; });
+      if (r.ok) {
+        msg.hidden = false;
+        msg.className = 'l-recordatorio__msg l-recordatorio__msg--ok';
+        msg.textContent = '¡Listo! Te contactaremos antes del vencimiento de tu RTM/SOAT.';
+        form.reset();
+      } else {
+        msg.hidden = false;
+        msg.className = 'l-recordatorio__msg l-recordatorio__msg--err';
+        msg.textContent = body.error || 'No pudimos guardar el recordatorio. Intenta de nuevo.';
+      }
+    } catch (e) {
+      msg.hidden = false;
+      msg.className = 'l-recordatorio__msg l-recordatorio__msg--err';
+      msg.textContent = 'Sin conexión. Intenta más tarde.';
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="bi bi-send"></i> Crear recordatorio';
+    }
+  });
+})();
+</script>
 </body>
 </html>

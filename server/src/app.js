@@ -24,6 +24,7 @@ import { cotizadorRoutes } from './routes/cotizador.routes.js';
 import { servicioRoutes } from './routes/servicio.routes.js';
 import { statsRoutes } from './routes/stats.routes.js';
 import { healthRoutes } from './routes/health.routes.js';
+import { recordatorioRoutes } from './routes/recordatorio.routes.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -62,11 +63,13 @@ export const createApp = (controllers) => {
   app.use(express.urlencoded({ extended: false, limit: '100kb' }));
   app.use(pinoHttp({
     logger,
-    autoLogging: { ignore: (req) => req.url === '/api/health' },
+    autoLogging: {
+      ignore: (req) => req.url === '/api/health' || req.url.startsWith('/css/') || req.url.startsWith('/js/') || req.url.startsWith('/assets/'),
+    },
     customLogLevel: (req, res, err) => {
       if (err || res.statusCode >= 500) return 'error';
       if (res.statusCode >= 400) return 'warn';
-      return 'debug';
+      return 'silent';
     },
   }));
   app.use(generalLimiter);
@@ -83,6 +86,7 @@ export const createApp = (controllers) => {
   app.use('/api/inspections', inspeccionRoutes({ inspeccionController: controllers.inspeccionController }));
   app.use('/api/cotizar', cotizadorRoutes({ cotizadorController: controllers.cotizadorController }));
   app.use('/api/stats',     statsRoutes({ statsController: controllers.statsController }));
+  app.use('/api/recordatorios', recordatorioRoutes({ recordatorioController: controllers.recordatorioController }));
 
   const frontendPath = path.resolve(__dirname, '../../', env.FRONTEND_DIR);
   if (fs.existsSync(frontendPath)) {

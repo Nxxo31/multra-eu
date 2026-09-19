@@ -13,7 +13,7 @@ const redactPaths = [
 ];
 
 export const logger = pino({
-  level: env.isDevelopment ? 'debug' : 'info',
+  level: env.isDevelopment ? 'info' : 'warn',
   redact: { paths: redactPaths, censor: '[REDACTED]' },
   transport: env.isDevelopment
     ? { target: 'pino-pretty', options: { colorize: true, translateTime: 'HH:MM:ss.l', ignore: 'pid,hostname' } }

@@ -125,4 +125,19 @@ CREATE TABLE IF NOT EXISTS inspections (
   createdAt     TEXT NOT NULL,
   FOREIGN KEY (vehiculoId) REFERENCES vehiculos(id) ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS recordatorios (
+  id            INTEGER PRIMARY KEY AUTOINCREMENT,
+  placa         TEXT NOT NULL,
+  nombre        TEXT NOT NULL,
+  cedula        TEXT NOT NULL,
+  celular       TEXT NOT NULL,
+  estado        TEXT NOT NULL DEFAULT 'pendiente' CHECK (estado IN ('pendiente','enviado','cancelado')),
+  ip            TEXT,
+  userAgent     TEXT,
+  createdAt     TEXT NOT NULL,
+  sentAt        TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_rec_placa ON recordatorios(placa);
+CREATE INDEX IF NOT EXISTS idx_rec_estado ON recordatorios(estado);
 `;
