@@ -644,6 +644,24 @@
   .l-vehicle{max-width:220px}
 }
 
+/* ===== Animaciones sutiles ===== */
+@keyframes l-v-float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-3px)}
+}
+@keyframes l-v-spin{
+  to{transform:rotate(360deg)}
+}
+.l-vehicle{animation:l-v-float 4.5s ease-in-out infinite}
+.l-vehicle .l-v-wheel{animation:l-v-spin 8s linear infinite}
+.l-vehicle .l-v-wheel::after{animation:l-v-spin 8s linear infinite reverse}
+
+/* Pausa al hover (más calmado al interactuar) */
+.l-vehicle-type:hover .l-vehicle,
+.l-hero__card:hover .l-vehicle{animation-play-state:paused}
+.l-vehicle-type:hover .l-v-wheel,
+.l-hero__card:hover .l-v-wheel{animation-play-state:paused}
+
 /* ===== Vehicle-type meta (línea, vigencia) ===== */
 .l-vehicle-type__meta{display:flex;flex-wrap:wrap;gap:8px;padding-top:8px;border-top:1px dashed var(--b);margin-top:auto}
 .l-vehicle-type__meta span{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;color:var(--g);background:var(--bg);padding:3px 8px;border-radius:6px}
