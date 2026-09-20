@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: multra-eu
+    runtime: node
+    rootDir: server
+    plan: free
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: DB_TYPE
+        value: sqlite
+      - key: SQLITE_PATH
+        value: /var/data/multra.db
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 8h
+      - key: BCRYPT_ROUNDS
+        value: 12
+      - key: ADMIN_USER
+        value: multra_admin
+      - key: ADMIN_PASS
+        generateValue: true
+      - key: FRONTEND_DIR
+        value: ../Multra-EU
+      - key: CORS_ORIGINS
+        value: https://multra-eu.onrender.com
+      - key: RATE_LIMIT_WINDOW_MS
+        value: 900000
+      - key: RATE_LIMIT_MAX
+        value: 300
+      - key: AUTH_RATE_LIMIT_MAX
+        value: 10
+
+    disk:
+      name: multra-data
+      mountPath: /var/data
+      sizeGB: 1

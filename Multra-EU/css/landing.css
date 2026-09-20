@@ -595,6 +595,48 @@
 }
 
 /* =================================================================
+   SOCIAL MEDIA — 3 cards (Instagram, Facebook, WhatsApp)
+   ================================================================= */
+.l-social{background:#fff;position:relative}
+.l-social__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:980px;margin:30px auto 0}
+.l-social__card{background:#fff;border:1.5px solid var(--b);border-radius:18px;padding:24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;transition:.3s;text-decoration:none;color:inherit;position:relative;overflow:hidden}
+.l-social__card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(225,48,108,.04) 0%,transparent 50%);opacity:0;transition:opacity .3s}
+.l-social__card--instagram::before{background:linear-gradient(135deg,rgba(240,73,52,.08) 0%,rgba(189,42,153,.08) 50%,rgba(72,91,189,.08) 100%)}
+.l-social__card--facebook::before{background:linear-gradient(135deg,rgba(24,119,242,.08) 0%,transparent 60%)}
+.l-social__card--whatsapp::before{background:linear-gradient(135deg,rgba(37,211,102,.1) 0%,transparent 60%)}
+.l-social__card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(14,19,32,.12);border-color:transparent}
+.l-social__card:hover::before{opacity:1}
+.l-social__icon{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font-size:1.7rem;flex-shrink:0;transition:.3s;color:#fff}
+.l-social__card--instagram .l-social__icon{background:linear-gradient(135deg,#f093fb 0%,#f5576c 50%,#4f5bd5 100%);box-shadow:0 8px 20px rgba(240,73,52,.2)}
+.l-social__card--facebook .l-social__icon{background:linear-gradient(135deg,#1877f2 0%,#0d5cb9 100%);box-shadow:0 8px 20px rgba(24,119,242,.2)}
+.l-social__card--whatsapp .l-social__icon{background:linear-gradient(135deg,#25d366 0%,#128c7e 100%);box-shadow:0 8px 20px rgba(37,211,102,.2)}
+.l-social__card:hover .l-social__icon{transform:scale(1.08) rotate(-6deg)}
+.l-social__body strong{display:block;font-size:1.05rem;font-weight:900;color:var(--k)}
+.l-social__body small{display:block;font-size:.78rem;color:var(--g);margin-top:2px}
+.l-social__followers{display:none}
+.l-social__cta{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;background:var(--bg);border-radius:30px;font-size:.78rem;font-weight:800;color:var(--k);transition:.2s;flex-shrink:0}
+.l-social__cta i{transition:transform .2s}
+.l-social__card:hover .l-social__cta{background:var(--y);color:var(--k)}
+.l-social__card:hover .l-social__cta i{transform:translateX(3px)}
+
+@media(max-width:900px){
+  .l-social__grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .l-social__card{grid-template-columns:auto 1fr;gap:12px;padding:18px}
+  .l-social__cta{grid-column:1 / -1;justify-content:center}
+}
+
+/* =================================================================
+   FOOTER SOCIAL — iconos pequeños en columna brand
+   ================================================================= */
+.l-footer__social{display:flex;gap:8px;margin-top:12px}
+.l-footer__social a{width:38px;height:38px;border-radius:12px;background:rgba(255,212,0,.12);color:var(--y);display:grid;place-items:center;font-size:1rem;transition:.2s}
+.l-footer__social a:hover{background:var(--y);color:var(--k);transform:translateY(-2px)}
+.l-footer__social a[aria-label="WhatsApp"]{color:#25D366}
+.l-footer__social a[aria-label="WhatsApp"]:hover{background:#25D366;color:#fff}
+
+/* =================================================================
    SCROLL REVEAL ANIMATIONS — fade-up entre secciones al hacer scroll
    JS: initScrollReveal() en landing.js añade .l-section-reveal a cada
    <section id> y .is-visible via IntersectionObserver cuando entra al viewport.
