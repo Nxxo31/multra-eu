@@ -595,6 +595,62 @@
 }
 
 /* =================================================================
+   ACCORDION CATALOG — 4 paneles colapsables (RTM, Seguros, Trámites, Otros)
+   Cards dentro de cada panel con estilo rico: gradiente, badge, precio
+   destacado, CTA button. Hover lift + shadow.
+   - Background del body del panel: blanco (no gradient)
+   - Cards: fondo blanco solido
+   - Texto h4: navy #0e1320 (contrast 16:1)
+   - Texto p: gris #4b5563 (contrast 7.5:1)
+   - Tag categoria: amarillo brand con texto navy
+   - Precio: amarillo brand bold (destacado)
+   - CTA: amarillo brand pill (clickeable)
+   ================================================================= */
+.l-accordion{display:flex;flex-direction:column;gap:14px;max-width:980px;margin:0 auto}
+.l-accordion__item{background:#fff;border:1.5px solid var(--b);border-radius:18px;overflow:hidden;transition:.3s}
+.l-accordion__item:hover{border-color:var(--y2);box-shadow:0 8px 20px rgba(14,19,32,.06)}
+.l-accordion__item[open]{border-color:var(--y);box-shadow:0 14px 36px rgba(14,19,32,.12)}
+.l-accordion__head{display:flex;align-items:center;gap:16px;padding:20px 24px;cursor:pointer;list-style:none;transition:background .2s}
+.l-accordion__head::-webkit-details-marker{display:none}
+.l-accordion__head:hover{background:var(--y3)}
+.l-accordion__icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--y3),var(--warn-bg));color:var(--y2);display:grid;place-items:center;font-size:1.4rem;flex-shrink:0;transition:.25s}
+.l-accordion__item[open] .l-accordion__icon{background:linear-gradient(135deg,var(--y),var(--y2));color:var(--k);transform:rotate(-6deg) scale(1.08)}
+.l-accordion__title{flex:1;min-width:0;line-height:1.3}
+.l-accordion__title strong{display:block;font-size:1.15rem;font-weight:900;color:var(--k);margin-bottom:3px;letter-spacing:-.3px}
+.l-accordion__title small{display:block;color:#4b5563;font-size:.8rem;line-height:1.4}
+.l-accordion__count{display:inline-grid;place-items:center;min-width:36px;height:36px;border-radius:14px;background:var(--k);color:#fff;font-weight:800;font-size:.85rem;flex-shrink:0;box-shadow:0 4px 8px rgba(14,19,32,.18)}
+.l-accordion__item[open] .l-accordion__count{background:var(--y);color:var(--k);box-shadow:0 4px 10px rgba(255,212,0,.35)}
+.l-accordion__chev{color:#4b5563;font-size:1.3rem;flex-shrink:0;transition:transform .3s}
+.l-accordion__item[open] .l-accordion__chev{transform:rotate(180deg);color:var(--y2)}
+.l-accordion__body{padding:18px 24px 24px;border-top:1px dashed var(--b);margin-top:0;background:#fff}
+.l-accordion__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.l-accordion__service{background:#fff;border:1.5px solid var(--b);border-radius:14px;padding:18px;transition:.25s;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:10px}
+.l-accordion__service::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--y);transform:scaleY(0);transform-origin:bottom;transition:transform .25s}
+.l-accordion__service:hover{border-color:var(--y);box-shadow:0 10px 24px rgba(14,19,32,.1);transform:translateY(-3px)}
+.l-accordion__service:hover::before{transform:scaleY(1)}
+.l-accordion__service-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.l-accordion__service-ico{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--y3),var(--warn-bg));color:var(--y2);display:grid;place-items:center;font-size:1.4rem;flex-shrink:0;transition:.25s}
+.l-accordion__service:hover .l-accordion__service-ico{background:linear-gradient(135deg,var(--y),var(--y2));color:var(--k);transform:rotate(-6deg) scale(1.05)}
+.l-accordion__service-cat{display:inline-block;font-size:.65rem;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--k);background:var(--y);padding:4px 8px;border-radius:5px;margin-bottom:6px}
+.l-accordion__service-body{flex:1;min-width:0}
+.l-accordion__service-name{font-size:1rem;font-weight:900;color:var(--k);margin:0 0 6px;line-height:1.3}
+.l-accordion__service-desc{font-size:.82rem;color:#4b5563;margin:0 0 12px;line-height:1.5}
+.l-accordion__service-foot{display:flex;justify-content:space-between;align-items:center;padding-top:12px;margin-top:auto;border-top:1px solid var(--b)}
+.l-accordion__service-price{font-weight:900;font-size:1.15rem;color:var(--y2);font-variant-numeric:tabular-nums}
+.l-accordion__service-cta{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:.78rem;color:var(--k);background:var(--y);padding:8px 16px;border-radius:30px;text-decoration:none;transition:.15s}
+.l-accordion__service-cta i{transition:transform .15s}
+.l-accordion__service-cta:hover{background:#ffce00;color:var(--k);transform:translateY(-2px);box-shadow:0 4px 10px rgba(255,212,0,.35)}
+.l-accordion__service-cta:hover i{transform:translateX(3px)}
+
+@media(max-width:640px){
+  .l-accordion__grid{grid-template-columns:1fr}
+  .l-accordion__head{padding:16px 18px;gap:12px;flex-wrap:wrap}
+  .l-accordion__icon{width:44px;height:44px;font-size:1.2rem}
+  .l-accordion__title small{display:none}
+  .l-accordion__service{grid-template-columns:1fr}
+}
+
+/* =================================================================
    SOCIAL MEDIA — 3 cards (Instagram, Facebook, WhatsApp)
    ================================================================= */
 .l-social{background:#fff;position:relative}

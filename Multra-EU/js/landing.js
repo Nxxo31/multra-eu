@@ -135,15 +135,17 @@
       const isOpen = idx === 0 ? ' open' : '';
       const servicesHtml = list.map(s => `
         <div class="l-accordion__service" data-id="${s.id}">
-          <div class="l-service__ico"><i class="bi ${ICON[s.id] || 'bi-car-front'}"></i></div>
+          <div class="l-accordion__service-head">
+            <div class="l-accordion__service-ico"><i class="bi ${ICON[s.id] || 'bi-car-front'}"></i></div>
+            <div class="l-accordion__service-cat">${Multra.esc(meta.tag)}</div>
+          </div>
           <div class="l-accordion__service-body">
-            <span class="l-accordion__service-cat">${Multra.esc(meta.tag)}</span>
-            <h4>${Multra.esc(s.nombre)}</h4>
-            <p>${Multra.esc(s.desc || '')}</p>
+            <h4 class="l-accordion__service-name">${Multra.esc(s.nombre)}</h4>
+            <p class="l-accordion__service-desc">${Multra.esc(s.desc || '')}</p>
           </div>
           <div class="l-accordion__service-foot">
             <span class="l-accordion__service-price">${Multra.fmtCOP(s.precio)}</span>
-            <a class="l-accordion__service-link" href="#cotizar" data-jump="${s.id}">
+            <a class="l-accordion__service-cta" href="#cotizar" data-jump="${s.id}">
               Cotizar <i class="bi bi-arrow-right"></i>
             </a>
           </div>
@@ -171,6 +173,17 @@
       document.getElementById('cotizar').scrollIntoView({ behavior: 'smooth' });
       setTimeout(() => addService(a.dataset.jump, 1), 400);
     }));
+  }
+
+  function bindJumpDelegation() {
+    document.addEventListener('click', e => {
+      const a = e.target.closest('[data-jump]');
+      if (!a) return;
+      e.preventDefault();
+      const tgt = document.getElementById('cotizar');
+      if (tgt) tgt.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => addService(a.dataset.jump, 1), 400);
+    });
   }
 
   function renderGrid() {
@@ -398,6 +411,7 @@
   }
 
   loadServicios();
+  bindJumpDelegation();
 
   // Scroll reveal: fade-up entre secciones al hacer scroll
   (function initScrollReveal(){
