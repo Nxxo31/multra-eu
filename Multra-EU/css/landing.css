@@ -384,16 +384,273 @@
 .l-recordatorio__bullets li{color:#fff}
 .l-recordatorio__bullets i{color:#ffd400}
 
+/* =================================================================
+   VEHICLE COMPONENT — CSS art 2D puro (sin SVG, sin imagen)
+   Renderiza autos, motos y buses en vista lateral con gradientes,
+   clip-path y box-shadow. 100% recoloreable via custom properties.
+   ================================================================= */
+
+.l-vehicle{
+  --v-body-1:#3a4660;
+  --v-body-2:#1f2940;
+  --v-body-3:#0a1020;
+  --v-window-1:#bfe9eb;
+  --v-window-2:#3f8590;
+  --v-rim-1:#ffd400;
+  --v-rim-2:#a77c00;
+  --v-rim-3:#3f2c00;
+  --v-shadow:rgba(0,0,0,.3);
+  --v-highlight:rgba(255,255,255,.25);
+  --v-line:#0a1020;
+  --v-headlight:#fff5d6;
+  --v-taillight:#b91c1c;
+  --v-wheel-bg:#0a0a14;
+
+  position:relative;
+  width:100%;
+  max-width:280px;
+  aspect-ratio:280/150;
+  margin:0 auto;
+  isolation:isolate;
+  transition:transform .3s ease;
+}
+.l-vehicle-type:hover .l-vehicle,
+.l-hero__card:hover .l-vehicle{transform:translateY(-4px)}
+
+/* Shadow (suelo) */
+.l-vehicle::before{
+  content:"";
+  position:absolute;
+  left:8%;right:8%;bottom:0;
+  height:14%;
+  background:radial-gradient(ellipse at center,var(--v-shadow) 0%,transparent 70%);
+  z-index:-1;
+}
+
+/* ===== SEDAN (vista lateral) ===== */
+.l-vehicle--sedan{--v-h:150}
+.l-vehicle--sedan .l-v-body{
+  position:absolute;
+  left:6%;right:6%;top:46%;bottom:14%;
+  background:linear-gradient(180deg,var(--v-body-1) 0%,var(--v-body-2) 60%,var(--v-body-3) 100%);
+  border-radius:18% 22% 8% 8% / 30% 35% 8% 8%;
+  clip-path:polygon(2% 30%,8% 0%,18% -10%,78% -8%,94% 5%,99% 60%,99% 100%,1% 100%);
+  box-shadow:
+    inset 0 -3px 0 var(--v-line),
+    inset 2px 0 0 rgba(255,255,255,.05);
+}
+.l-vehicle--sedan .l-v-roof{
+  position:absolute;
+  left:18%;top:18%;right:24%;
+  height:30%;
+  background:linear-gradient(180deg,var(--v-body-2) 0%,var(--v-body-1) 100%);
+  clip-path:polygon(8% 100%,0% 0%,24% -16%,76% -20%,100% 100%);
+  border-radius:8px 8px 0 0;
+}
+.l-vehicle--sedan .l-v-window{
+  position:absolute;
+  top:24%;height:22%;
+  background:linear-gradient(180deg,var(--v-window-1) 0%,var(--v-window-2) 100%);
+  border-radius:4px 4px 2px 2px;
+  box-shadow:inset 0 -2px 0 rgba(255,255,255,.2);
+}
+.l-vehicle--sedan .l-v-window--front{left:20%;width:30%}
+.l-vehicle--sedan .l-v-window--rear{left:52%;width:25%}
+.l-vehicle--sedan .l-v-pillar{
+  position:absolute;
+  top:24%;height:24%;width:1.5%;
+  background:var(--v-line);
+}
+.l-vehicle--sedan .l-v-pillar--front{left:50%}
+.l-vehicle--sedan .l-v-pillar--rear{left:51.5%}
+.l-vehicle--sedan .l-v-beltline{
+  position:absolute;
+  left:6%;right:6%;top:58%;height:1.5%;
+  background:linear-gradient(90deg,transparent,var(--v-highlight),transparent);
+}
+.l-vehicle--sedan .l-v-headlight,
+.l-vehicle--sedan .l-v-taillight{
+  position:absolute;
+  width:4%;height:6%;
+  border-radius:50%;
+  top:58%;
+}
+.l-vehicle--sedan .l-v-headlight{left:2%;background:radial-gradient(circle,#fff 0%,var(--v-headlight) 60%,transparent 100%);box-shadow:0 0 8px var(--v-headlight)}
+.l-vehicle--sedan .l-v-taillight{right:2%;background:var(--v-taillight);box-shadow:inset 0 0 2px rgba(255,255,255,.3)}
+
+/* Ruedas sedan */
+.l-vehicle--sedan .l-v-wheel{
+  position:absolute;
+  width:18%;aspect-ratio:1;
+  bottom:0;
+  background:radial-gradient(circle,var(--v-rim-1) 0%,var(--v-rim-2) 60%,var(--v-rim-3) 100%);
+  border-radius:50%;
+  border:2px solid var(--v-wheel-bg);
+  box-shadow:inset 0 0 0 2px var(--v-rim-3);
+}
+.l-vehicle--sedan .l-v-wheel::after{
+  content:"";
+  position:absolute;
+  inset:25%;
+  background:var(--v-wheel-bg);
+  border-radius:50%;
+  box-shadow:
+    inset 0 0 0 1px var(--v-rim-2),
+    0 -25% 0 1px var(--v-rim-3),
+    0 25% 0 1px var(--v-rim-3),
+    -25% 0 0 1px var(--v-rim-3),
+    25% 0 0 1px var(--v-rim-3);
+}
+.l-vehicle--sedan .l-v-wheel--front{left:14%}
+.l-vehicle--sedan .l-v-wheel--rear{right:14%}
+
+/* ===== MOTO (vista lateral) ===== */
+.l-vehicle--moto{--v-h:130}
+.l-vehicle--moto .l-v-body{
+  position:absolute;
+  left:24%;right:24%;top:54%;bottom:16%;
+  background:linear-gradient(180deg,var(--v-body-1) 0%,var(--v-body-3) 100%);
+  border-radius:30px 30px 16px 16px;
+  box-shadow:inset 0 -2px 0 var(--v-line);
+}
+.l-vehicle--moto .l-v-tank{
+  position:absolute;
+  left:30%;right:46%;top:42%;height:18%;
+  background:linear-gradient(180deg,var(--v-window-1) 0%,var(--v-window-2) 100%);
+  border-radius:16px 8px 4px 4px;
+  box-shadow:inset 0 -1px 0 rgba(0,0,0,.2);
+}
+.l-vehicle--moto .l-v-seat{
+  position:absolute;
+  left:46%;right:36%;top:48%;height:10%;
+  background:linear-gradient(180deg,#0a0a14,#1f2940);
+  border-radius:8px 4px 2px 2px;
+}
+.l-vehicle--moto .l-v-handlebar{
+  position:absolute;
+  left:25%;top:48%;width:14%;height:6%;
+  border-top:4px solid var(--v-line);
+  border-left:2px solid var(--v-line);
+  border-radius:6px 0 0 0;
+}
+.l-vehicle--moto .l-v-exhaust{
+  position:absolute;
+  left:54%;right:24%;top:74%;height:5%;
+  background:linear-gradient(180deg,#2a324a,#5a6680);
+  border-radius:0 4px 4px 0;
+}
+.l-vehicle--moto .l-v-headlight,
+.l-vehicle--moto .l-v-taillight{
+  position:absolute;
+  width:5%;height:8%;
+  border-radius:50%;
+  top:46%;
+}
+.l-vehicle--moto .l-v-headlight{left:22%;background:radial-gradient(circle,#fff 0%,var(--v-headlight) 60%,transparent 100%);box-shadow:0 0 6px var(--v-headlight)}
+.l-vehicle--moto .l-v-taillight{right:22%;background:var(--v-taillight)}
+
+/* Ruedas moto */
+.l-vehicle--moto .l-v-wheel{
+  position:absolute;
+  width:22%;aspect-ratio:1;
+  bottom:0;
+  background:radial-gradient(circle,var(--v-rim-1) 0%,var(--v-rim-2) 60%,var(--v-rim-3) 100%);
+  border-radius:50%;
+  border:2px solid var(--v-wheel-bg);
+}
+.l-vehicle--moto .l-v-wheel::after{
+  content:"";
+  position:absolute;
+  inset:22%;
+  background:var(--v-wheel-bg);
+  border-radius:50%;
+  box-shadow:
+    inset 0 0 0 1px var(--v-rim-2),
+    0 -22% 0 1px var(--v-rim-3),
+    0 22% 0 1px var(--v-rim-3),
+    -22% 0 0 1px var(--v-rim-3),
+    22% 0 0 1px var(--v-rim-3);
+}
+.l-vehicle--moto .l-v-wheel--front{left:6%}
+.l-vehicle--moto .l-v-wheel--rear{right:6%}
+
+/* ===== BUS (vista lateral) ===== */
+.l-vehicle--bus{--v-h:140}
+.l-vehicle--bus .l-v-body{
+  position:absolute;
+  left:4%;right:4%;top:34%;bottom:14%;
+  background:linear-gradient(180deg,var(--v-body-1) 0%,var(--v-body-2) 50%,var(--v-body-3) 100%);
+  border-radius:14px 22px 6px 6px / 24px 40px 6px 6px;
+  box-shadow:inset 0 -3px 0 var(--v-line);
+}
+.l-vehicle--bus .l-v-window{
+  position:absolute;
+  top:38%;height:24%;
+  background:linear-gradient(180deg,var(--v-window-1) 0%,var(--v-window-2) 100%);
+  border-radius:3px 3px 2px 2px;
+  box-shadow:inset 0 -2px 0 rgba(255,255,255,.15);
+}
+.l-vehicle--bus .l-v-window--front{left:8%;width:14%}
+.l-vehicle--bus .l-v-window--mid1{left:24%;width:11%}
+.l-vehicle--bus .l-v-window--mid2{left:36%;width:11%}
+.l-vehicle--bus .l-v-window--mid3{left:48%;width:11%}
+.l-vehicle--bus .l-v-window--mid4{left:60%;width:11%}
+.l-vehicle--bus .l-v-window--mid5{left:72%;width:11%}
+.l-vehicle--bus .l-v-window--rear{right:8%;width:14%}
+.l-vehicle--bus .l-v-stripe{
+  position:absolute;
+  left:4%;right:4%;top:70%;height:2%;
+  background:linear-gradient(90deg,transparent,var(--v-rim-1) 50%,transparent);
+  opacity:.5;
+}
+.l-vehicle--bus .l-v-headlight,
+.l-vehicle--bus .l-v-taillight{
+  position:absolute;
+  width:3.5%;height:8%;
+  border-radius:30%;
+  top:58%;
+}
+.l-vehicle--bus .l-v-headlight{left:1.5%;background:radial-gradient(circle,#fff 0%,var(--v-headlight) 60%,transparent 100%);box-shadow:0 0 8px var(--v-headlight)}
+.l-vehicle--bus .l-v-taillight{right:1.5%;background:var(--v-taillight)}
+
+/* Ruedas bus */
+.l-vehicle--bus .l-v-wheel{
+  position:absolute;
+  width:16%;aspect-ratio:1;
+  bottom:0;
+  background:radial-gradient(circle,var(--v-rim-1) 0%,var(--v-rim-2) 60%,var(--v-rim-3) 100%);
+  border-radius:50%;
+  border:2px solid var(--v-wheel-bg);
+}
+.l-vehicle--bus .l-v-wheel::after{
+  content:"";
+  position:absolute;
+  inset:25%;
+  background:var(--v-wheel-bg);
+  border-radius:50%;
+  box-shadow:
+    inset 0 0 0 1px var(--v-rim-2),
+    0 -25% 0 1px var(--v-rim-3),
+    0 25% 0 1px var(--v-rim-3),
+    -25% 0 0 1px var(--v-rim-3),
+    25% 0 0 1px var(--v-rim-3);
+}
+.l-vehicle--bus .l-v-wheel--front{left:8%}
+.l-vehicle--bus .l-v-wheel--mid{left:42%}
+.l-vehicle--bus .l-v-wheel--rear{right:8%}
+
+/* ===== Ajustes responsive para componente ===== */
+@media(max-width:560px){
+  .l-vehicle{max-width:220px}
+}
+
 /* ===== Vehicle-type meta (línea, vigencia) ===== */
 .l-vehicle-type__meta{display:flex;flex-wrap:wrap;gap:8px;padding-top:8px;border-top:1px dashed var(--b);margin-top:auto}
 .l-vehicle-type__meta span{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;color:var(--g);background:var(--bg);padding:3px 8px;border-radius:6px}
 .l-vehicle-type__meta i{color:var(--y2);font-size:.85rem}
 
-/* ===== Vehicle SVG enhanced (siluetas profesionales) ===== */
-.l-vehicle-svg{width:100%;max-width:280px;height:auto;transition:transform .35s ease}
-.l-hero__silhouette{width:100%;max-width:280px;height:auto;transition:transform .35s ease}
-.l-vehicle-type:hover .l-vehicle-svg{transform:translateY(-4px) scale(1.03)}
-.l-vehicle-type__visual{min-height:160px}
+/* ===== Vehicle CSS art (legacy class adjustments) ===== */
+.l-vehicle-type__visual{min-height:160px;display:grid;place-items:center}
 
 /* ===== Inspección RTM — foot simplificado ===== */
 .l-insp-foot{justify-content:center;padding-top:20px;border-top:1px dashed var(--b);margin-top:6px}
