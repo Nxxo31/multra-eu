@@ -1,25 +1,25 @@
 // Multra E.U. — Lógica de la landing pública. Conectada al backend.
 (function () {
   const ICON = {
-    rtm_liv: 'bi-tools', rtm_moto: 'bi-motorcycle', rtm_pes: 'bi-truck',
-    soat_auto_lt10: 'bi-shield-check', soat_auto_mid: 'bi-shield-check', soat_auto_gt10: 'bi-shield-check',
-    soat_moto_100: 'bi-shield-check', soat_moto_gt200: 'bi-shield-check',
-    tr_auto_basico: 'bi-shield-lock', tr_auto_full: 'bi-shield-lock',
-    traspaso_auto: 'bi-arrow-left-right', traspaso_moto: 'bi-arrow-left-right',
-    licencia_carro_nueva: 'bi-person-vcard', licencia_moto_nueva: 'bi-person-vcard',
-    licencia_carro_renov: 'bi-person-vcard', licencia_moto_renov: 'bi-person-vcard',
-    placas: 'bi-badge-ad',
-    motor: 'bi-wrench-adjustable', peritaje: 'bi-search', gnvc: 'bi-fuel-pump'
+    rtm_liv: 'wrench', rtm_moto: 'motorcycle', rtm_pes: 'truck',
+    soat_auto_lt10: 'shield-check', soat_auto_mid: 'shield-check', soat_auto_gt10: 'shield-check',
+    soat_moto_100: 'shield-check', soat_moto_gt200: 'shield-check',
+    tr_auto_basico: 'shield-star', tr_auto_full: 'shield-star',
+    traspaso_auto: 'arrow-left-right', traspaso_moto: 'arrow-left-right',
+    licencia_carro_nueva: 'identification-card', licencia_moto_nueva: 'identification-card',
+    licencia_carro_renov: 'identification-card', licencia_moto_renov: 'identification-card',
+    placas: 'license-plate',
+    motor: 'wrench', peritaje: 'magnifying-glass', gnvc: 'gas-pump'
   };
 
   const CAT_LABEL = { tecnomecanica: 'RTM', seguro: 'Seguros', tramite: 'Trámites', peritaje: 'Otros' };
 
   const PACKAGES = [
-    { id: 'pkg-rtm-completo', icon: 'bi-tools', titulo: 'RTM Completo', desc: 'Revisión + certificado digital + gestión RUNT', items: ['rtm_liv'], descuento: 5, badge: 'Más popular' },
-    { id: 'pkg-rtm-soat', icon: 'bi-shield-check', titulo: 'RTM + SOAT', desc: 'Inspección + póliza SOAT auto en combo', items: ['rtm_liv', 'soat_auto_lt10'], descuento: 8, badge: 'Ahorra 8%' },
-    { id: 'pkg-traspaso-auto', icon: 'bi-arrow-left-right', titulo: 'Traspaso Auto', desc: 'Cambio de propietario completo ante SDM', items: ['traspaso_auto'], descuento: 5, badge: null },
-    { id: 'pkg-licencia-nueva', icon: 'bi-person-vcard', titulo: 'Licencia 1ª vez', desc: 'Trámite + certificado + entrega', items: ['licencia_carro_nueva'], descuento: 5, badge: null },
-    { id: 'pkg-flotilla', icon: 'bi-truck', titulo: 'Flotilla Pesados', desc: 'RTM + seguro para vehículo pesado', items: ['rtm_pes', 'soat_auto_lt10'], descuento: 10, badge: 'Ahorra 10%' },
+    { id: 'pkg-rtm-completo', icon: 'ph:wrench', titulo: 'RTM Completo', desc: 'Revisión + certificado digital + gestión RUNT', items: ['rtm_liv'], descuento: 5, badge: 'Más popular' },
+    { id: 'pkg-rtm-soat', icon: 'ph:shield-check', titulo: 'RTM + SOAT', desc: 'Inspección + póliza SOAT auto en combo', items: ['rtm_liv', 'soat_auto_lt10'], descuento: 8, badge: 'Ahorra 8%' },
+    { id: 'pkg-traspaso-auto', icon: 'ph:arrow-left-right', titulo: 'Traspaso Auto', desc: 'Cambio de propietario completo ante SDM', items: ['traspaso_auto'], descuento: 5, badge: null },
+    { id: 'pkg-licencia-nueva', icon: 'ph:identification-card', titulo: 'Licencia 1ª vez', desc: 'Trámite + certificado + entrega', items: ['licencia_carro_nueva'], descuento: 5, badge: null },
+    { id: 'pkg-flotilla', icon: 'ph:truck', titulo: 'Flotilla Pesados', desc: 'RTM + seguro para vehículo pesado', items: ['rtm_pes', 'soat_auto_lt10'], descuento: 10, badge: 'Ahorra 10%' },
   ];
 
   let SERVICIOS = [];
@@ -42,7 +42,7 @@
     } catch (e) {
       console.error('Fallo cargando servicios:', e);
       const grid = document.getElementById('cotGrid');
-      if (grid) grid.innerHTML = '<div class="l-cot__error"><i class="bi bi-wifi-off"></i> No pudimos cargar el catálogo. Intenta recargar.</div>';
+      if (grid) grid.innerHTML = '<div class="l-cot__error"><i class="bi ph:wifi-slash"></i> No pudimos cargar el catálogo. Intenta recargar.</div>';
       return;
     }
     renderTabs();
@@ -74,7 +74,7 @@
     el.innerHTML = PACKAGES.map(p => {
       const itemsList = p.items.map(id => {
         const s = SERVICIOS.find(x => x.id === id);
-        return s ? `<li><i class="bi bi-check2"></i> ${Multra.esc(s.nombre)}</li>` : '';
+        return s ? `<li><i class="bi ph:check"></i> ${Multra.esc(s.nombre)}</li>` : '';
       }).join('');
       const subtotal = p.items.reduce((sum, id) => {
         const s = SERVICIOS.find(x => x.id === id);
@@ -99,7 +99,7 @@
               ${p.descuento ? `<span class="l-pkg__save">-${p.descuento}%</span>` : ''}
             </div>
             <button class="btn btn-dark btn-sm" data-add-pkg="${p.id}">
-              <i class="bi bi-${activePackage === p.id ? 'check-lg' : 'plus-lg'}"></i>
+              <iconify-icon icon="ph:${activePackage === p.id ? 'check-circle' : 'plus'}"></iconify-icon>
               ${activePackage === p.id ? 'Seleccionado' : 'Agregar'}
             </button>
           </div>
@@ -116,10 +116,10 @@
     if (!el || !SERVICIOS.length) return;
 
     const CAT_ACCORDION = {
-      tecnomecanica: { icon: 'bi-tools', tag: 'Inspección', desc: 'Revisión Técnico-Mecánica en nuestras 3 líneas (livianos, motos, pesados).' },
-      seguro:        { icon: 'bi-shield-check', tag: 'Seguros', desc: 'SOAT y todo riesgo con aseguradoras aliadas (Sura, Mapfre, Previsora).' },
+      tecnomecanica: { icon: 'ph:wrench', tag: 'Inspección', desc: 'Revisión Técnico-Mecánica en nuestras 3 líneas (livianos, motos, pesados).' },
+      seguro:        { icon: 'ph:shield-check', tag: 'Seguros', desc: 'SOAT y todo riesgo con aseguradoras aliadas (Sura, Mapfre, Previsora).' },
       tramite:       { icon: 'bi-file-earmark-text', tag: 'Gestoría', desc: 'Traspasos, licencias, cambio de motor, GNV, placas y más.' },
-      peritaje:      { icon: 'bi-search', tag: 'Diagnóstico', desc: 'Peritajes y revisiones para seguros, accidentes o actualización de datos.' }
+      peritaje:      { icon: 'ph:magnifying-glass', tag: 'Diagnóstico', desc: 'Peritajes y revisiones para seguros, accidentes o actualización de datos.' }
     };
 
     const order = ['tecnomecanica', 'seguro', 'tramite', 'peritaje'];
@@ -146,7 +146,7 @@
           <div class="l-accordion__service-foot">
             <span class="l-accordion__service-price">${Multra.fmtCOP(s.precio)}</span>
             <a class="l-accordion__service-cta" href="#cotizar" data-jump="${s.id}">
-              Cotizar <i class="bi bi-arrow-right"></i>
+              Cotizar <i class="bi ph:arrow-right"></i>
             </a>
           </div>
         </div>`).join('');
@@ -160,7 +160,7 @@
               <small>${Multra.esc(meta.desc)}</small>
             </div>
             <span class="l-accordion__count">${list.length}</span>
-            <i class="l-accordion__chev bi bi-chevron-down"></i>
+            <i class="l-accordion__chev bi ph:caret-down"></i>
           </summary>
           <div class="l-accordion__body">
             <div class="l-accordion__grid">${servicesHtml}</div>
@@ -205,8 +205,8 @@
           <div class="l-cot__card-foot">
             <span class="l-cot__card-price">${Multra.fmtCOP(s.precio)}</span>
             ${qty > 0
-              ? `<div class="l-qty"><button type="button" data-dec="${s.id}" aria-label="Quitar uno"><i class="bi bi-dash"></i></button><span class="l-qty__val">${qty}</span><button type="button" data-inc="${s.id}" aria-label="Agregar uno"><i class="bi bi-plus"></i></button></div>`
-              : `<button type="button" class="l-cot__add" data-add="${s.id}"><i class="bi bi-plus-lg"></i> Agregar</button>`}
+              ? `<div class="l-qty"><button type="button" data-dec="${s.id}" aria-label="Quitar uno"><i class="bi ph:minus"></i></button><span class="l-qty__val">${qty}</span><button type="button" data-inc="${s.id}" aria-label="Agregar uno"><i class="bi ph:plus"></i></button></div>`
+              : `<button type="button" class="l-cot__add" data-add="${s.id}"><i class="bi ph:plus-lg"></i> Agregar</button>`}
           </div>
         </div>`;
     }).join('');
@@ -277,7 +277,7 @@
     }
 
     if (!cart.length) {
-      cartEl.innerHTML = '<div class="l-cot__empty"><i class="bi bi-bag"></i><strong>Tu cotización está vacía</strong><small>Suma servicios del catálogo o elige un paquete para empezar.</small></div>';
+      cartEl.innerHTML = '<div class="l-cot__empty"><i class="bi ph:shopping-bag"></i><strong>Tu cotización está vacía</strong><small>Suma servicios del catálogo o elige un paquete para empezar.</small></div>';
       totalsEl.hidden = true;
       return;
     }
@@ -304,10 +304,10 @@
             <small>${fmt(x.precio)} c/u</small>
           </div>
           <div class="l-qty l-qty--mini">
-            <button type="button" data-dec="${x.id}" aria-label="Quitar uno"><i class="bi bi-dash"></i></button>
+            <button type="button" data-dec="${x.id}" aria-label="Quitar uno"><i class="bi ph:minus"></i></button>
             <span class="l-qty__val">${x.cantidad}</span>
-            <button type="button" data-inc="${x.id}" aria-label="Agregar uno"><i class="bi bi-plus"></i></button>
-            <button type="button" class="l-qty__rm" data-rm="${x.id}" aria-label="Eliminar"><i class="bi bi-x"></i></button>
+            <button type="button" data-inc="${x.id}" aria-label="Agregar uno"><i class="bi ph:plus"></i></button>
+            <button type="button" class="l-qty__rm" data-rm="${x.id}" aria-label="Eliminar"><i class="bi ph:x"></i></button>
           </div>
         </div>`).join('');
 
@@ -352,9 +352,9 @@
         <div class="l-cot__cart-line">
           <div class="l-cot__cart-line-main"><strong>${Multra.esc(x.nombre)}</strong><small>${fmt(x.precio)} c/u</small></div>
           <div class="l-qty l-qty--mini">
-            <button type="button" data-dec="${x.id}"><i class="bi bi-dash"></i></button>
+            <button type="button" data-dec="${x.id}"><i class="bi ph:minus"></i></button>
             <span class="l-qty__val">${x.cantidad}</span>
-            <button type="button" data-inc="${x.id}"><i class="bi bi-plus"></i></button>
+            <button type="button" data-inc="${x.id}"><i class="bi ph:plus"></i></button>
           </div>
         </div>`).join('');
       document.getElementById('cotSubtotal').textContent = fmt(subtotal);
