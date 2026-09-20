@@ -114,22 +114,58 @@
   function renderCatalogSection() {
     const el = document.getElementById('publicServices');
     if (!el || !SERVICIOS.length) return;
-    el.classList.add('l-services--catalog');
-    el.innerHTML = SERVICIOS.map(s => `
-      <div class="l-service l-service--catalog" data-id="${s.id}">
-        <div class="l-service__head">
+
+    const CAT_ACCORDION = {
+      tecnomecanica: { icon: 'bi-tools', tag: 'Inspección', desc: 'Revisión Técnico-Mecánica en nuestras 3 líneas (livianos, motos, pesados).' },
+      seguro:        { icon: 'bi-shield-check', tag: 'Seguros', desc: 'SOAT y todo riesgo con aseguradoras aliadas (Sura, Mapfre, Previsora).' },
+      tramite:       { icon: 'bi-file-earmark-text', tag: 'Gestoría', desc: 'Traspasos, licencias, cambio de motor, GNV, placas y más.' },
+      peritaje:      { icon: 'bi-search', tag: 'Diagnóstico', desc: 'Peritajes y revisiones para seguros, accidentes o actualización de datos.' }
+    };
+
+    const order = ['tecnomecanica', 'seguro', 'tramite', 'peritaje'];
+    const grouped = {};
+    for (const s of SERVICIOS) {
+      (grouped[s.tipo] = grouped[s.tipo] || []).push(s);
+    }
+
+    el.className = 'l-accordion';
+    el.innerHTML = order.map((tipo, idx) => {
+      const list = grouped[tipo] || [];
+      const meta = CAT_ACCORDION[tipo] || { icon: 'bi-grid', tag: tipo, desc: '' };
+      const isOpen = idx === 0 ? ' open' : '';
+      const servicesHtml = list.map(s => `
+        <div class="l-accordion__service" data-id="${s.id}">
           <div class="l-service__ico"><i class="bi ${ICON[s.id] || 'bi-car-front'}"></i></div>
-          <div class="l-service__title">
-            <span class="l-service__cat">${CAT_LABEL[s.tipo] || s.tipo}</span>
-            <h3>${Multra.esc(s.nombre)}</h3>
+          <div class="l-accordion__service-body">
+            <span class="l-accordion__service-cat">${Multra.esc(meta.tag)}</span>
+            <h4>${Multra.esc(s.nombre)}</h4>
+            <p>${Multra.esc(s.desc || '')}</p>
           </div>
-        </div>
-        <p>${Multra.esc(s.desc || '')}</p>
-        <div class="l-service__foot">
-          <span class="l-service__price">${Multra.fmtCOP(s.precio)}</span>
-          <a class="l-service__link" href="#cotizar" data-jump="${s.id}">Cotizar <i class="bi bi-arrow-right"></i></a>
-        </div>
-      </div>`).join('');
+          <div class="l-accordion__service-foot">
+            <span class="l-accordion__service-price">${Multra.fmtCOP(s.precio)}</span>
+            <a class="l-accordion__service-link" href="#cotizar" data-jump="${s.id}">
+              Cotizar <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>`).join('');
+
+      return `
+        <details class="l-accordion__item"${isOpen}>
+          <summary class="l-accordion__head">
+            <i class="l-accordion__icon ${meta.icon}"></i>
+            <div class="l-accordion__title">
+              <strong>${Multra.esc(CAT_LABEL[tipo] || tipo)}</strong>
+              <small>${Multra.esc(meta.desc)}</small>
+            </div>
+            <span class="l-accordion__count">${list.length}</span>
+            <i class="l-accordion__chev bi bi-chevron-down"></i>
+          </summary>
+          <div class="l-accordion__body">
+            <div class="l-accordion__grid">${servicesHtml}</div>
+          </div>
+        </details>`;
+    }).join('');
+
     el.querySelectorAll('[data-jump]').forEach(a => a.addEventListener('click', e => {
       e.preventDefault();
       document.getElementById('cotizar').scrollIntoView({ behavior: 'smooth' });
