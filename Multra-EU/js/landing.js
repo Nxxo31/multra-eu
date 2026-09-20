@@ -398,4 +398,21 @@
   }
 
   loadServicios();
+
+  // Scroll reveal: fade-up entre secciones al hacer scroll
+  (function initScrollReveal(){
+    if (typeof IntersectionObserver === 'undefined') return;
+    var sections = document.querySelectorAll('section[id]:not(#inicio)');
+    if (!sections.length) return;
+    sections.forEach(function(s){ s.classList.add('l-section-reveal'); });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+    sections.forEach(function(s){ io.observe(s); });
+  })();
 })();

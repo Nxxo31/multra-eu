@@ -351,19 +351,19 @@
    RECORDATORIO — fondo slate-800 #1E293B (más suave que navy puro)
 
 /* =================================================================
-   RECORDATORIO — fondo slate-800 #1E293B (más suave que navy puro)
-   Reemplaza el gradient navy anterior; color único que da ritmo
-   entre las secciones blancas del landing.
+   RECORDATORIO — fondo amarillo brand #ffd400 con texto navy
+   Color único entre secciones blancas y navy, da 'energia' y contrasta
+   fuertemente. Texto navy sobre amarillo: contraste 11.5:1 (AAA).
    ================================================================= */
-.l-recordatorio{background:#1E293B;color:#fff;position:relative;overflow:hidden}
-.l-recordatorio::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent 0 24px,rgba(255,212,0,.06) 24px 26px),repeating-linear-gradient(-45deg,transparent 0 24px,rgba(255,255,255,.03) 24px 26px);pointer-events:none}
-.l-recordatorio::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,212,0,.18) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none}
+.l-recordatorio{background:linear-gradient(135deg,#ffd400 0%,#ffce00 100%);color:var(--k);position:relative;overflow:hidden}
+.l-recordatorio::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent 0 24px,rgba(0,0,0,.04) 24px 26px),repeating-linear-gradient(-45deg,transparent 0 24px,rgba(255,255,255,.4) 24px 26px);pointer-events:none}
+.l-recordatorio::after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(167,124,0,.25) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none}
 .l-recordatorio .container{position:relative;z-index:1}
-.l-recordatorio__copy .l-eyebrow{color:#ffd400}
-.l-recordatorio__copy h2{color:#fff}
-.l-recordatorio__copy p{color:#cbd5e1}
-.l-recordatorio__bullets li{color:#fff}
-.l-recordatorio__bullets i{color:#ffd400}
+.l-recordatorio__copy .l-eyebrow{color:var(--k);background:rgba(14,19,32,.1)}
+.l-recordatorio__copy h2{color:var(--k)}
+.l-recordatorio__copy p{color:var(--k);opacity:.85}
+.l-recordatorio__bullets li{color:var(--k)}
+.l-recordatorio__bullets i{color:var(--k);background:rgba(14,19,32,.1);border-radius:50%;padding:4px;width:24px;height:24px;display:inline-grid;place-items:center;font-size:.85rem}
 
 /* =================================================================
    VEHICLE ICON — Phosphor via Iconify (no CSS art, no SVG inline)
@@ -592,4 +592,30 @@
   .l-cot__grid{grid-template-columns:1fr}
   .l-cot__tabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:6px}
   .l-cot__tab{flex-shrink:0}
+}
+
+/* =================================================================
+   SCROLL REVEAL ANIMATIONS — fade-up entre secciones al hacer scroll
+   JS: initScrollReveal() en landing.js añade .l-section-reveal a cada
+   <section id> y .is-visible via IntersectionObserver cuando entra al viewport.
+   - threshold 0.08: anima cuando 8% del section es visible
+   - rootMargin -60px: dispara un poco antes de llegar al borde inferior
+   - prefers-reduced-motion: desactivado para accesibilidad
+   ================================================================= */
+.l-section-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+  will-change: opacity, transform;
+}
+.l-section-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .l-section-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
