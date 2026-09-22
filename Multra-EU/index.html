@@ -12,6 +12,324 @@
 <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/landing.css">
+
+<!-- SVG sprite: 2D vehicular components, detallados y únicos por sección -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+
+    <!-- 1. SEDÁN (hero card) — vista lateral detallada -->
+    <symbol id="v-sedan" viewBox="0 0 400 200">
+      <ellipse cx="200" cy="178" rx="170" ry="7" fill="rgba(0,0,0,.22)"/>
+      <!-- body -->
+      <path d="M40,140 Q42,124 56,118 L78,98 Q92,86 116,80 Q150,72 198,72 Q252,72 290,80 Q316,86 332,100 L356,118 Q364,124 364,138 L360,148 L44,148 Z" fill="currentColor"/>
+      <!-- capó -->
+      <path d="M70,118 Q90,90 130,82 L150,82 L156,118 Z" fill="currentColor" opacity=".85"/>
+      <!-- parabrisas -->
+      <path d="M156,118 Q160,86 200,80 Q236,80 252,86 L264,118 Z" fill="rgba(180,220,255,.45)"/>
+      <path d="M158,116 Q164,90 200,84 Q236,84 250,90 L260,116 Z" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1"/>
+      <!-- ventanilla trasera -->
+      <path d="M264,118 L300,86 Q320,88 332,108 L344,118 Z" fill="rgba(180,220,255,.35)"/>
+      <!-- línea de cintura -->
+      <path d="M52,122 L356,122" stroke="rgba(0,0,0,.25)" stroke-width="1.4" fill="none"/>
+      <!-- línea de puertas -->
+      <path d="M120,122 L120,148 M210,122 L210,148" stroke="rgba(0,0,0,.35)" stroke-width="1.6" fill="none"/>
+      <!-- manijas -->
+      <rect x="135" y="128" width="14" height="3" rx="1.5" fill="rgba(255,255,255,.5)"/>
+      <rect x="222" y="128" width="14" height="3" rx="1.5" fill="rgba(255,255,255,.5)"/>
+      <!-- faro delantero -->
+      <ellipse cx="350" cy="115" rx="7" ry="5" fill="rgba(255,255,210,.95)"/>
+      <ellipse cx="350" cy="115" rx="3" ry="2" fill="rgba(255,255,255,1)"/>
+      <!-- stops traseros -->
+      <rect x="46" y="113" width="8" height="12" rx="2" fill="rgba(255,60,40,.85)"/>
+      <!-- espejos -->
+      <path d="M170,98 L160,93 L156,98 L162,103 Z" fill="currentColor"/>
+      <!-- parrilla -->
+      <rect x="332" y="128" width="22" height="6" rx="2" fill="rgba(0,0,0,.4)"/>
+      <!-- ruedas -->
+      <g>
+        <circle cx="100" cy="152" r="22" fill="#1a1a1a"/>
+        <circle cx="100" cy="152" r="14" fill="#3a3a3a"/>
+        <circle cx="100" cy="152" r="9" fill="#888"/>
+        <g stroke="#444" stroke-width="1.5">
+          <line x1="100" y1="143" x2="100" y2="161"/>
+          <line x1="91" y1="152" x2="109" y2="152"/>
+          <line x1="93.5" y1="145.5" x2="106.5" y2="158.5"/>
+          <line x1="93.5" y1="158.5" x2="106.5" y2="145.5"/>
+        </g>
+      </g>
+      <g>
+        <circle cx="300" cy="152" r="22" fill="#1a1a1a"/>
+        <circle cx="300" cy="152" r="14" fill="#3a3a3a"/>
+        <circle cx="300" cy="152" r="9" fill="#888"/>
+        <g stroke="#444" stroke-width="1.5">
+          <line x1="300" y1="143" x2="300" y2="161"/>
+          <line x1="291" y1="152" x2="309" y2="152"/>
+          <line x1="293.5" y1="145.5" x2="306.5" y2="158.5"/>
+          <line x1="293.5" y1="158.5" x2="306.5" y2="145.5"/>
+        </g>
+      </g>
+      <!-- luz de giro -->
+      <circle cx="346" cy="103" r="2" fill="rgba(255,180,40,.9)"/>
+    </symbol>
+
+    <!-- 2. SUV / CAMIONETA (liviano) — más alta, ruedas más grandes -->
+    <symbol id="v-suv" viewBox="0 0 400 220">
+      <ellipse cx="200" cy="200" rx="180" ry="8" fill="rgba(0,0,0,.22)"/>
+      <!-- body -->
+      <path d="M30,158 Q34,138 50,130 L66,108 Q80,90 110,84 Q150,76 200,76 Q252,76 296,84 Q322,90 338,108 L356,130 Q366,138 366,158 L362,166 L34,166 Z" fill="currentColor"/>
+      <!-- capó -->
+      <path d="M62,130 Q80,100 116,90 L138,90 L148,130 Z" fill="currentColor" opacity=".88"/>
+      <!-- parabrisas -->
+      <path d="M148,130 Q156,92 200,86 Q240,86 256,92 L268,130 Z" fill="rgba(180,220,255,.45)"/>
+      <!-- ventanillas traseras -->
+      <path d="M268,130 L308,98 Q326,98 340,120 L354,130 Z" fill="rgba(180,220,255,.35)"/>
+      <!-- techo (racks) -->
+      <rect x="120" y="78" width="170" height="6" rx="2" fill="currentColor"/>
+      <rect x="140" y="72" width="6" height="6" fill="currentColor"/>
+      <rect x="262" y="72" width="6" height="6" fill="currentColor"/>
+      <!-- línea cintura -->
+      <path d="M44,134 L362,134" stroke="rgba(0,0,0,.28)" stroke-width="1.4" fill="none"/>
+      <!-- puertas -->
+      <path d="M132,134 L132,166 M220,134 L220,166" stroke="rgba(0,0,0,.38)" stroke-width="1.6" fill="none"/>
+      <!-- manijas -->
+      <rect x="148" y="140" width="16" height="3" rx="1.5" fill="rgba(255,255,255,.5)"/>
+      <rect x="232" y="140" width="16" height="3" rx="1.5" fill="rgba(255,255,255,.5)"/>
+      <!-- faro -->
+      <ellipse cx="356" cy="124" rx="8" ry="6" fill="rgba(255,255,200,.95)"/>
+      <ellipse cx="356" cy="124" rx="3.5" ry="2.5" fill="rgba(255,255,255,1)"/>
+      <!-- stops -->
+      <rect x="36" y="120" width="10" height="14" rx="2" fill="rgba(255,60,40,.85)"/>
+      <!-- espejos -->
+      <path d="M172,108 L160,100 L156,108 L164,114 Z" fill="currentColor"/>
+      <!-- parrilla -->
+      <rect x="338" y="138" width="22" height="8" rx="2" fill="rgba(0,0,0,.42)"/>
+      <!-- ruedas más grandes -->
+      <g>
+        <circle cx="92" cy="170" r="26" fill="#1a1a1a"/>
+        <circle cx="92" cy="170" r="18" fill="#3a3a3a"/>
+        <circle cx="92" cy="170" r="11" fill="#888"/>
+        <g stroke="#444" stroke-width="1.6">
+          <line x1="92" y1="159" x2="92" y2="181"/>
+          <line x1="81" y1="170" x2="103" y2="170"/>
+          <line x1="84.5" y1="162.5" x2="99.5" y2="177.5"/>
+          <line x1="84.5" y1="177.5" x2="99.5" y2="162.5"/>
+        </g>
+      </g>
+      <g>
+        <circle cx="306" cy="170" r="26" fill="#1a1a1a"/>
+        <circle cx="306" cy="170" r="18" fill="#3a3a3a"/>
+        <circle cx="306" cy="170" r="11" fill="#888"/>
+        <g stroke="#444" stroke-width="1.6">
+          <line x1="306" y1="159" x2="306" y2="181"/>
+          <line x1="295" y1="170" x2="317" y2="170"/>
+          <line x1="298.5" y1="162.5" x2="313.5" y2="177.5"/>
+          <line x1="298.5" y1="177.5" x2="313.5" y2="162.5"/>
+        </g>
+      </g>
+    </symbol>
+
+    <!-- 3. MOTO DEPORTIVA (moto) — vista lateral con carenado -->
+    <symbol id="v-moto" viewBox="0 0 400 220">
+      <ellipse cx="200" cy="200" rx="160" ry="6" fill="rgba(0,0,0,.22)"/>
+      <!-- rueda trasera -->
+      <g>
+        <circle cx="310" cy="168" r="32" fill="#1a1a1a"/>
+        <circle cx="310" cy="168" r="22" fill="#3a3a3a"/>
+        <circle cx="310" cy="168" r="14" fill="#666"/>
+        <g stroke="#aaa" stroke-width="2">
+          <line x1="310" y1="150" x2="310" y2="186"/>
+          <line x1="292" y1="168" x2="328" y2="168"/>
+          <line x1="297" y1="155" x2="323" y2="181"/>
+          <line x1="297" y1="181" x2="323" y2="155"/>
+        </g>
+      </g>
+      <!-- rueda delantera -->
+      <g>
+        <circle cx="90" cy="168" r="28" fill="#1a1a1a"/>
+        <circle cx="90" cy="168" r="19" fill="#3a3a3a"/>
+        <circle cx="90" cy="168" r="12" fill="#666"/>
+        <g stroke="#aaa" stroke-width="2">
+          <line x1="90" y1="152" x2="90" y2="184"/>
+          <line x1="74" y1="168" x2="106" y2="168"/>
+          <line x1="78.5" y1="156.5" x2="101.5" y2="179.5"/>
+          <line x1="78.5" y1="179.5" x2="101.5" y2="156.5"/>
+        </g>
+      </g>
+      <!-- horquilla delantera -->
+      <line x1="92" y1="140" x2="115" y2="60" stroke="#444" stroke-width="4" stroke-linecap="round"/>
+      <line x1="100" y1="140" x2="123" y2="60" stroke="#666" stroke-width="3" stroke-linecap="round"/>
+      <!-- carenado / tanque -->
+      <path d="M120,80 Q160,40 220,42 Q280,44 320,90 L330,140 Q310,150 280,148 Q240,144 200,140 L150,138 Q120,140 110,150 L100,140 Z" fill="currentColor"/>
+      <!-- parabrisas -->
+      <path d="M180,42 Q200,32 230,34 Q258,38 270,52 L256,72 L186,68 Z" fill="rgba(180,220,255,.55)"/>
+      <!-- asiento -->
+      <path d="M232,90 Q270,82 300,100 L300,124 Q280,132 250,130 L228,124 Z" fill="currentColor" opacity=".92"/>
+      <!-- piloto trasero -->
+      <rect x="298" y="105" width="14" height="10" rx="2" fill="rgba(255,60,40,.85)"/>
+      <!-- motor -->
+      <rect x="180" y="120" width="80" height="32" rx="6" fill="#222"/>
+      <rect x="186" y="126" width="68" height="20" rx="4" fill="#444"/>
+      <line x1="200" y1="136" x2="240" y2="136" stroke="#888" stroke-width="1.5"/>
+      <!-- escape -->
+      <path d="M260,150 L320,156 L322,162 L260,158 Z" fill="#888"/>
+      <ellipse cx="322" cy="159" rx="3" ry="4" fill="#222"/>
+      <!-- faro -->
+      <ellipse cx="118" cy="78" rx="9" ry="6" fill="rgba(255,255,200,.95)" transform="rotate(-25 118 78)"/>
+      <!-- manillar -->
+      <line x1="120" y1="60" x2="160" y2="50" stroke="#222" stroke-width="5" stroke-linecap="round"/>
+      <!-- pedal -->
+      <rect x="148" y="150" width="22" height="6" rx="2" fill="#444" transform="rotate(-8 159 153)"/>
+    </symbol>
+
+    <!-- 4. CAMIÓN PESADO (camión + caja) — vista lateral -->
+    <symbol id="v-camion" viewBox="0 0 440 240">
+      <ellipse cx="220" cy="218" rx="200" ry="8" fill="rgba(0,0,0,.22)"/>
+      <!-- caja de carga -->
+      <rect x="160" y="74" width="240" height="110" rx="3" fill="currentColor"/>
+      <!-- panel caja con nervaduras -->
+      <line x1="180" y1="80" x2="180" y2="180" stroke="rgba(0,0,0,.3)" stroke-width="2"/>
+      <line x1="220" y1="80" x2="220" y2="180" stroke="rgba(0,0,0,.3)" stroke-width="2"/>
+      <line x1="260" y1="80" x2="260" y2="180" stroke="rgba(0,0,0,.3)" stroke-width="2"/>
+      <line x1="300" y1="80" x2="300" y2="180" stroke="rgba(0,0,0,.3)" stroke-width="2"/>
+      <line x1="340" y1="80" x2="340" y2="180" stroke="rgba(0,0,0,.3)" stroke-width="2"/>
+      <line x1="380" y1="80" x2="380" y2="180" stroke="rgba(0,0,0,.3)" stroke-width="2"/>
+      <!-- puerta trasera -->
+      <rect x="388" y="76" width="8" height="108" fill="rgba(0,0,0,.4)"/>
+      <rect x="280" y="125" width="36" height="20" rx="2" fill="rgba(255,255,255,.5)"/>
+      <!-- cabina -->
+      <path d="M30,184 Q34,160 50,150 L72,118 Q92,98 130,98 Q156,98 168,118 L168,184 Z" fill="currentColor"/>
+      <!-- parabrisas cabina -->
+      <path d="M80,120 Q100,104 138,104 Q158,108 164,124 L80,128 Z" fill="rgba(180,220,255,.5)"/>
+      <!-- línea cintura cabina -->
+      <path d="M40,156 L168,156" stroke="rgba(0,0,0,.3)" stroke-width="1.4"/>
+      <!-- puerta cabina -->
+      <path d="M86,156 L86,184 M130,156 L130,184" stroke="rgba(0,0,0,.4)" stroke-width="1.4"/>
+      <!-- manija -->
+      <rect x="100" y="164" width="12" height="3" rx="1.5" fill="rgba(255,255,255,.5)"/>
+      <!-- faro cabina -->
+      <ellipse cx="38" cy="146" rx="6" ry="5" fill="rgba(255,255,200,.95)"/>
+      <!-- stops cabina -->
+      <rect x="160" y="140" width="6" height="10" rx="2" fill="rgba(255,60,40,.85)"/>
+      <!-- espejo -->
+      <path d="M88,108 L78,100 L74,108 L82,114 Z" fill="currentColor"/>
+      <!-- tubo de escape -->
+      <rect x="148" y="60" width="6" height="44" rx="1" fill="#666"/>
+      <ellipse cx="151" cy="58" rx="5" ry="3" fill="#444"/>
+      <!-- ruedas traseras duales -->
+      <g>
+        <circle cx="220" cy="194" r="22" fill="#1a1a1a"/>
+        <circle cx="220" cy="194" r="14" fill="#3a3a3a"/>
+        <circle cx="220" cy="194" r="7" fill="#888"/>
+      </g>
+      <g>
+        <circle cx="252" cy="194" r="22" fill="#1a1a1a"/>
+        <circle cx="252" cy="194" r="14" fill="#3a3a3a"/>
+        <circle cx="252" cy="194" r="7" fill="#888"/>
+      </g>
+      <g>
+        <circle cx="350" cy="194" r="22" fill="#1a1a1a"/>
+        <circle cx="350" cy="194" r="14" fill="#3a3a3a"/>
+        <circle cx="350" cy="194" r="7" fill="#888"/>
+      </g>
+      <g>
+        <circle cx="382" cy="194" r="22" fill="#1a1a1a"/>
+        <circle cx="382" cy="194" r="14" fill="#3a3a3a"/>
+        <circle cx="382" cy="194" r="7" fill="#888"/>
+      </g>
+      <!-- rueda delantera -->
+      <g>
+        <circle cx="78" cy="194" r="22" fill="#1a1a1a"/>
+        <circle cx="78" cy="194" r="14" fill="#3a3a3a"/>
+        <circle cx="78" cy="194" r="7" fill="#888"/>
+      </g>
+      <!-- bumper -->
+      <rect x="32" y="180" width="20" height="6" rx="2" fill="#444"/>
+    </symbol>
+
+    <!-- 5. CAR TOP-DOWN — vista cenital para fondos decorativos -->
+    <symbol id="v-topdown" viewBox="0 0 220 360">
+      <!-- sombra -->
+      <rect x="20" y="40" width="180" height="280" rx="40" fill="currentColor" opacity=".12"/>
+      <!-- body -->
+      <rect x="14" y="30" width="192" height="300" rx="36" fill="currentColor"/>
+      <!-- parabrisas -->
+      <path d="M40,80 L180,80 Q190,80 190,90 L190,140 L30,140 L30,90 Q30,80 40,80 Z" fill="rgba(180,220,255,.45)"/>
+      <!-- techo -->
+      <rect x="50" y="155" width="120" height="60" rx="14" fill="rgba(0,0,0,.25)"/>
+      <!-- luneta trasera -->
+      <path d="M40,230 L180,230 Q190,230 190,240 L190,290 Q190,300 180,300 L40,300 Q30,300 30,290 L30,240 Q30,230 40,230 Z" fill="rgba(180,220,255,.35)"/>
+      <!-- capó -->
+      <path d="M40,60 L180,60" stroke="rgba(255,255,255,.3)" stroke-width="1.5"/>
+      <!-- puertas -->
+      <line x1="14" y1="170" x2="206" y2="170" stroke="rgba(0,0,0,.35)" stroke-width="1.5"/>
+      <line x1="14" y1="225" x2="206" y2="225" stroke="rgba(0,0,0,.35)" stroke-width="1.5"/>
+      <!-- manijas -->
+      <rect x="60" y="178" width="20" height="3" rx="1.5" fill="rgba(255,255,255,.5)"/>
+      <rect x="140" y="178" width="20" height="3" rx="1.5" fill="rgba(255,255,255,.5)"/>
+      <rect x="60" y="218" width="20" height="3" rx="1.5" fill="rgba(255,255,255,.5)"/>
+      <rect x="140" y="218" width="20" height="3" rx="1.5" fill="rgba(255,255,255,.5)"/>
+      <!-- espejos -->
+      <path d="M6,150 L14,140 L22,150 L14,160 Z" fill="currentColor"/>
+      <path d="M198,150 L206,140 L214,150 L206,160 Z" fill="currentColor"/>
+      <!-- faros delanteros -->
+      <rect x="50" y="34" width="20" height="8" rx="3" fill="rgba(255,255,200,.9)"/>
+      <rect x="150" y="34" width="20" height="8" rx="3" fill="rgba(255,255,200,.9)"/>
+      <!-- stops traseros -->
+      <rect x="50" y="318" width="22" height="8" rx="3" fill="rgba(255,60,40,.9)"/>
+      <rect x="148" y="318" width="22" height="8" rx="3" fill="rgba(255,60,40,.9)"/>
+    </symbol>
+
+    <!-- 6. MINI CHECKPOINT — para sección inspección -->
+    <symbol id="v-checkpoint" viewBox="0 0 240 160">
+      <!-- suelo -->
+      <line x1="0" y1="138" x2="240" y2="138" stroke="currentColor" stroke-width="2" opacity=".3"/>
+      <!-- valla de inspección -->
+      <rect x="30" y="60" width="60" height="68" rx="6" fill="currentColor"/>
+      <rect x="36" y="66" width="48" height="22" fill="rgba(180,220,255,.5)"/>
+      <text x="60" y="82" text-anchor="middle" font-family="Montserrat" font-weight="900" font-size="14" fill="currentColor" opacity=".7">RTM</text>
+      <rect x="38" y="94" width="44" height="6" rx="2" fill="rgba(255,255,255,.4)"/>
+      <rect x="38" y="104" width="44" height="6" rx="2" fill="rgba(255,255,255,.4)"/>
+      <rect x="38" y="114" width="32" height="6" rx="2" fill="rgba(255,255,255,.4)"/>
+      <!-- barrera -->
+      <rect x="100" y="100" width="100" height="8" fill="currentColor"/>
+      <rect x="195" y="80" width="8" height="50" fill="currentColor"/>
+      <circle cx="100" cy="120" r="6" fill="rgba(255,212,0,.95)" stroke="currentColor" stroke-width="2"/>
+      <!-- coche pequeño pasando -->
+      <g transform="translate(108 110) scale(.45)">
+        <ellipse cx="100" cy="178" rx="170" ry="7" fill="rgba(0,0,0,.25)"/>
+        <path d="M40,140 Q42,124 56,118 L78,98 Q92,86 116,80 Q150,72 198,72 Q252,72 290,80 Q316,86 332,100 L356,118 Q364,124 364,138 L360,148 L44,148 Z" fill="currentColor" opacity=".85"/>
+        <circle cx="100" cy="152" r="22" fill="#1a1a1a"/>
+        <circle cx="300" cy="152" r="22" fill="#1a1a1a"/>
+      </g>
+    </symbol>
+
+    <!-- 7. NEUMÁTICO / LLANTA — para inspección RTM -->
+    <symbol id="v-tire" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="currentColor"/>
+      <circle cx="50" cy="50" r="32" fill="rgba(0,0,0,.35)"/>
+      <circle cx="50" cy="50" r="20" fill="currentColor"/>
+      <circle cx="50" cy="50" r="10" fill="rgba(255,255,255,.6)"/>
+      <g stroke="rgba(255,255,255,.7)" stroke-width="2.5" stroke-linecap="round">
+        <line x1="50" y1="22" x2="50" y2="32"/>
+        <line x1="78" y1="50" x2="68" y2="50"/>
+        <line x1="50" y1="78" x2="50" y2="68"/>
+        <line x1="22" y1="50" x2="32" y2="50"/>
+        <line x1="70" y1="30" x2="63" y2="37"/>
+        <line x1="70" y1="70" x2="63" y2="63"/>
+        <line x1="30" y1="70" x2="37" y2="63"/>
+        <line x1="30" y1="30" x2="37" y2="37"/>
+      </g>
+    </symbol>
+
+    <!-- 8. LLAVE / WRENCH — para tarifas -->
+    <symbol id="v-wrench" viewBox="0 0 100 100">
+      <path d="M70,20 L80,10 Q92,8 92,22 L82,32 Q78,36 72,32 L66,38 L42,62 L34,72 L26,80 L18,72 L26,64 L36,56 L60,32 L66,26 Q62,20 66,16 Z" fill="currentColor"/>
+      <rect x="28" y="70" width="14" height="14" rx="2" fill="currentColor" transform="rotate(45 35 77)"/>
+    </symbol>
+
+  </defs>
+</svg>
+
 </head>
 <body class="l-body">
 
@@ -38,8 +356,11 @@
 
 <header class="l-hero" id="inicio">
   <div class="l-hero__pattern"></div>
+  <!-- decorativos vehiculares 2D (topdown silhouettes) -->
+  <svg class="l-hero__deco l-hero__deco--1" aria-hidden="true"><use href="#v-topdown"/></svg>
+  <svg class="l-hero__deco l-hero__deco--2" aria-hidden="true"><use href="#v-topdown"/></svg>
   <div class="l-hero__grid">
-    <div>
+    <div class="l-hero__copy">
       <span class="l-hero__badge"><i class="bi bi-patch-check-fill"></i> Habilitados MinTransporte</span>
       <h1>Tu vehículo en regla, <span>sin filas ni dolores de cabeza.</span></h1>
       <p class="l-hero__sub">En Multra E.U. hacemos tu revisión técnico-mecánica, gestionamos tu SOAT y todo riesgo, y te acompañamos en traspasos, licencias y todo trámite vehicular en Neiva, Huila.</p>
@@ -54,7 +375,7 @@
       </div>
     </div>
     <div class="l-hero__card">
-      <iconify-icon icon="ph-fill:car-profile" class="l-v-icon" width="240" aria-hidden="true"></iconify-icon>
+      <svg class="l-hero__card-car" aria-hidden="true"><use href="#v-sedan"/></svg>
       <div class="l-hero__card-plate">RTM · SOAT · TRÁMITES</div>
       <h2>MULTRA E.U.</h2>
       <p>CDA + Gestoría + Seguros · Neiva, Huila</p>
@@ -75,7 +396,7 @@
     <div class="l-vehicle-types">
       <article class="l-vehicle-type">
         <div class="l-vehicle-type__visual">
-          <iconify-icon icon="ph:car-suv" class="l-v-icon" width="200" aria-hidden="true"></iconify-icon>
+          <svg class="l-vehicle-type__svg" aria-hidden="true"><use href="#v-suv"/></svg>
         </div>
         <div class="l-vehicle-type__body">
           <span class="l-vehicle-type__tag l-vehicle-type__tag--liviano">Clase B</span>
@@ -96,7 +417,7 @@
 
       <article class="l-vehicle-type l-vehicle-type--featured">
         <div class="l-vehicle-type__visual">
-          <iconify-icon icon="ph-fill:motorcycle" class="l-v-icon" width="200" aria-hidden="true"></iconify-icon>
+          <svg class="l-vehicle-type__svg" aria-hidden="true"><use href="#v-moto"/></svg>
         </div>
         <div class="l-vehicle-type__body">
           <span class="l-vehicle-type__tag l-vehicle-type__tag--moto">Clase C</span>
@@ -117,7 +438,7 @@
 
       <article class="l-vehicle-type">
         <div class="l-vehicle-type__visual">
-          <iconify-icon icon="ph-fill:bus" class="l-v-icon" width="200" aria-hidden="true"></iconify-icon>
+          <svg class="l-vehicle-type__svg" aria-hidden="true"><use href="#v-camion"/></svg>
         </div>
         <div class="l-vehicle-type__body">
           <span class="l-vehicle-type__tag l-vehicle-type__tag--pesado">Clase D</span>
@@ -195,13 +516,14 @@
         </div>
         <div class="l-tarifas-cta">
           <a class="btn btn-primary" href="#cotizar"><i class="bi bi-calculator"></i> Cotizar ahora</a>
-          <a class="btn btn-ghost l-tarifas-btn-light" href="https://wa.me/573001234567?text=Hola%20Multra%20quiero%20cotizar%20RTM" target="_blank"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+          <a class="btn btn-ghost l-tarifas-btn-light" href="https://wa.me/573163108327?text=Hola%20Multra%20quiero%20cotizar%20RTM" target="_blank"><i class="bi bi-whatsapp"></i> WhatsApp</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- RECORDATORIO — swing: copy izquierda, form derecha (zigzag) -->
 <section class="l-section l-recordatorio" id="recordatorio">
   <div class="container">
     <div class="l-recordatorio__grid">
@@ -211,7 +533,7 @@
         <p>Déjanos tu placa y te avisamos por WhatsApp días antes de que venza tu RTM o SOAT. Servicio gratuito, sin compromiso.</p>
         <ul class="l-recordatorio__bullets">
           <li><i class="bi bi-check-circle-fill"></i> Aviso 30, 15 y 7 días antes del vencimiento</li>
-          <li><i class="bi bi-check-circle-fill"></i> Cero recordatorio</li>
+          <li><i class="bi bi-check-circle-fill"></i> Cero costo, cero compromiso</li>
           <li><i class="bi bi-check-circle-fill"></i> Datos protegidos (Ley 1581 de 2012)</li>
         </ul>
       </div>
@@ -261,7 +583,9 @@
   </div>
 </section>
 
+<!-- INSPECCIÓN RTM — fondo teal con decoración de checkpoint -->
 <section class="l-section l-section--alt l-inspection" id="inspeccion">
+  <svg class="l-inspection__deco" aria-hidden="true"><use href="#v-checkpoint"/></svg>
   <div class="container">
     <div class="l-section__head l-section__head--center">
       <span class="l-eyebrow">CHECKLIST TÉCNICO</span>
@@ -286,19 +610,21 @@
   </div>
 </section>
 
+<!-- PROCESO — swing: copy DERECHA, steps IZQUIERDA (zigzag vs recordatorio) -->
 <section class="l-section l-section--dark l-proceso-section" id="proceso">
+  <svg class="l-proceso__deco" aria-hidden="true"><use href="#v-tire"/></svg>
   <div class="container">
     <div class="l-proceso">
-      <div>
-        <span class="l-eyebrow">CÓMO TRABAJAMOS</span>
-        <h2>De la cita al documento,<br>en 4 pasos.</h2>
-<p>Todo el proceso es transparente: sabrás qué pasa con tu vehículo y tus papeles en cada momento.</p>
-      </div>
-      <div>
+      <div class="l-proceso__steps">
         <div class="l-step"><h5>1. Cotiza o agenda en línea</h5><p>Selecciona el servicio, recibe precio al instante y elige tu horario.</p></div>
         <div class="l-step"><h5>2. Trae tu vehículo o tus documentos</h5><p>Para técnico-mecánica te esperamos en sede; para trámites, recogemos tu papelería.</p></div>
         <div class="l-step"><h5>3. Inspección / gestión</h5><p>Nuestro equipo técnico o gestor realiza el proceso con checklist digital.</p></div>
         <div class="l-step"><h5>4. Entrega y seguimiento</h5><p>Recibe certificado, póliza o documento. Te avisamos cada cambio de estado.</p></div>
+      </div>
+      <div class="l-proceso__intro">
+        <span class="l-eyebrow">CÓMO TRABAJAMOS</span>
+        <h2>De la cita al documento,<br>en 4 pasos.</h2>
+        <p>Todo el proceso es transparente: sabrás qué pasa con tu vehículo y tus papeles en cada momento.</p>
       </div>
     </div>
   </div>
@@ -358,7 +684,7 @@
           <div class="l-cot__line l-cot__line--total"><span>TOTAL</span><span id="cotTotal">$0</span></div>
         </div>
         <div class="l-cot__actions">
-          <a class="btn btn-primary" id="cotWhatsapp" href="https://wa.me/573001234567?text=Hola%20Multra%20quiero%20cotizar" target="_blank" disabled>
+          <a class="btn btn-primary" id="cotWhatsapp" href="https://wa.me/573163108327?text=Hola%20Multra%20quiero%20cotizar" target="_blank" disabled>
             <i class="bi bi-whatsapp"></i> Enviar por WhatsApp
           </a>
         </div>
@@ -371,26 +697,27 @@
   </div>
 </section>
 
+<!-- UBICACIÓN — swing: mapa IZQUIERDA, copy DERECHA (zigzag vs proceso) -->
 <section class="l-section l-ubicacion-section" id="ubicacion">
   <div class="container">
-    <div class="l-ubi">
-      <div>
+    <div class="l-ubi l-ubi--reverse">
+      <div class="l-map">
+        <iframe src="https://www.google.com/maps?q=Centro+Comercial+Los+Comuneros+Neiva&output=embed" allowfullscreen loading="lazy" title="Ubicación Multra E.U."></iframe>
+      </div>
+      <div class="l-ubi__copy">
         <span class="l-eyebrow">UBICACIÓN</span>
         <h2>Encuéntranos en el C.C. Los Comuneros</h2>
         <p>Atendemos de lunes a sábado. Parqueadero gratuito para clientes.</p>
         <ul class="l-contact">
-          <li><i class="bi bi-geo-alt-fill"></i> C.c. Los Comuneros L-162, Neiva, Huila</li>
+          <li><i class="bi bi-geo-alt-fill"></i> C.C. Los Comuneros L-162, Neiva, Huila</li>
           <li><i class="bi bi-telephone-fill"></i> (608) 8715900</li>
-          <li><i class="bi bi-whatsapp"></i> +57 300 123 4567</li>
+          <li><i class="bi bi-whatsapp"></i> +57 316 310 8327</li>
           <li><i class="bi bi-clock-fill"></i> Lun–Sáb: 7:00 AM – 6:00 PM</li>
         </ul>
         <div class="l-ubi-ctas">
           <a class="btn btn-primary" target="_blank" rel="noopener" href="https://maps.app.goo.gl/iFTAgcT6BFtzWne19"><i class="bi bi-map"></i> Abrir Maps</a>
           <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://www.youtube.com/embed/ah4nw_7TtHM"><i class="bi bi-play-circle"></i> Cómo llegar</a>
         </div>
-      </div>
-      <div class="l-map">
-        <iframe src="https://www.google.com/maps?q=Centro+Comercial+Los+Comuneros+Neiva&output=embed" allowfullscreen loading="lazy" title="Ubicación Multra E.U."></iframe>
       </div>
     </div>
   </div>
@@ -539,6 +866,7 @@
 </section>
 
 <section class="l-section l-trust" id="confianza">
+  <svg class="l-trust__deco" aria-hidden="true"><use href="#v-topdown"/></svg>
   <div class="container">
     <div class="l-section__head l-section__head--center">
       <span class="l-eyebrow">RESPALDO Y HABILITACIONES</span>
@@ -801,7 +1129,7 @@
   </div>
 </footer>
 
-<a class="l-float l-float-wa" href="https://wa.me/573001234567" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+<a class="l-float l-float-wa" href="https://wa.me/573163108327" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
 <button class="l-float l-float-bot" id="botBtn" aria-label="Abrir asistente"><img src="assets/img/robot-multra.png" alt="Asistente Multra"></button>
 <div class="l-chat" id="chat">
   <div class="l-chat__head">Asistente Multra <button class="l-chat__close" id="chatClose" aria-label="Cerrar"><i class="bi bi-x-lg"></i></button></div>

@@ -192,23 +192,46 @@ Para cambiar color:
 
 ---
 
-## Pendientes de negocio
+## Decisiones de cierre (2026-09-22)
 
-- ❌ NIT footer real (placeholder `900.XXX.XXX-X`)
-- ❌ Push a GitHub (decidir remoto: `Nxxo31/multra-eu` o repo nuevo)
-- ❌ Render deploy (requiere push primero)
-- ❌ Eliminar copia vieja `Downloads\Multra-EU-Proyecto\`
+| Decisión | Estado | Razón |
+|---|---|---|
+| **Self-signup público** | ⏭ SKIP — solo admin crea clientes | Producto actual es B2B interno; el público solo usa cotizador + landing. |
+| **NIT footer** | ⏸ Placeholder `900.XXX.XXX-X` + nota prominente | **Búsqueda exhaustiva en 8 fuentes públicas** (2026-09-22, agente dedicado): RUES Datos Abiertos cámara 23 (Huila), RUES todas las cámaras, eInforma, Dataico RUT, Instagram @multra_e, Facebook Multra Oficial, DuckDuckGo, Alcaldía Neiva. **0 matches exactos**. Causa probable: opera como persona natural comerciante (NIT = cédula del dueño) o razón social registrada distinta. **Operador debe editar manualmente antes de ir a producción.** |
+| **Render deploy** | ⏸ `render.yaml` listo, NO aplicado | Operador decide desplegar manualmente cuando quiera (1 click en Render Dashboard → Blueprint). |
+| **Push a GitHub** | ✅ Hecho | `https://github.com/Nxxo31/multra-eu` (público, 20+ commits). |
+| **Copia vieja `Downloads\Multra-EU-Proyecto\`** | ✅ Eliminada | Carpeta canónica: `Desktop\proyectos\multra-eu\`. |
+
+## Cambios sin commitear en working tree
+
+```
+ M Multra-EU/css/landing.css  (840 +/-: rediseño CSS consolidado, swing/zigzag, decorativos vehiculares)
+ M Multra-EU/index.html       (374 +/-: SVG sprite con vehículos 2D decorativos — sedán, SUV, moto, pesado)
+```
+
+Esperando GO del operador para commitear + push (AGENTS.md: no commit sin pedido explícito).
+
+## Próximo paso para deploy a Render (cuando operador lo decida)
+
+1. Crear API key en https://render.com/account/api-keys
+2. Ir a https://render.com/blueprints → New Blueprint Instance
+3. Conectar repo `Nxxo31/multra-eu` → Render detecta `render.yaml` automáticamente
+4. Apply → Render aprovisiona Web Service + disco persistente + genera secrets aleatorios
+5. Esperar primer deploy (~3-5 min) → URL pública tipo `https://multra-eu.onrender.com`
+
+**Sin commit sin pedido explícito del operador** (AGENTS.md).
 
 ---
 
-## Próximo paso para deploy a Render
+## Estado de cierre — sesión 2026-09-22
 
-1. `git remote add origin git@github.com:Nxxo31/multra-eu.git`
-2. `git push -u origin main`
-3. En Render: nuevo Web Service → conectar repo
-4. Build: `npm install` (root) + `cd server && npm install`
-5. Start: `cd server && npm start`
-6. Variables de entorno: copiar de `.env.example` con valores reales
-7. Disco persistente: `/var/data/multra.db` con `SQLITE_PATH=/var/data/multra.db`
+**Lo que se ejecutó en esta sesión** (sess-3b262ecd5b8c9591):
+1. ✅ E2E completo en server `:3001` relanzado (8 endpoints autenticados, cotizador público, landing 200)
+2. ✅ Login real via browser (Playwright) contra `localhost:3001` — dashboard carga con sidebar completo (Dashboard, Vehículos, Citas, Inspección, Pólizas, Cotizador, Pagos, Trámites, Clientes)
+3. ✅ Búsqueda exhaustiva NIT en 8 fuentes públicas — no encontrado, documentado arriba
+4. ✅ Identificados cambios visuales pendientes (CSS + SVG sprite) — esperando commit
 
-**Sin commit sin pedido explícito del operador** (AGENTS.md).
+**Pendiente para considerar Multra-EU 100% cerrado**:
+- [ ] GO del operador para commit `feat(landing): rediseño CSS + SVG sprite decorativo` + push
+- [ ] (Opcional) editar manualmente el NIT en `Multra-EU/index.html` footer si se conoce
+- [ ] (Opcional futuro) Render deploy cuando operador quiera — `render.yaml` ya está listo
