@@ -4,6 +4,12 @@ import path from 'node:path';
 import { env } from '../config/env.js';
 import { logger } from '../utils/logger.js';
 
+const toPositional = (sql, params) => {
+  let i = 0;
+  const out = sql.replace(/\?/g, () => `$${++i}`);
+  return { sql: out, params };
+};
+
 export class SqliteAdapter {
   constructor(dbPath) {
     const dir = path.dirname(dbPath);
@@ -41,8 +47,10 @@ export class SqliteAdapter {
   }
 
   async transaction(fn) {
-    const trx = this.db.transaction(fn);
-    return trx();
+    return fn({
+      query: async (sql, params) => this.query(sql, params),
+      execute: async (sql, params) => this.execute(sql, params),
+    });
   }
 
   async close() {
@@ -122,6 +130,81 @@ export class MySqlAdapter {
   }
 }
 
+export class NeonAdapter {
+  constructor(connectionString) {
+    if (!connectionString) {
+      throw new Error('DATABASE_URL requerido para DB_TYPE=postgres');
+    }
+    this.sql = null;
+    this.initPromise = this.#init(connectionString);
+  }
+
+  async #init(connectionString) {
+    const { neon, neonConfig } = await import('@neondatabase/serverless');
+    if (process.env.NEON_FETCH_ENDPOINT) {
+      neonConfig.fetchEndpoint = process.env.NEON_FETCH_ENDPOINT;
+    }
+    this.sql = neon(connectionString);
+    const masked = connectionString.replace(/:[^:@]+@/, ':***@');
+    logger.info({ dsn: masked, driver: 'neon-http' }, 'Postgres/Neon adapter listo');
+  }
+
+  async query(sql, params = []) {
+    await this.initPromise;
+    try {
+      const { sql: psql, params: pparams } = toPositional(sql, params);
+      const rows = await this.sql(psql, pparams);
+      return rows;
+    } catch (e) {
+      logger.error({ err: e.message, sql }, 'Postgres query error');
+      throw e;
+    }
+  }
+
+  async getOne(sql, params = []) {
+    const rows = await this.query(sql, params);
+    return rows[0] || null;
+  }
+
+  async execute(sql, params = []) {
+    await this.initPromise;
+    try {
+      const { sql: psql, params: pparams } = toPositional(sql, params);
+      const isInsert = /^\s*insert\s+into\s+/i.test(sql);
+      const isUpdate = /^\s*update\s+/i.test(sql);
+      const isDelete = /^\s*delete\s+from\s+/i.test(sql);
+      if (isInsert && !/\breturning\b/i.test(sql)) {
+        const rows = await this.sql(`${psql} RETURNING id`, pparams);
+        const row = Array.isArray(rows) ? rows[0] : null;
+        return { insertId: row?.id ?? null, changes: Array.isArray(rows) ? rows.length : 1 };
+      }
+      if ((isUpdate || isDelete) && !/\breturning\b/i.test(sql)) {
+        const rows = await this.sql(`${psql} RETURNING id`, pparams);
+        return { insertId: null, changes: Array.isArray(rows) ? rows.length : 0 };
+      }
+      const rows = await this.sql(psql, pparams);
+      const arr = Array.isArray(rows) ? rows : [];
+      return { insertId: null, changes: arr.length };
+    } catch (e) {
+      logger.error({ err: e.message, sql, code: e.code }, 'Postgres execute error');
+      throw e;
+    }
+  }
+
+  async transaction(fn) {
+    await this.initPromise;
+    logger.warn('Neon HTTP no soporta multi-statement transactions atómicas vía este driver; ejecutando secuencialmente (sin rollback). Usar solo para código idempotente.');
+    return fn({
+      query: async (sql, params) => this.query(sql, params),
+      execute: async (sql, params) => this.execute(sql, params),
+    });
+  }
+
+  async close() {
+    // Neon HTTP es stateless, no hay pool que cerrar
+  }
+}
+
 export const createDatabase = async () => {
   if (env.DB_TYPE === 'mysql') {
     return new MySqlAdapter({
@@ -131,6 +214,9 @@ export const createDatabase = async () => {
       password: env.DB_PASS,
       database: env.DB_NAME,
     });
+  }
+  if (env.DB_TYPE === 'postgres') {
+    return new NeonAdapter(env.DATABASE_URL);
   }
   return new SqliteAdapter(env.SQLITE_PATH);
 };

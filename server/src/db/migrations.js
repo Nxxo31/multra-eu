@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { SCHEMA_SQL } from './schema.js';
+import { SCHEMA_POSTGRES_SQL } from './schema.postgres.js';
 import {
   SERVICIOS_SEED,
   buildClientesSeed,
@@ -18,24 +19,38 @@ const dateOffset = (baseDate) => (n) => {
   return d.toISOString().slice(0, 10);
 };
 
-export const runMigrations = async (db) => {
-  const statements = SCHEMA_SQL
+const splitSqlStatements = (raw) => {
+  const stripped = raw
+    .split('\n')
+    .map(line => line.replace(/--.*$/, ''))
+    .join('\n');
+  return stripped
     .split(';')
     .map(s => s.trim())
     .filter(Boolean);
+};
+
+export const runMigrations = async (db) => {
+  const sql = env.DB_TYPE === 'postgres' ? SCHEMA_POSTGRES_SQL : SCHEMA_SQL;
+  const statements = splitSqlStatements(sql);
 
   for (const stmt of statements) {
     await db.execute(stmt);
   }
-  logger.info({ statements: statements.length }, 'Esquema aplicado');
+  logger.info({ driver: env.DB_TYPE, statements: statements.length }, 'Esquema aplicado');
 };
 
 export const runSeed = async (db) => {
   const nowSql = new Date().toISOString().slice(0, 19).replace('T', ' ');
   const d = dateOffset(new Date());
+  const isEmpty = async (sql) => {
+    const r = await db.getOne(sql);
+    if (!r) return true;
+    const n = Number(r.c);
+    return !Number.isFinite(n) || n === 0;
+  };
 
-  const servCount = await db.getOne('SELECT COUNT(*) AS c FROM servicios');
-  if (!servCount || servCount.c === 0) {
+  if (await isEmpty('SELECT COUNT(*) AS c FROM servicios')) {
     for (const s of SERVICIOS_SEED) {
       await db.execute(
         'INSERT INTO servicios (id,nombre,tipo,descripcion,precio,duracionMin,aplica,fuente) VALUES (?,?,?,?,?,?,?,?)',
@@ -45,8 +60,7 @@ export const runSeed = async (db) => {
     logger.info({ count: SERVICIOS_SEED.length }, 'Servicios sembrados');
   }
 
-  const userCount = await db.getOne('SELECT COUNT(*) AS c FROM users');
-  if (!userCount || userCount.c === 0) {
+  if (await isEmpty('SELECT COUNT(*) AS c FROM users')) {
     const hash = bcrypt.hashSync(env.ADMIN_PASS, env.BCRYPT_ROUNDS);
     await db.execute(
       'INSERT INTO users (username,passwordHash,role,name,email,createdAt) VALUES (?,?,?,?,?,?)',
@@ -60,8 +74,7 @@ export const runSeed = async (db) => {
     return;
   }
 
-  const cliCount = await db.getOne('SELECT COUNT(*) AS c FROM clientes');
-  if (!cliCount || cliCount.c === 0) {
+  if (await isEmpty('SELECT COUNT(*) AS c FROM clientes')) {
     const clientes = buildClientesSeed(nowSql);
     for (const c of clientes) {
       await db.execute(
