@@ -561,7 +561,7 @@
           <div id="cotItems">
             ${state.servicios.map(s => `
               <div class="p-cot__item" data-id="${s.id}">
-                <div class="p-cot__item-info"><b>${s.nombre}</b><small>${s.desc} ${s.duracionMin ? '· ' + s.duracionMin + ' min' : ''}</small></div>
+                <div class="p-cot__item-info"><b>${s.nombre}</b><small>${s.descripcion} ${s.duracionMin ? '· ' + s.duracionMin + ' min' : ''}</small></div>
                 <div class="p-cot__item-price">${Multra.fmtCOP(s.precio)}</div>
               </div>`).join('')}
           </div>

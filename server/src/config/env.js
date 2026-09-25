@@ -5,13 +5,14 @@ const EnvSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   PORT: z.coerce.number().int().positive().default(3001),
 
-  DB_TYPE: z.enum(['sqlite', 'mysql']).default('sqlite'),
+  DB_TYPE: z.enum(['sqlite', 'mysql', 'postgres']).default('sqlite'),
   SQLITE_PATH: z.string().default('./data/multra.db'),
   DB_HOST: z.string().default('127.0.0.1'),
   DB_PORT: z.coerce.number().int().positive().default(3306),
   DB_USER: z.string().default('multra_app'),
   DB_PASS: z.string().default(''),
   DB_NAME: z.string().default('multra'),
+  DATABASE_URL: z.string().optional(),
 
   JWT_SECRET: z.string().min(32, 'JWT_SECRET debe tener ≥32 caracteres'),
   JWT_EXPIRES_IN: z.string().default('8h'),
@@ -25,7 +26,7 @@ const EnvSchema = z.object({
   ADMIN_USER: z.string().min(3).default('NicoDev2026'),
   ADMIN_PASS: z.string().min(6).default('Multra2026'),
 
-  FRONTEND_DIR: z.string().default('../Multra-EU'),
+  FRONTEND_DIR: z.string().default('../../public'),
 });
 
 const parsed = EnvSchema.safeParse(process.env);

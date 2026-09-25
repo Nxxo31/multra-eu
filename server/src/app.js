@@ -89,7 +89,10 @@ export const createApp = (controllers) => {
   app.use('/api/recordatorios', recordatorioRoutes({ recordatorioController: controllers.recordatorioController }));
 
   const frontendPath = path.resolve(__dirname, '../../', env.FRONTEND_DIR);
-  if (fs.existsSync(frontendPath)) {
+  const isVercel = !!process.env.VERCEL;
+  if (isVercel) {
+    logger.info('Vercel detected: frontend estático lo sirve Vercel desde /public, no Express');
+  } else if (fs.existsSync(frontendPath)) {
     app.set('frontendDir', frontendPath);
     app.use(express.static(frontendPath, {
       index: false,

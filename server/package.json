@@ -1,12 +1,13 @@
 {
   "name": "multra-eu-backend",
-  "version": "5.0.0",
-  "description": "Backend Multra E.U. v5 — SOLID, seguro, SQLite (dev) o MySQL (prod)",
+  "version": "5.1.0",
+  "description": "Backend Multra E.U. v5.1 — SOLID, seguro, SQLite (dev) / Postgres (prod Vercel) / MySQL (self-host)",
   "type": "module",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "node --watch src/server.js",
+    "dev": "node --watch-path=src --watch src/server.js",
+    "dev:postgres": "cross-env-shell DB_TYPE=postgres node --watch src/server.js",
     "lint": "node --check src/server.js",
     "test": "node --test test/"
   },
@@ -14,6 +15,7 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
     "bcryptjs": "^2.4.3",
     "better-sqlite3": "^11.3.0",
     "compression": "^1.7.4",
@@ -29,5 +31,7 @@
     "pino-pretty": "^11.3.0",
     "zod": "^3.23.8"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
 }

@@ -3,6 +3,7 @@ import { ConflictError } from '../utils/errors.js';
 const isUniqueViolation = (e) =>
   e?.code === 'SQLITE_CONSTRAINT_UNIQUE' ||
   e?.code === 'ER_DUP_ENTRY' ||
+  e?.code === '23505' ||
   e?.errno === 19;
 
 export class BaseRepository {

@@ -1,25 +1,26 @@
 // Multra E.U. — Lógica de la landing pública. Conectada al backend.
 (function () {
+  // ICON map: usar clases bootstrap-icons VÁLIDAS (prefijo "bi-" + nombre)
   const ICON = {
-    rtm_liv: 'wrench', rtm_moto: 'motorcycle', rtm_pes: 'truck',
-    soat_auto_lt10: 'shield-check', soat_auto_mid: 'shield-check', soat_auto_gt10: 'shield-check',
-    soat_moto_100: 'shield-check', soat_moto_gt200: 'shield-check',
-    tr_auto_basico: 'shield-star', tr_auto_full: 'shield-star',
-    traspaso_auto: 'arrow-left-right', traspaso_moto: 'arrow-left-right',
-    licencia_carro_nueva: 'identification-card', licencia_moto_nueva: 'identification-card',
-    licencia_carro_renov: 'identification-card', licencia_moto_renov: 'identification-card',
-    placas: 'license-plate',
-    motor: 'wrench', peritaje: 'magnifying-glass', gnvc: 'gas-pump'
+    rtm_liv: 'bi-wrench-adjustable', rtm_moto: 'bi-bicycle', rtm_pes: 'bi-truck',
+    soat_auto_lt10: 'bi-shield-check', soat_auto_mid: 'bi-shield-check', soat_auto_gt10: 'bi-shield-check',
+    soat_moto_100: 'bi-shield-check', soat_moto_gt200: 'bi-shield-check',
+    tr_auto_basico: 'bi-shield-fill-check', tr_auto_full: 'bi-shield-fill-check',
+    traspaso_auto: 'bi-arrow-left-right', traspaso_moto: 'bi-arrow-left-right',
+    licencia_carro_nueva: 'bi-person-vcard', licencia_moto_nueva: 'bi-person-vcard',
+    licencia_carro_renov: 'bi-person-vcard', licencia_moto_renov: 'bi-person-vcard',
+    placas: 'bi-credit-card-2-front',
+    motor: 'bi-wrench', peritaje: 'bi-search', gnvc: 'bi-fuel-pump'
   };
 
   const CAT_LABEL = { tecnomecanica: 'RTM', seguro: 'Seguros', tramite: 'Trámites', peritaje: 'Otros' };
 
   const PACKAGES = [
-    { id: 'pkg-rtm-completo', icon: 'ph:wrench', titulo: 'RTM Completo', desc: 'Revisión + certificado digital + gestión RUNT', items: ['rtm_liv'], descuento: 5, badge: 'Más popular' },
-    { id: 'pkg-rtm-soat', icon: 'ph:shield-check', titulo: 'RTM + SOAT', desc: 'Inspección + póliza SOAT auto en combo', items: ['rtm_liv', 'soat_auto_lt10'], descuento: 8, badge: 'Ahorra 8%' },
-    { id: 'pkg-traspaso-auto', icon: 'ph:arrow-left-right', titulo: 'Traspaso Auto', desc: 'Cambio de propietario completo ante SDM', items: ['traspaso_auto'], descuento: 5, badge: null },
-    { id: 'pkg-licencia-nueva', icon: 'ph:identification-card', titulo: 'Licencia 1ª vez', desc: 'Trámite + certificado + entrega', items: ['licencia_carro_nueva'], descuento: 5, badge: null },
-    { id: 'pkg-flotilla', icon: 'ph:truck', titulo: 'Flotilla Pesados', desc: 'RTM + seguro para vehículo pesado', items: ['rtm_pes', 'soat_auto_lt10'], descuento: 10, badge: 'Ahorra 10%' },
+    { id: 'pkg-rtm-completo', icon: 'bi-wrench-adjustable', titulo: 'RTM Completo', desc: 'Revisión + certificado digital + gestión RUNT', items: ['rtm_liv'], descuento: 5, badge: 'Más popular' },
+    { id: 'pkg-rtm-soat', icon: 'bi-shield-check', titulo: 'RTM + SOAT', desc: 'Inspección + póliza SOAT auto en combo', items: ['rtm_liv', 'soat_auto_lt10'], descuento: 8, badge: 'Ahorra 8%' },
+    { id: 'pkg-traspaso-auto', icon: 'bi-arrow-left-right', titulo: 'Traspaso Auto', desc: 'Cambio de propietario completo ante SDM', items: ['traspaso_auto'], descuento: 5, badge: null },
+    { id: 'pkg-licencia-nueva', icon: 'bi-person-vcard', titulo: 'Licencia 1ª vez', desc: 'Trámite + certificado + entrega', items: ['licencia_carro_nueva'], descuento: 5, badge: null },
+    { id: 'pkg-flotilla', icon: 'bi-truck', titulo: 'Flotilla Pesados', desc: 'RTM + seguro para vehículo pesado', items: ['rtm_pes', 'soat_auto_lt10'], descuento: 10, badge: 'Ahorra 10%' },
   ];
 
   let SERVICIOS = [];
@@ -42,7 +43,7 @@
     } catch (e) {
       console.error('Fallo cargando servicios:', e);
       const grid = document.getElementById('cotGrid');
-      if (grid) grid.innerHTML = '<div class="l-cot__error"><i class="bi ph:wifi-slash"></i> No pudimos cargar el catálogo. Intenta recargar.</div>';
+      if (grid) grid.innerHTML = '<div class="l-cot__error"><i class="bi-wifi-off"></i> No pudimos cargar el catálogo. Intenta recargar.</div>';
       return;
     }
     renderTabs();
@@ -74,7 +75,7 @@
     el.innerHTML = PACKAGES.map(p => {
       const itemsList = p.items.map(id => {
         const s = SERVICIOS.find(x => x.id === id);
-        return s ? `<li><i class="bi ph:check"></i> ${Multra.esc(s.nombre)}</li>` : '';
+        return s ? `<li><i class="bi-check2"></i> ${Multra.esc(s.nombre)}</li>` : '';
       }).join('');
       const subtotal = p.items.reduce((sum, id) => {
         const s = SERVICIOS.find(x => x.id === id);
@@ -85,7 +86,7 @@
         <div class="l-pkg${activePackage === p.id ? ' is-active' : ''}" data-pkg="${p.id}">
           ${p.badge ? `<span class="l-pkg__badge">${p.badge}</span>` : ''}
           <div class="l-pkg__head">
-            <div class="l-pkg__ico"><i class="bi ${p.icon}"></i></div>
+            <div class="l-pkg__ico"><i class="${p.icon}"></i></div>
             <div class="l-pkg__title">
               <strong>${Multra.esc(p.titulo)}</strong>
               <small>${Multra.esc(p.desc)}</small>
@@ -116,10 +117,10 @@
     if (!el || !SERVICIOS.length) return;
 
     const CAT_ACCORDION = {
-      tecnomecanica: { icon: 'ph:wrench', tag: 'Inspección', desc: 'Revisión Técnico-Mecánica en nuestras 3 líneas (livianos, motos, pesados).' },
-      seguro:        { icon: 'ph:shield-check', tag: 'Seguros', desc: 'SOAT y todo riesgo con aseguradoras aliadas (Sura, Mapfre, Previsora).' },
+      tecnomecanica: { icon: 'bi-wrench-adjustable', tag: 'Inspección', desc: 'Revisión Técnico-Mecánica en nuestras 3 líneas (livianos, motos, pesados).' },
+      seguro:        { icon: 'bi-shield-check', tag: 'Seguros', desc: 'SOAT y todo riesgo con aseguradoras aliadas (Sura, Mapfre, Previsora).' },
       tramite:       { icon: 'bi-file-earmark-text', tag: 'Gestoría', desc: 'Traspasos, licencias, cambio de motor, GNV, placas y más.' },
-      peritaje:      { icon: 'ph:magnifying-glass', tag: 'Diagnóstico', desc: 'Peritajes y revisiones para seguros, accidentes o actualización de datos.' }
+      peritaje:      { icon: 'bi-search', tag: 'Diagnóstico', desc: 'Peritajes y revisiones para seguros, accidentes o actualización de datos.' }
     };
 
     const order = ['tecnomecanica', 'seguro', 'tramite', 'peritaje'];
@@ -136,17 +137,17 @@
       const servicesHtml = list.map(s => `
         <div class="l-accordion__service" data-id="${s.id}">
           <div class="l-accordion__service-head">
-            <div class="l-accordion__service-ico"><i class="bi ${ICON[s.id] || 'bi-car-front'}"></i></div>
+            <div class="l-accordion__service-ico"><i class="${ICON[s.id] || 'bi-car-front'}"></i></div>
             <div class="l-accordion__service-cat">${Multra.esc(meta.tag)}</div>
           </div>
           <div class="l-accordion__service-body">
             <h4 class="l-accordion__service-name">${Multra.esc(s.nombre)}</h4>
-            <p class="l-accordion__service-desc">${Multra.esc(s.desc || '')}</p>
+            <p class="l-accordion__service-desc">${Multra.esc(s.descripcion || '')}</p>
           </div>
           <div class="l-accordion__service-foot">
             <span class="l-accordion__service-price">${Multra.fmtCOP(s.precio)}</span>
             <a class="l-accordion__service-cta" href="#cotizar" data-jump="${s.id}">
-              Cotizar <i class="bi ph:arrow-right"></i>
+              Cotizar <i class="bi-arrow-right"></i>
             </a>
           </div>
         </div>`).join('');
@@ -160,7 +161,7 @@
               <small>${Multra.esc(meta.desc)}</small>
             </div>
             <span class="l-accordion__count">${list.length}</span>
-            <i class="l-accordion__chev bi ph:caret-down"></i>
+            <i class="l-accordion__chev bi-chevron-down"></i>
           </summary>
           <div class="l-accordion__body">
             <div class="l-accordion__grid">${servicesHtml}</div>
@@ -197,16 +198,16 @@
       return `
         <div class="l-cot__card${qty > 0 ? ' is-in-cart' : ''}" data-id="${s.id}">
           <div class="l-cot__card-head">
-            <div class="l-cot__card-ico"><i class="bi ${ICON[s.id] || 'bi-car-front'}"></i></div>
+            <div class="l-cot__card-ico"><i class="${ICON[s.id] || 'bi-car-front'}"></i></div>
             <span class="l-cot__card-cat">${CAT_LABEL[s.tipo] || s.tipo}</span>
           </div>
           <h4>${Multra.esc(s.nombre)}</h4>
-          <p>${Multra.esc(s.desc || '')}</p>
+          <p>${Multra.esc(s.descripcion || '')}</p>
           <div class="l-cot__card-foot">
             <span class="l-cot__card-price">${Multra.fmtCOP(s.precio)}</span>
             ${qty > 0
-              ? `<div class="l-qty"><button type="button" data-dec="${s.id}" aria-label="Quitar uno"><i class="bi ph:minus"></i></button><span class="l-qty__val">${qty}</span><button type="button" data-inc="${s.id}" aria-label="Agregar uno"><i class="bi ph:plus"></i></button></div>`
-              : `<button type="button" class="l-cot__add" data-add="${s.id}"><i class="bi ph:plus-lg"></i> Agregar</button>`}
+              ? `<div class="l-qty"><button type="button" data-dec="${s.id}" aria-label="Quitar uno"><i class="bi-dash"></i></button><span class="l-qty__val">${qty}</span><button type="button" data-inc="${s.id}" aria-label="Agregar uno"><i class="bi-plus"></i></button></div>`
+              : `<button type="button" class="l-cot__add" data-add="${s.id}"><i class="bi-plus-lg"></i> Agregar</button>`}
           </div>
         </div>`;
     }).join('');
@@ -229,6 +230,28 @@
     renderGrid();
     renderPackages();
     renderCart();
+    syncFloatCart(delta);
+  }
+
+  function syncFloatCart(delta = 0) {
+    const float = document.getElementById('cartFloat');
+    const badge = document.getElementById('cartFloatBadge');
+    const totalEl = document.getElementById('cartFloatTotal');
+    if (!float || !badge || !totalEl) return;
+    const totalItems = cart.reduce((a, x) => a + x.cantidad, 0);
+    const subtotal = cart.reduce((a, x) => a + x.precio * x.cantidad, 0);
+    if (totalItems > 0) {
+      float.hidden = false;
+      badge.textContent = totalItems;
+      totalEl.textContent = Multra.fmtCOP(subtotal);
+      if (delta > 0) {
+        float.classList.remove('is-pulse');
+        void float.offsetWidth;
+        float.classList.add('is-pulse');
+      }
+    } else {
+      float.hidden = true;
+    }
   }
 
   function addPackage(pkgId) {
@@ -247,6 +270,7 @@
     renderGrid();
     renderPackages();
     renderCart();
+    syncFloatCart(1);
   }
 
   function clearCart() {
@@ -255,6 +279,7 @@
     renderGrid();
     renderPackages();
     renderCart();
+    syncFloatCart(0);
   }
 
   function fmt(n) { return Multra.fmtCOP(n); }
@@ -277,7 +302,7 @@
     }
 
     if (!cart.length) {
-      cartEl.innerHTML = '<div class="l-cot__empty"><i class="bi ph:shopping-bag"></i><strong>Tu cotización está vacía</strong><small>Suma servicios del catálogo o elige un paquete para empezar.</small></div>';
+      cartEl.innerHTML = '<div class="l-cot__empty"><i class="bi-bag"></i><strong>Tu cotización está vacía</strong><small>Suma servicios del catálogo o elige un paquete para empezar.</small></div>';
       totalsEl.hidden = true;
       return;
     }
@@ -304,10 +329,10 @@
             <small>${fmt(x.precio)} c/u</small>
           </div>
           <div class="l-qty l-qty--mini">
-            <button type="button" data-dec="${x.id}" aria-label="Quitar uno"><i class="bi ph:minus"></i></button>
-            <span class="l-qty__val">${x.cantidad}</span>
-            <button type="button" data-inc="${x.id}" aria-label="Agregar uno"><i class="bi ph:plus"></i></button>
-            <button type="button" class="l-qty__rm" data-rm="${x.id}" aria-label="Eliminar"><i class="bi ph:x"></i></button>
+<button type="button" data-dec="${x.id}" aria-label="Quitar uno"><i class="bi-dash"></i></button>
+            <span class="l-qty__val">${x.qty}</span>
+            <button type="button" data-inc="${x.id}" aria-label="Agregar uno"><i class="bi-plus"></i></button>
+            <button type="button" class="l-qty__rm" data-rm="${x.id}" aria-label="Eliminar"><i class="bi-x"></i></button>
           </div>
         </div>`).join('');
 
@@ -352,9 +377,9 @@
         <div class="l-cot__cart-line">
           <div class="l-cot__cart-line-main"><strong>${Multra.esc(x.nombre)}</strong><small>${fmt(x.precio)} c/u</small></div>
           <div class="l-qty l-qty--mini">
-            <button type="button" data-dec="${x.id}"><i class="bi ph:minus"></i></button>
-            <span class="l-qty__val">${x.cantidad}</span>
-            <button type="button" data-inc="${x.id}"><i class="bi ph:plus"></i></button>
+<button type="button" data-dec="${x.id}"><i class="bi-dash"></i></button>
+            <span class="l-qty__val">${x.qty}</span>
+            <button type="button" data-inc="${x.id}"><i class="bi-plus"></i></button>
           </div>
         </div>`).join('');
       document.getElementById('cotSubtotal').textContent = fmt(subtotal);
@@ -382,6 +407,13 @@
     botBtn.addEventListener('click', () => chat.classList.toggle('l-chat--open'));
     chatClose.addEventListener('click', () => chat.classList.remove('l-chat--open'));
   }
+  const cartFloat = document.getElementById('cartFloat');
+  if (cartFloat) {
+    cartFloat.addEventListener('click', () => {
+      const tgt = document.getElementById('cotizar');
+      if (tgt) tgt.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
   function sendChat() {
     if (!chatText || !chatBody) return;
     const q = chatText.value.trim(); if (!q) return;
@@ -405,7 +437,7 @@
     if (/licencia/.test(q)) return 'Licencia para carro 1ª vez $329.800, renovación $151.500. Para moto 1ª vez $272.700, renovación $266.400 (SDM Bogotá 2026).';
     if (/placa/.test(q)) return 'Duplicado de placas $180.000. Si fue por hurto, trae denuncia.';
     if (/horario|atienden/.test(q)) return 'Lun a Sáb de 7:00 AM a 6:00 PM en C.C. Los Comuneros, local 162.';
-    if (/ubic|direc|donde/.test(q)) return 'C.c. Los Comuneros L-162, Neiva, Huila. Mira la sección Ubicación.';
+    if (/ubic|direc|donde/.test(q)) return 'C.C. Los Comuneros L-3178, 3er piso, Neiva, Huila. Mira la sección Ubicación.';
     if (/precio|valor|cuanto|cotiz/.test(q)) return 'Usa la sección "Cotizar" para armar tu paquete. Los precios se calculan con IVA al instante.';
     return 'Puedo ayudarte con técnico-mecánica, SOAT, todo riesgo, traspasos, licencias, placas, horarios y ubicación.';
   }
@@ -415,7 +447,11 @@
 
   // Scroll reveal: fade-up entre secciones al hacer scroll
   (function initScrollReveal(){
-    if (typeof IntersectionObserver === 'undefined') return;
+    if (typeof IntersectionObserver === 'undefined') {
+      // Sin IntersectionObserver: hacer todas visibles (no animar)
+      document.querySelectorAll('section[id]:not(#inicio)').forEach(function(s){ s.classList.add('is-visible'); });
+      return;
+    }
     var sections = document.querySelectorAll('section[id]:not(#inicio)');
     if (!sections.length) return;
     sections.forEach(function(s){ s.classList.add('l-section-reveal'); });
@@ -426,7 +462,14 @@
           io.unobserve(e.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.01, rootMargin: '0px 0px -10px 0px' });
     sections.forEach(function(s){ io.observe(s); });
+    // Fallback: si después de 1.5s alguna sección sigue invisible (e.g. headless screenshot),
+    // forzarlas todas a visibles.
+    setTimeout(function(){
+      sections.forEach(function(s){
+        if (!s.classList.contains('is-visible')) s.classList.add('is-visible');
+      });
+    }, 1500);
   })();
 })();
