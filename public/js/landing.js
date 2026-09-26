@@ -56,12 +56,10 @@
     const tabsEl = document.getElementById('cotTabs');
     if (!tabsEl) return;
     const counts = SERVICIOS.reduce((acc, s) => { acc[s.tipo] = (acc[s.tipo] || 0) + 1; acc.all = (acc.all || 0) + 1; return acc; }, {});
-    tabsEl.querySelectorAll('.l-cot__tab').forEach(btn => {
+      tabsEl.querySelectorAll('.l-cot__tab').forEach(btn => {
       const cat = btn.dataset.cat;
       const count = counts[cat] || 0;
-      let label = btn.textContent.replace(/\s*\d+\s*$/, '').trim();
-      btn.innerHTML = btn.innerHTML.replace(/<span[^>]*>.*?<\/span>/g, '');
-      btn.appendChild(document.createTextNode(' ' + label + ' '));
+      btn.querySelectorAll('.l-cot__tab-count').forEach(s => s.remove());
       const span = document.createElement('span');
       span.className = 'l-cot__tab-count';
       span.textContent = count;
@@ -330,7 +328,7 @@
           </div>
           <div class="l-qty l-qty--mini">
 <button type="button" data-dec="${x.id}" aria-label="Quitar uno"><i class="bi-dash"></i></button>
-            <span class="l-qty__val">${x.qty}</span>
+            <span class="l-qty__val">${x.cantidad}</span>
             <button type="button" data-inc="${x.id}" aria-label="Agregar uno"><i class="bi-plus"></i></button>
             <button type="button" class="l-qty__rm" data-rm="${x.id}" aria-label="Eliminar"><i class="bi-x"></i></button>
           </div>
@@ -378,7 +376,7 @@
           <div class="l-cot__cart-line-main"><strong>${Multra.esc(x.nombre)}</strong><small>${fmt(x.precio)} c/u</small></div>
           <div class="l-qty l-qty--mini">
 <button type="button" data-dec="${x.id}"><i class="bi-dash"></i></button>
-            <span class="l-qty__val">${x.qty}</span>
+            <span class="l-qty__val">${x.cantidad}</span>
             <button type="button" data-inc="${x.id}"><i class="bi-plus"></i></button>
           </div>
         </div>`).join('');

@@ -138,6 +138,8 @@
 
 /* Síguenos: navy brand */
 .l-social{background:linear-gradient(135deg,#0a0f1a 0%,#0F172A 50%,#1E293B 100%);color:#fff;position:relative;overflow:hidden}
+.l-social h2{color:#fff}
+.l-social p{color:#cbd5e1}
 
 /* ===== Tipos de Vehículo (cards SIMÉTRICAS con componentes enriquecidos) ===== */
 .l-vehicle-types{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px;align-items:stretch}
@@ -315,6 +317,7 @@
 
 /* ===== Cotizador — 3 columnas SIMÉTRICAS ===== */
 .l-cot{display:grid;grid-template-columns:300px 1fr 320px;gap:20px;align-items:start}
+.l-cot > *{min-width:0}
 .l-cot__panel{
   background:#fff;border:1.5px solid var(--b);border-radius:var(--radius-lg);
   padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;
@@ -345,7 +348,7 @@
 .l-cot__packages-list::-webkit-scrollbar{height:6px}
 .l-cot__packages-list::-webkit-scrollbar-track{background:transparent}
 .l-cot__packages-list::-webkit-scrollbar-thumb{background:var(--b2);border-radius:3px}
-.l-cot__packages-list .l-pkg{min-width:240px;scroll-snap-align:start;flex-shrink:0}
+.l-cot__packages-list .l-pkg{flex:0 0 100%;min-width:0;max-width:100%;scroll-snap-align:start}
 .l-pkg{background:#fff;border:1.5px solid var(--b);border-radius:14px;padding:16px;position:relative;transition:.2s;display:flex;flex-direction:column;gap:10px}
 .l-pkg:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:0 12px 24px rgba(242,111,31,.12)}
 .l-pkg.is-active{border-color:var(--orange);background:linear-gradient(135deg,#fff1e6 0%,#ffe4cc 100%);box-shadow:0 0 0 3px rgba(242,111,31,.2)}
@@ -701,7 +704,7 @@
   .l-cot__packages,
   .l-cot__summary{position:static}
   .l-cot__packages-list{flex-direction:row;overflow-x:auto;padding-bottom:8px}
-  .l-pkg{min-width:260px;flex-shrink:0}
+  .l-pkg{flex:0 0 100%;min-width:0;max-width:100%}
   #publicCart{max-height:240px}
   .l-inspection__deco,
   .l-proceso__deco,
