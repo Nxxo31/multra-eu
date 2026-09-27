@@ -186,7 +186,7 @@
   min-height:170px;position:relative;overflow:hidden;
 }
 .l-vehicle-type__visual::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%,#ffffff60 0,transparent 50%),radial-gradient(circle at 80% 70%,#00000008 0,transparent 50%);pointer-events:none}
-.l-vehicle-type__svg{width:100%;max-width:240px;height:auto;color:var(--k);display:block;position:relative;z-index:1;transition:transform .35s ease}
+.l-vehicle-type__svg{font-size:120px;width:1em;height:1em;max-width:100%;color:var(--k);display:block;position:relative;z-index:1;transition:transform .35s ease}
 .l-vehicle-type:hover .l-vehicle-type__svg{transform:translateY(-4px) scale(1.04)}
 .l-vehicle-type__vence{
   position:absolute;left:50%;bottom:8px;transform:translateX(-50%);
@@ -316,6 +316,7 @@
 .l-tarifas-btn-light:hover{background:#1a2236;border-color:var(--y)}
 
 /* ===== Cotizador — 3 columnas SIMÉTRICAS ===== */
+#cotizar{overflow:visible}
 .l-cot{display:grid;grid-template-columns:300px 1fr 320px;gap:20px;align-items:start}
 .l-cot > *{min-width:0}
 .l-cot__panel{
@@ -344,11 +345,11 @@
   font-size:.74rem;line-height:1.45;font-weight:600;
 }
 .l-cot__panel-foot small i{color:var(--orange);margin-top:2px;flex-shrink:0}
-.l-cot__packages-list{display:flex;flex-direction:row;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 12px;margin:0 -2px;scrollbar-width:thin}
+.l-cot__packages-list{display:flex;flex-direction:column;gap:14px;padding:4px 2px 12px;margin:0 -2px}
 .l-cot__packages-list::-webkit-scrollbar{height:6px}
 .l-cot__packages-list::-webkit-scrollbar-track{background:transparent}
 .l-cot__packages-list::-webkit-scrollbar-thumb{background:var(--b2);border-radius:3px}
-.l-cot__packages-list .l-pkg{flex:0 0 100%;min-width:0;max-width:100%;scroll-snap-align:start}
+.l-cot__packages-list .l-pkg{width:100%;min-width:0;max-width:100%}
 .l-pkg{background:#fff;border:1.5px solid var(--b);border-radius:14px;padding:16px;position:relative;transition:.2s;display:flex;flex-direction:column;gap:10px}
 .l-pkg:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:0 12px 24px rgba(242,111,31,.12)}
 .l-pkg.is-active{border-color:var(--orange);background:linear-gradient(135deg,#fff1e6 0%,#ffe4cc 100%);box-shadow:0 0 0 3px rgba(242,111,31,.2)}
@@ -609,6 +610,10 @@
 .l-chat__input{display:flex;border-top:1px solid var(--b);padding:8px;background:#fff;gap:6px}
 .l-chat__input input{flex:1;border:0;outline:0;padding:10px;font:inherit;background:transparent;color:var(--k)}
 .l-chat__input button{background:var(--y);border:0;width:38px;border-radius:8px;cursor:pointer;color:var(--k)}
+.l-msg__actions{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start;margin:2px 0 6px;max-width:85%}
+.l-msg__action{background:var(--k);color:var(--y);border:0;border-radius:20px;padding:6px 12px;font-size:.78rem;font-weight:800;cursor:pointer;transition:.15s}
+.l-msg__action:hover{background:var(--orange);color:#fff;transform:translateY(-1px)}
+.l-msg__action.is-done{opacity:.5;cursor:default;text-decoration:line-through}
 
 /* ===== Iconify sizing helpers ===== */
 .l-pkg__ico iconify-icon{font-size:1.05rem;color:inherit}
@@ -703,8 +708,8 @@
   .l-cot{grid-template-columns:1fr;gap:20px}
   .l-cot__packages,
   .l-cot__summary{position:static}
-  .l-cot__packages-list{flex-direction:row;overflow-x:auto;padding-bottom:8px}
-  .l-pkg{flex:0 0 100%;min-width:0;max-width:100%}
+  .l-cot__packages-list{flex-direction:column;padding-bottom:8px}
+  .l-pkg{width:100%;min-width:0;max-width:100%}
   #publicCart{max-height:240px}
   .l-inspection__deco,
   .l-proceso__deco,

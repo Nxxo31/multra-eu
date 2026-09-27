@@ -412,13 +412,161 @@
       if (tgt) tgt.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
+  const WA_PHONE = '573163108327';
+  const normalize = (s) => s.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '').trim();
+
+  const INTENTS = [
+    { match: /\b(hola|buen[oa]s?|que tal|hi|hello|saludos)/,
+      text: '¡Hola! Soy el asistente de Multra. Puedo ayudarte con técnico-mecánica, SOAT, traspasos, licencias, ubicación o conectarte con un asesor. Elige una opción para empezar:',
+      actions: [
+        { type: 'scroll', selector: '#cotizar', label: '🔍 Ir al cotizador' },
+        { type: 'scroll', selector: '#vehiculos', label: '🚗 Ver tipos de vehículo' },
+        { type: 'scroll', selector: '#ubicacion', label: '📍 Ubicación y horarios' },
+        { type: 'openWhatsapp', text: 'Hola Multra, necesito ayuda', label: '💬 Hablar con un asesor' },
+      ] },
+    { match: /\b(menu|opciones|que puedes|que haces|que haces aqui|ayuda|help|empezar|inicio)/,
+      text: 'Estas son las acciones rápidas que puedo hacer por ti:',
+      actions: [
+        { type: 'scroll', selector: '#cotizar', label: '🔍 Ir al cotizador' },
+        { type: 'scroll', selector: '#vehiculos', label: '🚗 Ver tipos de vehículo' },
+        { type: 'scroll', selector: '#ubicacion', label: '📍 Ubicación y horarios' },
+        { type: 'openWhatsapp', text: 'Hola Multra, necesito ayuda', label: '💬 Hablar con un asesor' },
+      ] },
+    { match: /\b(tecn|revisi|mecan|rtm|inspecci[oó]n|tecnico|mecanic|tecnomecanica)/,
+      text: 'La técnico-mecánica cuesta desde $227.800 (motos), $327.700 (livianos) o $519.700 (pesados). Trae cédula, tarjeta de propiedad y SOAT vigente. Tarifas reguladas por el Ministerio de Transporte.',
+      actions: [
+        { type: 'addPackage', id: 'pkg-rtm-completo', label: '📦 Agregar paquete RTM Completo' },
+        { type: 'addService', id: 'rtm_liv', label: '➕ Agregar RTM Livianos' },
+        { type: 'scroll', selector: '#cotizar', label: '🔍 Ver cotizador' },
+      ] },
+    { match: /\b(soat)/,
+      text: 'Vendemos SOAT con Sura, Mapfre y Previsora. El precio depende del cilindraje y la antigüedad del vehículo. Tarifas oficiales de la Superintendencia Financiera.',
+      actions: [
+        { type: 'addService', id: 'soat_auto_lt10', label: '➕ SOAT Auto <10 años' },
+        { type: 'addService', id: 'soat_moto_100', label: '➕ SOAT Moto 100-200cc' },
+        { type: 'openWhatsapp', text: 'Hola Multra, quiero cotizar un SOAT', label: '💬 Cotizar por WhatsApp' },
+      ] },
+    { match: /\b(todo riesgo|seguro|poliza|asegur|cobertura)/,
+      text: 'Tenemos seguro todo riesgo desde $1.500.000 (vehículos de ~$25M) hasta $2.600.000 (sedán nuevo). Coberturas a medida.',
+      actions: [
+        { type: 'addService', id: 'tr_auto_basico', label: '➕ Todo Riesgo Auto básico' },
+        { type: 'addService', id: 'tr_auto_full', label: '➕ Todo Riesgo Auto full' },
+        { type: 'openWhatsapp', text: 'Hola Multra, quiero cotizar un seguro todo riesgo', label: '💬 Hablar con un asesor' },
+      ] },
+    { match: /\b(traspas|cambio de propietario|propietari)/,
+      text: 'Traspaso de carro $260.400, de moto $145.500 (tarifas SDM Bogotá 2026). No incluye retefuente ni SOAT. 3-5 días hábiles.',
+      actions: [
+        { type: 'addPackage', id: 'pkg-traspaso-auto', label: '📦 Paquete Traspaso Auto' },
+        { type: 'addService', id: 'traspaso_auto', label: '➕ Traspaso Auto' },
+        { type: 'addService', id: 'traspaso_moto', label: '➕ Traspaso Moto' },
+      ] },
+    { match: /\b(licencia|conducir|transit)/,
+      text: 'Licencia para carro 1ª vez $329.800, renovación $151.500. Para moto 1ª vez $272.700, renovación $266.400 (SDM Bogotá 2026).',
+      actions: [
+        { type: 'addPackage', id: 'pkg-licencia-nueva', label: '📦 Paquete Licencia 1ª vez' },
+        { type: 'addService', id: 'licencia_carro_nueva', label: '➕ Licencia carro nueva' },
+        { type: 'addService', id: 'licencia_carro_renov', label: '➕ Renovación licencia carro' },
+      ] },
+    { match: /\b(placa|placas|duplicado)/,
+      text: 'Duplicado de placas $180.000. Si fue por hurto, trae la denuncia.',
+      actions: [
+        { type: 'addService', id: 'placas', label: '➕ Duplicado de placas' },
+      ] },
+    { match: /\b(motor|cambio de motor|cnv|gnv|gas natural)/,
+      text: 'Cambio de motor $410.000 (gestión ante RUNT). Conversión a GNV $950.000 (instalación + registro).',
+      actions: [
+        { type: 'addService', id: 'motor', label: '➕ Cambio de motor' },
+        { type: 'addService', id: 'gnvc', label: '➕ Conversión a GNV' },
+      ] },
+    { match: /\b(peritaj|perit|accidente|diagnostico)/,
+      text: 'Peritaje vehicular $287.500. Para seguros o accidentes. Inspección técnica con informe digital.',
+      actions: [
+        { type: 'addService', id: 'peritaje', label: '➕ Peritaje vehicular' },
+      ] },
+    { match: /\b(horario|atienden|hora|abierto)/,
+      text: 'Atendemos de lunes a sábado de 7:00 AM a 6:00 PM en C.C. Los Comuneros, local 3178.',
+      actions: [
+        { type: 'scroll', selector: '#ubicacion', label: '📍 Ver ubicación' },
+        { type: 'openWhatsapp', text: 'Hola Multra, ¿a qué hora me pueden atender?', label: '💬 Consultar horario por WhatsApp' },
+      ] },
+    { match: /\b(ubic|direc|donde|local|sede|mapa)/,
+      text: 'Estamos en Centro Comercial Los Comuneros, local 3178, 3er piso, Neiva, Huila.',
+      actions: [
+        { type: 'scroll', selector: '#ubicacion', label: '📍 Ver mapa' },
+        { type: 'openWhatsapp', text: 'Hola Multra, ¿cómo llego a su sede?', label: '💬 Cómo llegar por WhatsApp' },
+      ] },
+    { match: /\b(cotiz|paquete|precio|valor|cuanto|cuesta|costo|presupuesto)/,
+      text: 'Puedo ayudarte a armar tu cotización. Te llevo al cotizador con un clic. Si prefieres, te conecto con un asesor por WhatsApp.',
+      actions: [
+        { type: 'scroll', selector: '#cotizar', label: '🔍 Ir al cotizador' },
+        { type: 'openWhatsapp', text: 'Hola Multra, quiero cotizar un servicio', label: '💬 Cotizar por WhatsApp' },
+      ] },
+    { match: /\b(gracias|thanks|ok|vale|listo)/,
+      text: '¡Con gusto! Si necesitas algo más, escríbeme cuando quieras.' },
+    { match: /\b(asesor|humano|persona|hablar con alguien|llamar|contacto|telefono|whatsapp|wsp)/,
+      text: 'Te conecto con un asesor por WhatsApp. Describe brevemente lo que necesitas y te respondemos al instante.',
+      actions: [
+        { type: 'openWhatsapp', text: 'Hola Multra, necesito asesoría', label: '💬 Abrir WhatsApp' },
+      ] },
+    { match: /\b(flotilla|empresa|empresas|pesado|pesados)/,
+      text: 'Para empresas y flotillas tenemos un paquete especial con 10% de descuento en RTM + seguro para vehículos pesados.',
+      actions: [
+        { type: 'addPackage', id: 'pkg-flotilla', label: '📦 Paquete Flotilla Pesados' },
+        { type: 'openWhatsapp', text: 'Hola Multra, quiero cotización para mi flotilla', label: '💬 Cotizar flotilla por WhatsApp' },
+      ] },
+  ];
+
+  function runBotAction(action){
+    try {
+      switch(action.type){
+        case 'addPackage':
+          if (typeof addPackage === 'function') addPackage(action.id);
+          break;
+        case 'addService':
+          if (typeof addService === 'function') addService(action.id, 1);
+          break;
+        case 'scroll': {
+          const el = document.querySelector(action.selector);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          break;
+        }
+        case 'openWhatsapp': {
+          const url = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(action.text || 'Hola Multra')}`;
+          window.open(url, '_blank', 'noopener');
+          break;
+        }
+      }
+    } catch(e){
+      console.warn('Bot action error', e);
+    }
+  }
+
   function sendChat() {
     if (!chatText || !chatBody) return;
     const q = chatText.value.trim(); if (!q) return;
     chatBody.insertAdjacentHTML('beforeend', `<div class="l-msg l-msg--user">${Multra.esc(q)}</div>`);
     chatText.value = '';
     setTimeout(() => {
-      chatBody.insertAdjacentHTML('beforeend', `<div class="l-msg l-msg--bot">${answer(q)}</div>`);
+      const reply = answer(q);
+      chatBody.insertAdjacentHTML('beforeend', `<div class="l-msg l-msg--bot">${Multra.esc(reply.text)}</div>`);
+      if (reply.actions && reply.actions.length){
+        const wrapper = document.createElement('div');
+        wrapper.className = 'l-msg__actions';
+        wrapper.dataset.actions = JSON.stringify(reply.actions);
+        wrapper.innerHTML = reply.actions.map((a, i) =>
+          `<button type="button" class="l-msg__action" data-idx="${i}">${Multra.esc(a.label || a.type)}</button>`
+        ).join('');
+        wrapper.addEventListener('click', e => {
+          const btn = e.target.closest('button[data-idx]');
+          if (!btn) return;
+          const idx = +btn.dataset.idx;
+          const act = JSON.parse(wrapper.dataset.actions)[idx];
+          runBotAction(act);
+          btn.disabled = true;
+          btn.classList.add('is-done');
+        });
+        chatBody.appendChild(wrapper);
+      }
       chatBody.scrollTop = chatBody.scrollHeight;
     }, 300);
   }
@@ -426,18 +574,21 @@
     document.getElementById('chatSend').addEventListener('click', sendChat);
     chatText.addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
   }
+
   function answer(q) {
-    q = q.toLowerCase();
-    if (/tecn|revisi|mecan/.test(q)) return 'La técnico-mecánica cuesta desde $227.800 (motos) o $327.700 (livianos). Trae cédula, tarjeta de propiedad y SOAT vigente. Tarifas reguladas por el Ministerio de Transporte.';
-    if (/soat/.test(q)) return 'Vendemos SOAT con Sura, Mapfre y más. El precio depende del cilindraje y la antigüedad del vehículo. Tarifas oficiales de la Superintendencia Financiera.';
-    if (/todo riesgo|seguro/.test(q)) return 'Tenemos seguro todo riesgo desde $1.500.000 (vehículos de ~$25M) hasta $2.600.000 (sedán nuevo). Coberturas a medida.';
-    if (/traspas/.test(q)) return 'Traspaso de carro $260.400, de moto $145.500 (tarifas SDM Bogotá 2026). No incluye retefuente ni SOAT. 3-5 días hábiles.';
-    if (/licencia/.test(q)) return 'Licencia para carro 1ª vez $329.800, renovación $151.500. Para moto 1ª vez $272.700, renovación $266.400 (SDM Bogotá 2026).';
-    if (/placa/.test(q)) return 'Duplicado de placas $180.000. Si fue por hurto, trae denuncia.';
-    if (/horario|atienden/.test(q)) return 'Lun a Sáb de 7:00 AM a 6:00 PM en C.C. Los Comuneros, local 162.';
-    if (/ubic|direc|donde/.test(q)) return 'C.C. Los Comuneros L-3178, 3er piso, Neiva, Huila. Mira la sección Ubicación.';
-    if (/precio|valor|cuanto|cotiz/.test(q)) return 'Usa la sección "Cotizar" para armar tu paquete. Los precios se calculan con IVA al instante.';
-    return 'Puedo ayudarte con técnico-mecánica, SOAT, todo riesgo, traspasos, licencias, placas, horarios y ubicación.';
+    const nq = normalize(q);
+    for (const intent of INTENTS) {
+      if (intent.match.test(nq)) {
+        return { text: intent.text, actions: intent.actions || [] };
+      }
+    }
+    return {
+      text: 'Puedo ayudarte con técnico-mecánica, SOAT, todo riesgo, traspasos, licencias, placas, peritajes, horarios y ubicación. También puedo llevarte al cotizador o conectarte por WhatsApp.',
+      actions: [
+        { type: 'scroll', selector: '#cotizar', label: '🔍 Ir al cotizador' },
+        { type: 'openWhatsapp', text: 'Hola Multra, necesito ayuda', label: '💬 Hablar con un asesor' },
+      ],
+    };
   }
 
   loadServicios();

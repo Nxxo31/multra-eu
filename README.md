@@ -70,14 +70,15 @@ Al primer arranque:
 
 ---
 
-## Credenciales (rotadas 2026-09-19)
+## Credenciales
 
-```
-ADMIN_USER=multra_admin
-ADMIN_PASS=2cLyT8JZaqpHfMSSS7KC
+**No commitear credenciales reales al repo.** Las credenciales del admin viven en `server/.env` (gitignored) o en los secret manager del proveedor de hosting. Para regenerarlas:
+
+```powershell
+node -e "console.log('ADMIN_PASS=' + require('crypto').randomBytes(20).toString('base64url'))"
 ```
 
-Guardar en password manager. **NO** commitear `.env` al repo.
+Guardar el valor en un password manager. El servidor las lee al arrancar.
 
 ---
 
@@ -220,6 +221,24 @@ Esperando GO del operador para commitear + push (AGENTS.md: no commit sin pedido
 5. Esperar primer deploy (~3-5 min) → URL pública tipo `https://multra-eu.onrender.com`
 
 **Sin commit sin pedido explícito del operador** (AGENTS.md).
+
+---
+
+## Estado de producción — 2026-09-27
+
+- ✅ **DB limpia**: 0 clientes, 0 vehículos, 0 citas, 0 recordatorios, 0 pagos, 0 inspecciones, 0 pólizas, 0 trámites.
+- ✅ **Catálogo de 20 servicios** intacto (seed).
+- ✅ **Admin** sembrado con credenciales rotadas.
+- ✅ **Sticky fix** en cotizador (`#cotizar{overflow:visible}`).
+- ✅ **Iconos vehiculares** a `font-size:120px` (visible).
+- ✅ **Paquetes del cotizador** en lista vertical (no carrusel).
+- ✅ **Chatbot** con intents: saludo, menú, técnico‑mecánica, SOAT, traspasos, licencias, placas, motor/GNV, peritaje, ubicación, horarios, asesor, flotilla.
+- ✅ **Bugfix** `/api/recordatorios` POST ahora devuelve `id` correctamente.
+- ✅ **Backups `.bak*`** eliminados.
+- 📄 **Guía detallada de producción**: ver [PRODUCTION.md](./PRODUCTION.md).
+- 📝 **NIT** placeholder reemplazado por `NIT — pendiente de confirmar` (operador debe editar antes de exponer al público).
+- 📦 **Tests**: 25/25 verde (`node --test test/`).
+- 🚀 **Load test local**: 1 700–1 900 RPS en endpoints simples (ver respuesta previa).
 
 ---
 

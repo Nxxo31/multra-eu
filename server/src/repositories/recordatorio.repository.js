@@ -10,7 +10,8 @@ export class RecordatorioRepository {
        VALUES (?, ?, ?, ?, 'pendiente', ?, ?, ?)`,
       [(placa || '').toUpperCase(), nombre, cedula, celular, ip || null, userAgent || null, nowSql]
     );
-    return { id: result.lastInsertRowid, placa: placa.toUpperCase(), nombre, cedula, celular, estado: 'pendiente', createdAt: nowSql };
+    const id = result.insertId ?? result.lastInsertRowid ?? null;
+    return { id, placa: placa.toUpperCase(), nombre, cedula, celular, estado: 'pendiente', createdAt: nowSql };
   }
 
   async findRecentByPlacaAndCelular(placa, celular, withinMinutes = 30) {
