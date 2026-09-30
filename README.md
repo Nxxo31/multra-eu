@@ -136,17 +136,13 @@ Reglas activas en producción:
 
 ### Flujo vigente
 
-El deploy actual fue hecho por CLI con `vercel --prod --yes`. El proyecto todavía **no está git-connected** para auto-deploy.
+El deploy actual fue hecho por CLI con `vercel --prod --yes`. El 2026-09-30 se persistieron los hotfixes y documentación en Git: `6fa877e` quedó pusheado a `vercel-deploy` y mergeado/fast-forward a `main`.
 
-Para que el repo quede completamente cerrado, el próximo paso es:
-1. commit/push de los hotfixes locales en `vercel-deploy`
-2. merge `vercel-deploy → main`
-3. `vercel git connect`
-4. redeploy desde git para confirmar paridad CLI↔git
+Pendiente para auto-deploy: conectar Vercel↔GitHub. El intento de `vercel git connect --yes` falló porque la cuenta Vercel todavía no tiene una **GitHub Login Connection** habilitada; hay que autorizarla en Vercel y reintentar.
 
 ---
 
-## 6. Bugs críticos ya corregidos en working tree
+## 6. Bugs críticos persistidos en Git
 
 - `vercel.json`: static 404 corregido con `@vercel/static` + `handle: filesystem`.
 - `package.json` raíz: dependencias disponibles para el entry `api/index.js`.
@@ -154,7 +150,7 @@ Para que el repo quede completamente cerrado, el próximo paso es:
 - `server/src/repositories/stats.repository.js`: `substr(fecha, 1, 7)` compatible con SQLite y Postgres.
 - `.gitignore`: `.vercel` y temporales fuera del repo.
 
-Estos cambios están alineados con el deploy productivo actual, pero deben quedar persistidos en Git en el commit de cierre.
+Estos cambios están alineados con el deploy productivo actual y ya quedaron persistidos en Git en `6fa877e`.
 
 ---
 
@@ -183,11 +179,9 @@ Nota operativa: en algunos entornos Node 24 el script `npm test` falla por resol
 
 ## 8. Pendientes reales
 
-1. Commit + push de hotfixes en `vercel-deploy`.
-2. Merge `vercel-deploy → main`.
-3. `vercel git connect`.
-4. NIT real en `public/index.html`.
-5. `favicon.ico`.
+1. Autorizar GitHub Login Connection en Vercel y reintentar `vercel git connect`.
+2. NIT real en `public/index.html`.
+3. `favicon.ico`.
 
 ---
 

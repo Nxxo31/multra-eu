@@ -62,7 +62,7 @@ Guardar en password manager y actualizar Vercel env vars. Después de rotar `JWT
 
 ### Estado actual
 
-El deploy productivo vigente fue hecho por CLI. El proyecto aún debe quedar conectado a Git para auto-deploy.
+El deploy productivo vigente fue hecho por CLI. El 2026-09-30 se persistieron hotfixes/docs en Git (`6fa877e`) y `main` quedó alineado con `vercel-deploy`. El auto-deploy sigue bloqueado hasta autorizar la **GitHub Login Connection** en la cuenta Vercel.
 
 ### Deploy manual CLI
 
@@ -73,14 +73,18 @@ vercel --prod --yes --token $env:VERCEL_TOKEN
 
 ### Git connection pendiente
 
+Intento registrado:
+
 ```powershell
-vercel git connect
+vercel git connect --yes --token $env:VERCEL_TOKEN
+# Error: You need to add a Login Connection to your GitHub account first. (400)
 ```
 
-Después de conectar Git:
-1. push a la rama configurada
-2. Vercel hace build/deploy automático
-3. correr smoke post-deploy
+Acción requerida del operador:
+1. En Vercel, conectar la cuenta con GitHub (Login Connection).
+2. Reintentar `vercel git connect`.
+3. Confirmar que la production branch queda en `main`.
+4. Hacer un redeploy y correr smoke post-deploy.
 
 ---
 
