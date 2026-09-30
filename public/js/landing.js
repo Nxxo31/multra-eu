@@ -77,7 +77,7 @@
       }).join('');
       const subtotal = p.items.reduce((sum, id) => {
         const s = SERVICIOS.find(x => x.id === id);
-        return sum + (s ? s.precio : 0);
+        return sum + (s ? Number(s.precio) : 0);
       }, 0);
       const precioFinal = Math.round(subtotal * (1 - p.descuento / 100));
       return `
@@ -223,7 +223,7 @@
       cart[idx].cantidad += delta;
       if (cart[idx].cantidad <= 0) cart.splice(idx, 1);
     } else if (delta > 0) {
-      cart.push({ id, nombre: s.nombre, precio: s.precio, cantidad: 1 });
+      cart.push({ id, nombre: s.nombre, precio: Number(s.precio), cantidad: 1 });
     }
     renderGrid();
     renderPackages();
@@ -262,7 +262,7 @@
       activePackage = pkgId;
       cart = pkg.items.map(id => {
         const s = SERVICIOS.find(x => x.id === id);
-        return s ? { id, nombre: s.nombre, precio: s.precio, cantidad: 1 } : null;
+        return s ? { id, nombre: s.nombre, precio: Number(s.precio), cantidad: 1 } : null;
       }).filter(Boolean);
     }
     renderGrid();

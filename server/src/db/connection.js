@@ -18,11 +18,33 @@ const buildKeyMap = (text) => {
   return map;
 };
 const SCHEMA_KEY_MAP = buildKeyMap(SCHEMA_POSTGRES_SQL);
-const mapRowKeys = (row, queryMap) => {
+const NUMERIC_COL_RE = /\b([A-Za-z][A-Za-z0-9]*)\s+NUMERIC(?:\s*\(\s*\d+\s*(?:,\s*\d+\s*)?\))?/gi;
+const AGG_ALIAS_RE = /\b(?:count|sum|avg|min|max)\s*\([^)]*\)(?:::\s*\w+)?\s+(?:as\s+)?([A-Za-z_]\w*)/gi;
+const NUMERIC_VALUE = /^-?\d+(\.\d+)?$/;
+export const buildNumericCols = (text) => {
+  const set = new Set();
+  for (const m of text.matchAll(NUMERIC_COL_RE)) set.add(m[1].toLowerCase());
+  return set;
+};
+export const SCHEMA_NUMERIC_COLS = buildNumericCols(SCHEMA_POSTGRES_SQL);
+export const buildNumericAliases = (sql, numericCols) => {
+  const set = new Set();
+  for (const m of sql.matchAll(AGG_ALIAS_RE)) set.add(m[1].toLowerCase());
+  for (const col of numericCols) {
+    const re = new RegExp(`\\b(?:[A-Za-z_]\\w*\\.)?${col}\\s+(?:as\\s+)?([A-Za-z_]\\w*)`, 'gi');
+    for (const m of sql.matchAll(re)) set.add(m[1].toLowerCase());
+  }
+  return set;
+};
+export const mapRowKeys = (row, queryMap, numericKeys = SCHEMA_NUMERIC_COLS) => {
   if (!row || typeof row !== 'object') return row;
   const out = {};
   for (const [k, v] of Object.entries(row)) {
-    out[queryMap.get(k) ?? SCHEMA_KEY_MAP.get(k) ?? k] = v;
+    const key = queryMap.get(k) ?? SCHEMA_KEY_MAP.get(k) ?? k;
+    out[key] =
+      typeof v === 'string' && numericKeys.has(key.toLowerCase()) && NUMERIC_VALUE.test(v)
+        ? Number(v)
+        : v;
   }
   return out;
 };
@@ -178,7 +200,8 @@ export class NeonAdapter {
       const { sql: psql, params: pparams } = toPositional(sql, params);
       const rows = await this.sql(psql, pparams);
       const qm = buildKeyMap(sql);
-      return rows.map((r) => mapRowKeys(r, qm));
+      const numericKeys = new Set([...SCHEMA_NUMERIC_COLS, ...buildNumericAliases(sql, SCHEMA_NUMERIC_COLS)]);
+      return rows.map((r) => mapRowKeys(r, qm, numericKeys));
     } catch (e) {
       logger.error({ err: e.message, sql }, 'Postgres query error');
       throw e;
