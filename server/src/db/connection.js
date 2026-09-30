@@ -3,6 +3,29 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { env } from '../config/env.js';
 import { logger } from '../utils/logger.js';
+import { SCHEMA_POSTGRES_SQL } from './schema.postgres.js';
+
+// Postgres pliega identificadores no-quotados a lowercase. El schema y los
+// repositorios usan camelCase (passwordHash, createdAt, ...), así que hay que
+// mapear lowercase -> camelCase en los resultados para que el código lea bien.
+const CAMEL_WORD = /\b(?=[A-Za-z]*[a-z])(?=[A-Za-z]*[A-Z])[A-Za-z]+\b/g;
+const buildKeyMap = (text) => {
+  const map = new Map();
+  for (const m of text.matchAll(CAMEL_WORD)) {
+    const w = m[0];
+    map.set(w.toLowerCase(), w);
+  }
+  return map;
+};
+const SCHEMA_KEY_MAP = buildKeyMap(SCHEMA_POSTGRES_SQL);
+const mapRowKeys = (row, queryMap) => {
+  if (!row || typeof row !== 'object') return row;
+  const out = {};
+  for (const [k, v] of Object.entries(row)) {
+    out[queryMap.get(k) ?? SCHEMA_KEY_MAP.get(k) ?? k] = v;
+  }
+  return out;
+};
 
 const toPositional = (sql, params) => {
   let i = 0;
@@ -154,7 +177,8 @@ export class NeonAdapter {
     try {
       const { sql: psql, params: pparams } = toPositional(sql, params);
       const rows = await this.sql(psql, pparams);
-      return rows;
+      const qm = buildKeyMap(sql);
+      return rows.map((r) => mapRowKeys(r, qm));
     } catch (e) {
       logger.error({ err: e.message, sql }, 'Postgres query error');
       throw e;

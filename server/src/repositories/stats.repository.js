@@ -27,7 +27,7 @@ export class StatsRepository extends BaseRepository {
 
   async ingresosMes(yearMonth) {
     const rows = await this.query(
-      "SELECT monto FROM pagos WHERE strftime('%Y-%m', fecha) = ?",
+      "SELECT monto FROM pagos WHERE substr(fecha, 1, 7) = ?",
       [yearMonth]
     );
     return rows.reduce((a, p) => a + Number(p.monto || 0), 0);

@@ -26,7 +26,7 @@ const EnvSchema = z.object({
   ADMIN_USER: z.string().min(3).default('NicoDev2026'),
   ADMIN_PASS: z.string().min(6).default('Multra2026'),
 
-  FRONTEND_DIR: z.string().default('../../public'),
+  FRONTEND_DIR: z.string().default('public'),
 });
 
 const parsed = EnvSchema.safeParse(process.env);

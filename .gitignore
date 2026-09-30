@@ -48,3 +48,7 @@ desktop.ini
 # Archivos del sistema Windows
 $RECYCLE.BIN/
 *.lnk
+
+# Vercel local y temporales de operator
+.vercel
+*.tmp
