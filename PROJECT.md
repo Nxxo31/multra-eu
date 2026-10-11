@@ -45,3 +45,15 @@
 
 *Índice regenerado por SophIA el 2026-10-11 (memo #186). El contenido
 operativo vive en README.md y PRODUCTION.md.*
+
+
+## Higiene de seguridad (2026-10-11)
+
+  - **NUNCA** guardar passwords en archivos `.tmp` o `.txt` en el repo.
+    Usar SIEMPRE `.env` (cifrado en Vercel) o el password manager del operador.
+  - El archivo `.admin-pass.tmp` (password en plaintext) fue
+    eliminado en esta sesión. La password real vive en `ADMIN_PASS`
+    de las Vercel env vars (PRODUCTION.md §2).
+  - Si necesitas regenerar password: `node -e "console.log('ADMIN_PASS='
+    + require('crypto').randomBytes(20).toString('base64url'))"`
+    y actualizar Vercel env vars + tu password manager local.

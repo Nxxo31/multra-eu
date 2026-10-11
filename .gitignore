@@ -52,3 +52,6 @@ $RECYCLE.BIN/
 # Vercel local y temporales de operator
 .vercel
 *.tmp
+
+# Local admin password temp file (never commit)
+.admin-pass.tmp
