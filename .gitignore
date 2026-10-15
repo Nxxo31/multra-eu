@@ -1,57 +1,51 @@
-# ============================================================
-# Multra E.U. — .gitignore raíz
-# Cubre todo el monorepo (frontend Multra-EU/ + backend server/)
-# ============================================================
 
-# Dependencias
-node_modules/
-
+!public/assets/img/**/*.png
+!public/assets/img/*.png
+# .idea/
+# .vscode/
+# ============================================================
+# Archivos del sistema Windows
 # Base de datos (SQLite local — nunca commitear)
-/data/
-*.db
-*.db-wal
-*.db-shm
-
-# Secrets y config local
-.env
-.env.local
-.env.*.local
-
+# Cobertura y builds
+# Cubre todo el monorepo (frontend Multra-EU/ + backend server/)
+# Dependencias
+# IDEs (comentado: si quieres compartir config del equipo, descomenta lo que aplique)
+# Local admin password temp file (never commit)
 # Logs y temporales
+# Multra E.U. — .gitignore raíz
+# OS
+# Secrets y config local
+# Vercel local y temporales de operator
+$RECYCLE.BIN/
+*.db
+*.db-shm
+*.db-wal
+*.lnk
 *.log
+*.png
+*.swo
+*.swp
+*.tmp
+*.tsbuildinfo
+*~
+.admin-pass.tmp
+.DS_Store
+.env
+.env.*.local
+.env.local
+.temp/
+.tmp/
+.vercel
+/data/
+build/
+coverage/
+desktop.ini
+dist/
 logs/
+node_modules/
 npm-debug.log*
+pnpm-debug.log*
+screenshots/
+Thumbs.db
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-.tmp/
-.temp/
-
-# Cobertura y builds
-coverage/
-dist/
-build/
-*.tsbuildinfo
-
-# OS
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# IDEs (comentado: si quieres compartir config del equipo, descomenta lo que aplique)
-# .vscode/
-# .idea/
-*.swp
-*.swo
-*~
-
-# Archivos del sistema Windows
-$RECYCLE.BIN/
-*.lnk
-
-# Vercel local y temporales de operator
-.vercel
-*.tmp
-
-# Local admin password temp file (never commit)
-.admin-pass.tmp
